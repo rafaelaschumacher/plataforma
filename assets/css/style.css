@@ -82,6 +82,7 @@ a {
   align-items: center;
   justify-content: space-between;
   height: 68px;
+  position: relative;
 }
 
 .brand {
@@ -133,6 +134,44 @@ a {
 
 .main-nav a:hover {
   color: var(--gray-950);
+}
+
+.main-nav a.active {
+  color: var(--gray-950);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--gray-900);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Hero */
@@ -408,6 +447,279 @@ input:focus {
   color: var(--gray-500);
 }
 
+/* Home: tool cards */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 28px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tool-card:hover {
+  border-color: var(--gray-400);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.tool-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-light);
+  font-size: 1.5rem;
+}
+
+.tool-card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--gray-950);
+}
+
+.tool-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--gray-700);
+}
+
+.tool-card-cta {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+/* Content pages: info cards */
+.hero-compact {
+  padding: 48px 0 40px;
+}
+
+.article-section {
+  padding: 16px 0 64px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.info-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-card p {
+  font-size: 0.92rem;
+}
+
+.info-card-full {
+  margin-bottom: 20px;
+}
+
+.info-grid-nested {
+  margin-top: 16px;
+}
+
+.info-grid-nested p:first-child {
+  color: var(--gray-950);
+}
+
+.info-card ol,
+.info-card ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  color: var(--gray-700);
+  font-size: 0.92rem;
+}
+
+.info-card ol li,
+.info-card ul li {
+  margin-bottom: 6px;
+}
+
+.callout {
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 0.92rem;
+  color: var(--gray-900);
+  margin: 16px 0;
+}
+
+.callout strong {
+  color: var(--accent-dark);
+}
+
+.callout-spaced {
+  margin-top: 24px;
+}
+
+.section-title-spaced {
+  margin-top: 40px;
+}
+
+/* Refeição livre: meal cards */
+.meal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.meal-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.meal-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.meal-card ul {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  color: var(--gray-700);
+  font-size: 0.92rem;
+}
+
+.meal-card ul li {
+  margin-bottom: 6px;
+}
+
+.meal-card .meal-note {
+  font-size: 0.82rem;
+  color: var(--gray-500);
+  background: var(--gray-50);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+
+/* Guia do mercado */
+.market-search {
+  margin-bottom: 32px;
+}
+
+.market-search input {
+  max-width: 420px;
+}
+
+.market-category {
+  margin-bottom: 44px;
+  scroll-margin-top: 88px;
+}
+
+.market-category h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.market-criteria {
+  background: var(--gray-100);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
+  color: var(--gray-700);
+}
+
+.market-criteria ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.market-criteria li {
+  margin-bottom: 6px;
+}
+
+.market-subgroup {
+  margin-bottom: 18px;
+}
+
+.market-subgroup h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gray-500);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-chip {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: var(--gray-800);
+  font-weight: 500;
+}
+
+.product-chip.hidden {
+  display: none;
+}
+
+.market-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.market-jump a {
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  text-decoration: none;
+}
+
+.market-jump a:hover {
+  border-color: var(--gray-500);
+  color: var(--gray-950);
+}
+
 /* About */
 .about-section {
   padding: 56px 0 72px;
@@ -458,8 +770,31 @@ input:focus {
 
 /* Responsive */
 @media (max-width: 780px) {
+  .nav-toggle {
+    display: flex;
+  }
   .main-nav {
     display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+    box-shadow: var(--shadow-md);
+  }
+  .main-nav.open {
+    display: flex;
+  }
+  .main-nav a {
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .main-nav a:last-child {
+    border-bottom: none;
   }
   .steps {
     grid-template-columns: 1fr;
@@ -472,6 +807,11 @@ input:focus {
   }
   .table-toolbar input {
     max-width: none;
+  }
+  .tools-grid,
+  .info-grid,
+  .meal-grid {
+    grid-template-columns: 1fr;
   }
 }
 

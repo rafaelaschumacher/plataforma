@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutri Rafaela Schumacher | Calculadora de Substituição de Alimentos</title>
+  <meta name="description" content="Calculadora de substituição de alimentos por equivalência calórica — Carboidratos, Proteínas, Gorduras, Leguminosas, Frutas, Laticínios e Doces. Baseada na tabela TACO e TBCA." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥗</text></svg>" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">NRS</span>
+        <span class="brand-name">Nutri Rafaela Schumacher</span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="calculadora.html" class="active">Calculadora</a>
+        <a href="orientacoes-gerais.html">Orientações Gerais</a>
+        <a href="refeicao-livre.html">Refeição Livre</a>
+        <a href="guia-mercado.html">Guia do Mercado</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="topo">
+    <section class="hero hero-compact">
+      <div class="container hero-inner">
+        <p class="eyebrow">Lista de substituição de alimentos</p>
+        <h1>Calculadora de substituição de alimentos</h1>
+        <p class="hero-lead">
+          Escolha um grupo alimentar, informe o quanto você comeu e veja, em segundos,
+          as quantidades equivalentes em calorias de outros alimentos do mesmo grupo.
+        </p>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="how-it-works">
+      <div class="container">
+        <h2>Como funciona</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Escolha o grupo</h3>
+            <p>Carboidratos, Proteínas, Gorduras, Leguminosas, Frutas, Laticínios ou Doces.</p>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>Informe o alimento e a quantidade</h3>
+            <p>Selecione o que você consumiu e a quantidade em gramas ou ml.</p>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Veja as equivalências</h3>
+            <p>A calculadora mostra a quantidade de cada outro alimento do grupo com o mesmo valor calórico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculadora" class="calculator-section">
+      <div class="container">
+        <h2>Calculadora de substituição</h2>
+        <p class="section-lead">Selecione um grupo alimentar para começar.</p>
+
+        <div class="group-tabs" id="grupoTabs" role="tablist"></div>
+
+        <div class="calculator-card">
+          <div class="calculator-controls">
+            <div class="field">
+              <label for="alimentoSelect">Alimento consumido</label>
+              <select id="alimentoSelect"></select>
+            </div>
+
+            <div class="field field-qty">
+              <label for="qtdGramas">Quantidade (gramas / ml)</label>
+              <div class="qty-input">
+                <input type="number" id="qtdGramas" min="0" step="1" value="0" />
+                <span class="qty-suffix">g</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-summary" id="resultSummary"></div>
+
+          <div class="table-toolbar">
+            <input type="search" id="filtroTabela" placeholder="Buscar alimento..." />
+          </div>
+
+          <div class="table-wrapper">
+            <table class="equiv-table">
+              <thead>
+                <tr>
+                  <th>Alimento</th>
+                  <th>Quantidade equivalente</th>
+                </tr>
+              </thead>
+              <tbody id="equivTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="about-section">
+      <div class="container about-inner">
+        <h2>Sobre a ferramenta</h2>
+        <p>
+          Esta calculadora foi criada para apoiar o acompanhamento nutricional dos pacientes
+          da <strong>Rafaela Schumacher</strong>, facilitando a substituição de alimentos dentro
+          do mesmo grupo, mantendo o valor calórico equivalente ao planejado no seu plano alimentar.
+        </p>
+        <p class="disclaimer">
+          Os valores de calorias utilizados têm como referência a Tabela Brasileira de Composição
+          de Alimentos (TACO — NEPA/UNICAMP), a Tabela Brasileira de Composição de Alimentos (TBCA — USP)
+          e, quando aplicável, informações nutricionais de rótulos de fabricantes. As medidas caseiras
+          são aproximações e podem variar conforme o preparo, a marca e o tamanho do alimento.
+          Esta ferramenta é um apoio educativo e não substitui a orientação individual da sua nutricionista.
+          Em caso de dúvida sobre uma substituição, consulte sempre a Rafaela.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="brand-mark small">NRS</span>
+        <span>Nutri Rafaela Schumacher</span>
+      </div>
+      <p>Fonte dos dados: TACO, TBCA e rótulos de fabricantes. Conteúdo de apoio educativo — consulte sempre sua nutricionista.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
