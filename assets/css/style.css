@@ -397,20 +397,9 @@ input:focus {
   color: var(--gray-950);
 }
 
-.equiv-table .kcal-col {
-  color: var(--gray-500);
-  white-space: nowrap;
-}
-
 .equiv-table .equiv-col {
   font-weight: 600;
   white-space: nowrap;
-}
-
-.equiv-table .equiv-grams {
-  font-weight: 400;
-  color: var(--gray-500);
-  margin-left: 4px;
 }
 
 .empty-state {
@@ -539,11 +528,6 @@ input:focus {
 
   .equiv-table .food-name {
     font-size: 1rem;
-  }
-
-  .equiv-table .equiv-grams {
-    display: block;
-    margin-left: 0;
   }
 
   .equiv-table td.empty-state {

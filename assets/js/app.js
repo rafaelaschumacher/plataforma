@@ -27,18 +27,6 @@
     });
   }
 
-  const MEDIDA_PLURAL = {
-    "unidade": "unidades",
-    "unidade média": "unidades médias",
-    "unidade pequena": "unidades pequenas",
-    "fatia": "fatias",
-  };
-
-  function medidaLabel(medida, count) {
-    if (count === 1) return medida;
-    return MEDIDA_PLURAL[medida] || medida;
-  }
-
   function renderTabs() {
     grupoTabs.innerHTML = "";
     GRUPOS.forEach((grupo) => {
@@ -109,12 +97,12 @@
     equivTableBody.innerHTML = "";
 
     if (kcalTotal <= 0) {
-      equivTableBody.innerHTML = `<tr><td colspan="3" class="empty-state">Informe uma quantidade maior que zero para ver as equivalências.</td></tr>`;
+      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Informe uma quantidade maior que zero para ver as equivalências.</td></tr>`;
       return;
     }
 
     if (filtrados.length === 0) {
-      equivTableBody.innerHTML = `<tr><td colspan="3" class="empty-state">Nenhum alimento encontrado.</td></tr>`;
+      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Nenhum alimento encontrado.</td></tr>`;
       return;
     }
 
@@ -123,25 +111,12 @@
       .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"))
       .forEach((alimento) => {
         const equivGramasExato = (kcalTotal * 100) / alimento.kcal;
-        const isUnidade = /unidade|fatia/i.test(alimento.medida);
-
-        let equivCell;
-        if (isUnidade) {
-          const equivMedidaExata = alimento.g > 0 ? equivGramasExato / alimento.g : 0;
-          const equivMedida = Math.max(1, Math.round(equivMedidaExata));
-          const equivGramas = equivMedida * alimento.g;
-          equivCell = `≈ ${formatNumber(equivMedida, 0)} ${medidaLabel(alimento.medida, equivMedida)}
-            <span class="equiv-grams">(${formatNumber(equivGramas, 0)} g)</span>`;
-        } else {
-          const equivGramas = Math.max(5, Math.round(equivGramasExato / 5) * 5);
-          equivCell = `≈ ${formatNumber(equivGramas, 0)} g`;
-        }
+        const equivGramas = Math.max(5, Math.round(equivGramasExato / 5) * 5);
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td class="food-name" data-label="Alimento">${alimento.nome}</td>
-          <td class="kcal-col" data-label="kcal / 100g">${formatNumber(alimento.kcal, 0)} kcal</td>
-          <td class="equiv-col" data-label="Quantidade equivalente">${equivCell}</td>
+          <td class="equiv-col" data-label="Quantidade equivalente">≈ ${formatNumber(equivGramas, 0)} g</td>
         `;
         equivTableBody.appendChild(tr);
       });
