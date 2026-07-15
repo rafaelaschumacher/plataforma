@@ -664,6 +664,20 @@ input:focus {
   margin-bottom: 6px;
 }
 
+.market-photo {
+  margin-bottom: 20px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  background: var(--gray-100);
+}
+
+.market-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .market-subgroup {
   margin-bottom: 18px;
 }
