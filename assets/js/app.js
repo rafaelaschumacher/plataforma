@@ -111,15 +111,22 @@
       .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"))
       .forEach((alimento) => {
         const equivGramas = (kcalTotal * 100) / alimento.kcal;
-        const equivMedida = alimento.g > 0 ? equivGramas / alimento.g : 0;
+        const isUnidade = /unidade/i.test(alimento.medida);
+
+        let equivCell;
+        if (isUnidade) {
+          const equivMedida = alimento.g > 0 ? equivGramas / alimento.g : 0;
+          equivCell = `≈ ${formatNumber(equivMedida, 2)} ${alimento.medida}
+            <span class="equiv-grams">(${formatNumber(equivGramas, 0)} g)</span>`;
+        } else {
+          equivCell = `≈ ${formatNumber(equivGramas, 0)} g`;
+        }
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td class="food-name" data-label="Alimento">${alimento.nome}</td>
           <td class="kcal-col" data-label="kcal / 100g">${formatNumber(alimento.kcal, 0)} kcal</td>
-          <td class="equiv-col" data-label="Quantidade equivalente">≈ ${formatNumber(equivMedida, 2)} ${alimento.medida}
-            <span class="equiv-grams">(${formatNumber(equivGramas, 0)} g)</span>
-          </td>
+          <td class="equiv-col" data-label="Quantidade equivalente">${equivCell}</td>
         `;
         equivTableBody.appendChild(tr);
       });
