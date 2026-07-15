@@ -1,9 +1,7 @@
 (function () {
   const grupoTabs = document.getElementById("grupoTabs");
   const alimentoSelect = document.getElementById("alimentoSelect");
-  const qtdMedidaInput = document.getElementById("qtdMedida");
   const qtdGramasInput = document.getElementById("qtdGramas");
-  const medidaLabel = document.getElementById("medidaLabel");
   const resultSummary = document.getElementById("resultSummary");
   const equivTableBody = document.getElementById("equivTableBody");
   const filtroTabela = document.getElementById("filtroTabela");
@@ -13,8 +11,6 @@
     alimentoId: GRUPOS[0].baseId,
     filtro: "",
   };
-
-  let syncing = false;
 
   function getGrupo(id) {
     return GRUPOS.find((g) => g.id === id);
@@ -47,7 +43,9 @@
         filtroTabela.value = "";
         renderTabs();
         renderAlimentoSelect();
-        syncFromMedida();
+        const alimento = getAlimento(grupo, state.alimentoId);
+        qtdGramasInput.value = alimento.g;
+        renderResult();
       });
       grupoTabs.appendChild(btn);
     });
@@ -63,42 +61,6 @@
       if (alimento.id === state.alimentoId) opt.selected = true;
       alimentoSelect.appendChild(opt);
     });
-    updateMedidaLabel();
-  }
-
-  function updateMedidaLabel() {
-    const grupo = getGrupo(state.grupoId);
-    const alimento = getAlimento(grupo, state.alimentoId);
-    medidaLabel.textContent = `${alimento.medida} (${alimento.g} g)`;
-    qtdMedidaInput.setAttribute(
-      "aria-label",
-      `Quantidade em ${alimento.medida}`
-    );
-  }
-
-  function syncFromMedida() {
-    if (syncing) return;
-    syncing = true;
-    const grupo = getGrupo(state.grupoId);
-    const alimento = getAlimento(grupo, state.alimentoId);
-    const qtdMedida = parseFloat(qtdMedidaInput.value) || 0;
-    qtdGramasInput.value = Math.round(qtdMedida * alimento.g * 100) / 100;
-    syncing = false;
-    updateMedidaLabel();
-    renderResult();
-  }
-
-  function syncFromGramas() {
-    if (syncing) return;
-    syncing = true;
-    const grupo = getGrupo(state.grupoId);
-    const alimento = getAlimento(grupo, state.alimentoId);
-    const qtdGramas = parseFloat(qtdGramasInput.value) || 0;
-    const qtdMedida = alimento.g > 0 ? qtdGramas / alimento.g : 0;
-    qtdMedidaInput.value = Math.round(qtdMedida * 100) / 100;
-    syncing = false;
-    updateMedidaLabel();
-    renderResult();
   }
 
   function currentKcalTotal() {
@@ -167,14 +129,11 @@
     state.alimentoId = e.target.value;
     const grupo = getGrupo(state.grupoId);
     const alimento = getAlimento(grupo, state.alimentoId);
-    qtdMedidaInput.value = 1;
     qtdGramasInput.value = alimento.g;
-    updateMedidaLabel();
     renderResult();
   });
 
-  qtdMedidaInput.addEventListener("input", syncFromMedida);
-  qtdGramasInput.addEventListener("input", syncFromGramas);
+  qtdGramasInput.addEventListener("input", renderResult);
 
   filtroTabela.addEventListener("input", (e) => {
     state.filtro = e.target.value;
@@ -186,7 +145,6 @@
     renderAlimentoSelect();
     const grupo = getGrupo(state.grupoId);
     const alimento = getAlimento(grupo, state.alimentoId);
-    qtdMedidaInput.value = 1;
     qtdGramasInput.value = alimento.g;
     renderResult();
   }

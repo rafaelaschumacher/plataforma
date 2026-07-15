@@ -2,7 +2,7 @@
 
 Site estático (HTML/CSS/JS puro, sem dependências) para pacientes calcularem
 equivalências calóricas entre alimentos, organizados nos grupos:
-Carboidratos, Proteínas, Gorduras, Leguminosas, Frutas e Laticínios e Doces.
+Carboidratos, Proteínas, Gorduras, Leguminosas, Frutas, Laticínios e Doces.
 
 ## Como usar localmente
 
