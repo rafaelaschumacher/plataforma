@@ -27,6 +27,18 @@
     });
   }
 
+  const MEDIDA_PLURAL = {
+    "unidade": "unidades",
+    "unidade média": "unidades médias",
+    "unidade pequena": "unidades pequenas",
+    "fatia": "fatias",
+  };
+
+  function medidaLabel(medida, count) {
+    if (count === 1) return medida;
+    return MEDIDA_PLURAL[medida] || medida;
+  }
+
   function renderTabs() {
     grupoTabs.innerHTML = "";
     GRUPOS.forEach((grupo) => {
@@ -110,15 +122,18 @@
       .slice()
       .sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"))
       .forEach((alimento) => {
-        const equivGramas = (kcalTotal * 100) / alimento.kcal;
-        const isUnidade = /unidade/i.test(alimento.medida);
+        const equivGramasExato = (kcalTotal * 100) / alimento.kcal;
+        const isUnidade = /unidade|fatia/i.test(alimento.medida);
 
         let equivCell;
         if (isUnidade) {
-          const equivMedida = alimento.g > 0 ? equivGramas / alimento.g : 0;
-          equivCell = `≈ ${formatNumber(equivMedida, 2)} ${alimento.medida}
+          const equivMedidaExata = alimento.g > 0 ? equivGramasExato / alimento.g : 0;
+          const equivMedida = Math.max(1, Math.round(equivMedidaExata));
+          const equivGramas = equivMedida * alimento.g;
+          equivCell = `≈ ${formatNumber(equivMedida, 0)} ${medidaLabel(alimento.medida, equivMedida)}
             <span class="equiv-grams">(${formatNumber(equivGramas, 0)} g)</span>`;
         } else {
+          const equivGramas = Math.max(5, Math.round(equivGramasExato / 5) * 5);
           equivCell = `≈ ${formatNumber(equivGramas, 0)} g`;
         }
 
