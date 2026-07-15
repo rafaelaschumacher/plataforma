@@ -1,0 +1,553 @@
+:root {
+  --gray-950: #18181b;
+  --gray-900: #27272a;
+  --gray-800: #3f3f46;
+  --gray-700: #52525b;
+  --gray-500: #71717a;
+  --gray-400: #a1a1aa;
+  --gray-300: #d4d4d8;
+  --gray-200: #e4e4e7;
+  --gray-100: #f4f4f5;
+  --gray-50: #fafafa;
+  --white: #ffffff;
+
+  --accent: #5f7a63;
+  --accent-dark: #4a6150;
+  --accent-light: #eef2ee;
+
+  --radius: 10px;
+  --shadow-sm: 0 1px 2px rgba(24, 24, 27, 0.06);
+  --shadow-md: 0 4px 16px rgba(24, 24, 27, 0.08);
+  --font: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--gray-900);
+  background: var(--gray-50);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: var(--gray-950);
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+
+p {
+  color: var(--gray-700);
+  margin: 0 0 12px;
+}
+
+a {
+  color: var(--accent-dark);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--gray-950);
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gray-900);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.brand-mark.small {
+  width: 28px;
+  height: 28px;
+  font-size: 0.7rem;
+  margin-right: 8px;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--gray-950);
+}
+
+.main-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.main-nav a {
+  color: var(--gray-700);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.main-nav a:hover {
+  color: var(--gray-950);
+}
+
+/* Hero */
+.hero {
+  padding: 72px 0 56px;
+  background: linear-gradient(180deg, var(--gray-100) 0%, var(--gray-50) 100%);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.hero-inner {
+  max-width: 720px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 14px;
+}
+
+.hero-lead {
+  font-size: 1.08rem;
+  color: var(--gray-700);
+  max-width: 620px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--gray-950);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+}
+
+/* How it works */
+.how-it-works {
+  padding: 64px 0;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.step {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.step h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.step p {
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* Calculator */
+.calculator-section {
+  padding: 20px 0 72px;
+}
+
+.section-lead {
+  margin-bottom: 24px;
+}
+
+.group-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.group-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--gray-300);
+  background: var(--white);
+  color: var(--gray-700);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.group-tab:hover {
+  border-color: var(--gray-500);
+  color: var(--gray-950);
+}
+
+.group-tab.active {
+  background: var(--gray-950);
+  border-color: var(--gray-950);
+  color: var(--white);
+}
+
+.calculator-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+}
+
+.calculator-controls {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 6px;
+}
+
+select,
+input[type="number"],
+input[type="search"] {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-300);
+  background: var(--gray-50);
+  font-size: 0.95rem;
+  color: var(--gray-950);
+  font-family: inherit;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--white);
+}
+
+.qty-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.qty-input input {
+  padding-right: 44px;
+}
+
+.qty-suffix {
+  position: absolute;
+  right: 14px;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  pointer-events: none;
+  max-width: 130px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-summary {
+  background: var(--accent-light);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  font-size: 0.98rem;
+  color: var(--gray-900);
+}
+
+.result-summary strong {
+  color: var(--accent-dark);
+}
+
+.table-toolbar {
+  margin-bottom: 14px;
+}
+
+.table-toolbar input {
+  max-width: 320px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+}
+
+.equiv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.equiv-table thead th {
+  text-align: left;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.equiv-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-800);
+  vertical-align: top;
+}
+
+.equiv-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.equiv-table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.equiv-table .food-name {
+  font-weight: 600;
+  color: var(--gray-950);
+}
+
+.equiv-table .kcal-col {
+  color: var(--gray-500);
+  white-space: nowrap;
+}
+
+.equiv-table .equiv-col {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.equiv-table .equiv-grams {
+  font-weight: 400;
+  color: var(--gray-500);
+  margin-left: 4px;
+}
+
+.empty-state {
+  padding: 24px;
+  text-align: center;
+  color: var(--gray-500);
+}
+
+/* About */
+.about-section {
+  padding: 56px 0 72px;
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200);
+}
+
+.about-inner {
+  max-width: 760px;
+}
+
+.disclaimer {
+  font-size: 0.86rem;
+  color: var(--gray-500);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+/* Footer */
+.site-footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--gray-200);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.footer-inner > div {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--gray-800);
+  font-size: 0.92rem;
+}
+
+.footer-inner p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--gray-500);
+}
+
+/* Responsive */
+@media (max-width: 780px) {
+  .main-nav {
+    display: none;
+  }
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .calculator-controls {
+    grid-template-columns: 1fr;
+  }
+  .calculator-card {
+    padding: 20px;
+  }
+  .table-toolbar input {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .table-wrapper {
+    border: none;
+    overflow-x: visible;
+  }
+
+  .equiv-table,
+  .equiv-table tbody,
+  .equiv-table tr,
+  .equiv-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .equiv-table thead {
+    display: none;
+  }
+
+  .equiv-table tbody tr {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 6px 14px;
+    background: var(--white);
+  }
+
+  .equiv-table tbody tr:hover {
+    background: var(--white);
+  }
+
+  .equiv-table td {
+    border-bottom: none;
+    padding: 8px 0;
+    text-align: left;
+  }
+
+  .equiv-table td:not(:last-child) {
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .equiv-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--gray-500);
+    margin-bottom: 3px;
+  }
+
+  .equiv-table .food-name {
+    font-size: 1rem;
+  }
+
+  .equiv-table .equiv-grams {
+    display: block;
+    margin-left: 0;
+  }
+
+  .equiv-table td.empty-state {
+    display: block;
+    text-align: center;
+  }
+}
