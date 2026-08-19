@@ -955,6 +955,14 @@ input:focus {
   margin-bottom: 18px;
 }
 
+.info-card .market-subgroup {
+  margin-top: 22px;
+}
+
+.info-card .market-subgroup:last-child {
+  margin-bottom: 0;
+}
+
 .market-subgroup h4 {
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -980,8 +988,22 @@ input:focus {
   font-weight: 500;
 }
 
-.product-chip.hidden {
+.product-chip.hidden,
+.market-subgroup.hidden,
+.guide-section.hidden,
+.guide-note.hidden,
+.info-card.hidden {
   display: none;
+}
+
+.market-search-label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--gray-500);
+  margin-bottom: 8px;
 }
 
 .market-jump {
