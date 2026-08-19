@@ -55,15 +55,15 @@ const PAGINAS = {
   },
   "orientacoes-gerais.html": {
     nav: "orientacoes-gerais",
-    titulo: "Orientações gerais · Rafaela Schumacher",
+    titulo: "Como colocar seu plano em prática · Rafaela Schumacher",
     descricao:
-      "Como pesar os alimentos, organizar a rotina, acompanhar sua evolução e quando falar comigo.",
+      "Como pesar, se organizar, ler a balança sem sofrer e saber a hora de me chamar.",
   },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
     titulo: "Guia da refeição livre · Rafaela Schumacher",
     descricao:
-      "Como aproveitar um momento de socialização mantendo a consistência da semana, com sugestões por tipo de programa.",
+      "Como aproveitar de verdade, com um tamanho que cabe na sua semana. Com sugestões prontas por tipo de programa.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",
