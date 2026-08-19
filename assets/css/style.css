@@ -200,6 +200,43 @@ a {
   max-width: 620px;
 }
 
+/* Hero with photo background */
+.hero-photo {
+  padding: 100px 0 88px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-photo-inner {
+  max-width: 640px;
+}
+
+.eyebrow-light {
+  color: #fff;
+  opacity: 0.85;
+}
+
+.hero-photo-title {
+  color: #fff;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0 0 16px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.hero-photo-lead {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 560px;
+  margin: 0;
+}
+
+.hero-photo-lead strong {
+  color: #fff;
+}
+
 .btn {
   display: inline-block;
   padding: 13px 26px;
@@ -494,6 +531,88 @@ input:focus {
   margin: 0;
   font-size: 0.92rem;
   color: var(--gray-700);
+}
+
+/* Tool cards with photo (home) */
+.tools-grid-photo {
+  margin-top: 8px;
+}
+
+.tool-card-photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-card-photo:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.tool-card-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.tool-card-photo:hover img {
+  transform: scale(1.05);
+}
+
+.tool-card-photo-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0) 40%, rgba(10, 10, 12, 0.78) 100%);
+}
+
+.tool-card-photo-overlay h3 {
+  color: #fff;
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
+
+.tool-card-photo-overlay p {
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* About with avatar */
+.about-with-avatar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.about-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.about-with-avatar h2 {
+  margin-bottom: 10px;
+}
+
+.about-with-avatar p {
+  margin: 0;
 }
 
 .tool-card-cta {
@@ -812,6 +931,21 @@ input:focus {
   .info-grid,
   .meal-grid {
     grid-template-columns: 1fr;
+  }
+  .hero-photo {
+    padding: 64px 0 48px;
+  }
+  .tool-card-photo {
+    aspect-ratio: 16 / 10;
+  }
+  .about-with-avatar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .about-avatar {
+    width: 100px;
+    height: 100px;
   }
 }
 
