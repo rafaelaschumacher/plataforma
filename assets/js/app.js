@@ -78,8 +78,8 @@
 
     resultSummary.innerHTML =
       qtdGramas > 0
-        ? `Você informou <strong>${formatNumber(qtdGramas, 1)} g</strong> de <strong>${alimento.nome}</strong>, equivalente a aproximadamente <strong>${formatNumber(kcalTotal, 0)} kcal</strong>. Veja abaixo as quantidades de outros alimentos do grupo "${grupo.nome}" com o mesmo valor calórico.`
-        : `Informe uma quantidade para calcular as equivalências.`;
+        ? `No seu plano: <strong>${formatNumber(qtdGramas, 1)} g</strong> de <strong>${alimento.nome}</strong>, o que corresponde a aproximadamente <strong>${formatNumber(kcalTotal, 0)} kcal</strong>. Veja abaixo o quanto comer de cada alimento do grupo "${grupo.nome}" para fazer a troca.`
+        : `Informe a quantidade que está no seu plano para ver as opções de troca.`;
 
     renderTable();
   }
@@ -97,7 +97,7 @@
     equivTableBody.innerHTML = "";
 
     if (kcalTotal <= 0) {
-      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Informe uma quantidade maior que zero para ver as equivalências.</td></tr>`;
+      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Informe uma quantidade maior que zero para ver as opções de troca.</td></tr>`;
       return;
     }
 
@@ -115,8 +115,8 @@
 
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td class="food-name" data-label="Alimento">${alimento.nome}</td>
-          <td class="equiv-col" data-label="Quantidade equivalente">≈ ${formatNumber(equivGramas, 0)} g</td>
+          <td class="food-name" data-label="Se quiser trocar por">${alimento.nome}</td>
+          <td class="equiv-col" data-label="Quanto comer">≈ ${formatNumber(equivGramas, 0)} g</td>
         `;
         equivTableBody.appendChild(tr);
       });

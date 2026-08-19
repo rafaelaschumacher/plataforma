@@ -33,8 +33,9 @@
         <p class="eyebrow">Lista de substituição de alimentos</p>
         <h1>Calculadora de substituição de alimentos</h1>
         <p class="hero-lead">
-          Escolha um grupo alimentar, informe o quanto você comeu e veja, em segundos,
-          as quantidades equivalentes em calorias de outros alimentos do mesmo grupo.
+          Veja no seu plano alimentar o alimento e a quantidade indicados, informe aqui
+          e descubra, em segundos, o quanto comer de outros alimentos do mesmo grupo
+          para fazer a troca sem alterar as calorias.
         </p>
       </div>
     </section>
@@ -46,17 +47,17 @@
           <div class="step">
             <span class="step-number">1</span>
             <h3>Escolha o grupo</h3>
-            <p>Carboidratos, Proteínas, Gorduras, Leguminosas, Frutas, Laticínios ou Doces.</p>
+            <p>O grupo do alimento que está no seu plano: Carboidratos, Proteínas, Gorduras, Leguminosas, Frutas, Laticínios ou Doces.</p>
           </div>
           <div class="step">
             <span class="step-number">2</span>
-            <h3>Informe o alimento e a quantidade</h3>
-            <p>Selecione o que você consumiu e a quantidade em gramas ou ml.</p>
+            <h3>Informe o que está no seu plano</h3>
+            <p>Selecione o alimento e digite a quantidade em gramas ou ml que aparece no seu plano alimentar.</p>
           </div>
           <div class="step">
             <span class="step-number">3</span>
-            <h3>Veja as equivalências</h3>
-            <p>A calculadora mostra a quantidade de cada outro alimento do grupo com o mesmo valor calórico.</p>
+            <h3>Veja por quanto trocar</h3>
+            <p>A calculadora mostra o quanto comer de cada outro alimento do grupo para manter o mesmo valor calórico.</p>
           </div>
         </div>
       </div>
@@ -65,19 +66,19 @@
     <section id="calculadora" class="calculator-section">
       <div class="container">
         <h2>Calculadora de substituição</h2>
-        <p class="section-lead">Selecione um grupo alimentar para começar.</p>
+        <p class="section-lead">Selecione o grupo do alimento que você quer substituir.</p>
 
         <div class="group-tabs" id="grupoTabs" role="tablist"></div>
 
         <div class="calculator-card">
           <div class="calculator-controls">
             <div class="field">
-              <label for="alimentoSelect">Alimento consumido</label>
+              <label for="alimentoSelect">Alimento do seu plano</label>
               <select id="alimentoSelect"></select>
             </div>
 
             <div class="field field-qty">
-              <label for="qtdGramas">Quantidade (gramas / ml)</label>
+              <label for="qtdGramas">Quantidade do plano (gramas / ml)</label>
               <div class="qty-input">
                 <input type="number" id="qtdGramas" min="0" step="1" value="0" />
                 <span class="qty-suffix">g</span>
@@ -95,8 +96,8 @@
             <table class="equiv-table">
               <thead>
                 <tr>
-                  <th>Alimento</th>
-                  <th>Quantidade equivalente</th>
+                  <th>Se quiser trocar por</th>
+                  <th>Quanto comer</th>
                 </tr>
               </thead>
               <tbody id="equivTableBody"></tbody>
@@ -113,6 +114,11 @@
           Esta calculadora foi criada para apoiar o acompanhamento nutricional dos pacientes
           da <strong>Rafaela Schumacher</strong>, facilitando a substituição de alimentos dentro
           do mesmo grupo, mantendo o valor calórico equivalente ao planejado no seu plano alimentar.
+        </p>
+        <p>
+          Faça a troca sempre por um alimento do <strong>mesmo grupo</strong> e na
+          <strong>mesma refeição</strong>. É isso que garante que, além das calorias, o perfil
+          de nutrientes da refeição continue parecido com o que foi planejado para você.
         </p>
         <p class="disclaimer">
           Os valores de calorias utilizados têm como referência a Tabela Brasileira de Composição
