@@ -26,11 +26,29 @@ python3 -m http.server 8080
 
 e acessar `http://localhost:8080`.
 
+## Cabeçalho, rodapé e `<head>`
+
+São gerados, não editados à mão. Para mudar o menu, o rodapé ou os títulos e
+descrições de compartilhamento:
+
+1. edite `assets/layout/header.html`, `assets/layout/footer.html` ou o mapa
+   `PAGINAS` dentro de `scripts/sync-layout.js`;
+2. rode `node scripts/sync-layout.js`.
+
+`node scripts/sync-layout.js --check` avisa se alguma página ficou fora de
+sincronia, sem alterar arquivo. O script roda só em tempo de edição — o site
+publicado é HTML estático completo e não depende dele.
+
+Convenções de estilo e componentes: veja `docs/design-system.md`.
+
 ## Estrutura
 
-- `assets/css/style.css` — estilos compartilhados (tons de cinza, layout
-  responsivo, menu mobile).
+- `assets/css/` — `fontes.css`, `tokens.css`, `base.css`, `componentes.css`
+  e `paginas.css`, carregados nessa ordem.
+- `assets/fonts/` — Fraunces e Inter auto-hospedadas (SIL OFL 1.1).
+- `assets/layout/` — cabeçalho e rodapé compartilhados.
 - `assets/js/nav.js` — menu mobile (compartilhado por todas as páginas).
+- `assets/js/instalar.js` — convite para adicionar à tela de início.
 - `assets/js/data.js` + `assets/js/app.js` — base de alimentos e lógica da
   calculadora.
 - `assets/js/mercado.js` — busca de produtos no guia do mercado.

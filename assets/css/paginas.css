@@ -1,0 +1,428 @@
+/* ==========================================================================
+   PÁGINAS — estilos usados em uma única página.
+   Depende de tokens.css, base.css e componentes.css.
+   ========================================================================== */
+
+/* ================================================================= home */
+.how-it-works {
+  padding: var(--sp-64) 0;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-24);
+  margin-top: var(--sp-24);
+}
+
+.tools-grid-photo {
+  margin-top: var(--sp-24);
+}
+
+.tool-card-photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--sand-200);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+.tool-card-photo:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.tool-card-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transicao-lenta);
+}
+
+.tool-card-photo:hover img {
+  transform: scale(1.04);
+}
+
+.tool-card-photo-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--sp-24);
+  background: linear-gradient(
+    180deg,
+    rgba(20, 17, 14, 0) 38%,
+    rgba(20, 17, 14, 0.82) 100%
+  );
+}
+
+.tool-card-photo-overlay h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--branco);
+  margin: 0 0 var(--sp-4);
+  font-size: var(--fs-lg);
+}
+
+.tool-card-photo-overlay p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: var(--fs-sm);
+  max-width: none;
+}
+
+/* --------------------------------------------------- bloco "precisa de ajuda" */
+.about-section {
+  padding: var(--sp-48) 0 var(--sp-64);
+  background: var(--sand-100);
+  border-top: 1px solid var(--cor-borda);
+}
+
+.about-inner {
+  max-width: 760px;
+}
+
+.about-with-avatar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-32);
+}
+
+.about-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--cor-superficie);
+  box-shadow: var(--shadow-md);
+}
+
+.about-with-avatar h2 {
+  margin-bottom: var(--sp-12);
+}
+
+.about-with-avatar p {
+  margin: 0 0 var(--sp-24);
+}
+
+/* ========================================================== calculadora */
+.calculator-section {
+  padding: var(--sp-24) 0 var(--sp-64);
+}
+
+.section-lead {
+  margin-bottom: var(--sp-24);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-24);
+  margin-top: var(--sp-32);
+}
+
+.step {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-24);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cor-acento-suave);
+  color: var(--cor-acento-escuro);
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-forte);
+  margin-bottom: var(--sp-16);
+}
+
+.step h3 {
+  font-size: var(--fs-base);
+  margin-bottom: var(--sp-8);
+}
+
+.step p {
+  font-size: var(--fs-sm);
+  margin: 0;
+}
+
+.group-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+  margin-bottom: var(--sp-24);
+}
+
+.group-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: var(--sp-12) var(--sp-16);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--cor-borda-campo);
+  background: var(--cor-superficie);
+  color: var(--cor-texto-corpo);
+  font-family: inherit;
+  font-weight: var(--peso-semi);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: background var(--transicao), border-color var(--transicao),
+    color var(--transicao);
+}
+
+.group-tab:hover {
+  border-color: var(--cor-texto);
+  color: var(--cor-texto);
+}
+
+.group-tab.active {
+  background: var(--cor-fundo-inverso);
+  border-color: var(--cor-fundo-inverso);
+  color: var(--cor-texto-inverso);
+}
+
+.calculator-card {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-32);
+  box-shadow: var(--shadow-md);
+}
+
+.calculator-controls {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--sp-16);
+  margin-bottom: var(--sp-24);
+}
+
+.field label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: var(--peso-semi);
+  color: var(--cor-texto-corpo);
+  margin-bottom: var(--sp-8);
+}
+
+.qty-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.qty-input input {
+  padding-right: 48px;
+}
+
+.qty-suffix {
+  position: absolute;
+  right: var(--sp-16);
+  font-size: var(--fs-sm);
+  color: var(--cor-texto-suave);
+  pointer-events: none;
+  max-width: 130px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-summary {
+  background: var(--cor-acento-suave);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-16) var(--sp-24);
+  margin-bottom: var(--sp-24);
+  font-size: var(--fs-base);
+  color: var(--cor-texto);
+  max-width: none;
+}
+
+.result-summary strong {
+  color: var(--cor-acento-escuro);
+}
+
+.table-toolbar {
+  margin-bottom: var(--sp-16);
+}
+
+.table-toolbar input {
+  max-width: 320px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-sm);
+}
+
+.equiv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.equiv-table thead th {
+  text-align: left;
+  background: var(--sand-100);
+  color: var(--cor-texto-corpo);
+  font-weight: var(--peso-semi);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--sp-12) var(--sp-16);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.equiv-table td {
+  padding: var(--sp-12) var(--sp-16);
+  border-bottom: 1px solid var(--cor-borda);
+  color: var(--cor-texto-corpo);
+  vertical-align: top;
+}
+
+.equiv-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.equiv-table tbody tr:hover {
+  background: var(--cor-fundo);
+}
+
+.equiv-table .food-name {
+  font-weight: var(--peso-semi);
+  color: var(--cor-texto);
+}
+
+.equiv-table .equiv-col {
+  font-weight: var(--peso-semi);
+  white-space: nowrap;
+  color: var(--cor-texto);
+}
+
+/* --------------------------------------------------- páginas de conteúdo */
+.article-section {
+  padding: var(--sp-16) 0 var(--sp-64);
+}
+
+.disclaimer {
+  font-size: var(--fs-sm);
+  color: var(--cor-texto-suave);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-16) var(--sp-24);
+}
+
+/* =========================================================== responsivo */
+@media (max-width: 780px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .calculator-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .calculator-card {
+    padding: var(--sp-24);
+  }
+
+  .table-toolbar input {
+    max-width: none;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card-photo {
+    aspect-ratio: 16 / 10;
+  }
+
+  .about-with-avatar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-24);
+  }
+
+  .about-avatar {
+    width: 104px;
+    height: 104px;
+  }
+}
+
+/* Tabela da calculadora vira lista de cartões no celular. */
+@media (max-width: 640px) {
+  .table-wrapper {
+    border: none;
+    overflow-x: visible;
+  }
+
+  .equiv-table,
+  .equiv-table tbody,
+  .equiv-table tr,
+  .equiv-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .equiv-table thead {
+    display: none;
+  }
+
+  .equiv-table tbody tr {
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--sp-8);
+    padding: var(--sp-4) var(--sp-16);
+    background: var(--cor-superficie);
+  }
+
+  .equiv-table tbody tr:hover {
+    background: var(--cor-superficie);
+  }
+
+  .equiv-table td {
+    border-bottom: none;
+    padding: var(--sp-8) 0;
+    text-align: left;
+  }
+
+  .equiv-table td:not(:last-child) {
+    border-bottom: 1px solid var(--cor-borda);
+  }
+
+  .equiv-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: var(--fs-xs);
+    font-weight: var(--peso-semi);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--cor-texto-suave);
+    margin-bottom: var(--sp-4);
+  }
+
+  .equiv-table .food-name {
+    font-size: var(--fs-base);
+  }
+
+  .equiv-table td.empty-state {
+    display: block;
+    text-align: center;
+  }
+}

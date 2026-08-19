@@ -1,0 +1,200 @@
+/* ==========================================================================
+   BASE — reset, tipografia padrão, acessibilidade e utilitários de layout.
+   Depende de tokens.css.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* A rolagem suave é movimento: quem pediu para reduzir, não recebe. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-corpo);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--cor-texto-corpo);
+  background: var(--cor-fundo);
+  -webkit-font-smoothing: antialiased;
+  font-synthesis-weight: none;
+}
+
+/* --------------------------------------------------------------- títulos */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-texto);
+  margin: 0 0 var(--sp-12);
+  letter-spacing: var(--tracking-titulo);
+  font-variation-settings: "opsz" 32;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  font-weight: var(--peso-semi);
+  font-variation-settings: "opsz" 96;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  font-weight: var(--peso-semi);
+  font-variation-settings: "opsz" 48;
+}
+
+h3 {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  font-weight: var(--peso-semi);
+}
+
+h4 {
+  font-size: var(--fs-base);
+  line-height: var(--lh-snug);
+  font-weight: var(--peso-semi);
+}
+
+p {
+  margin: 0 0 var(--sp-12);
+  max-width: var(--measure);
+}
+
+strong {
+  font-weight: var(--peso-semi);
+  color: var(--cor-texto);
+}
+
+ul,
+ol {
+  max-width: var(--measure);
+}
+
+/* ----------------------------------------------------------------- links */
+a {
+  color: var(--cor-acento-forte);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--transicao);
+}
+
+a:hover {
+  color: var(--cor-acento-escuro);
+}
+
+/* ------------------------------------------------- foco visível por teclado
+   Sempre visível para quem navega por teclado, nunca para quem usa mouse. */
+:focus-visible {
+  outline: 2px solid var(--cor-foco);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --------------------------------------------------------- pular para o topo
+   Primeiro elemento focável da página, visível só ao receber foco. */
+.pular-conteudo {
+  position: absolute;
+  left: var(--sp-16);
+  top: var(--sp-8);
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--cor-fundo-inverso);
+  color: var(--cor-texto-inverso);
+  padding: var(--sp-12) var(--sp-16);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: var(--peso-semi);
+  text-decoration: none;
+  transition: transform var(--transicao);
+}
+
+.pular-conteudo:focus {
+  transform: translateY(0);
+  color: var(--cor-texto-inverso);
+}
+
+/* ---------------------------------------------------------------- imagens */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ------------------------------------------------------------- formulários */
+select,
+input[type="number"],
+input[type="search"],
+input[type="text"] {
+  width: 100%;
+  padding: var(--sp-12) var(--sp-16);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--cor-borda-campo);
+  background: var(--cor-superficie);
+  font-size: var(--fs-base);
+  font-family: inherit;
+  color: var(--cor-texto);
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+select:hover,
+input:hover {
+  border-color: var(--sand-600);
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--cor-acento-forte);
+  box-shadow: 0 0 0 3px var(--cor-acento-suave);
+}
+
+/* ---------------------------------------------------------------- layout */
+.container {
+  max-width: var(--largura-container);
+  margin: 0 auto;
+  padding: 0 var(--sp-24);
+}
+
+/* Só para leitor de tela. */
+.apenas-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.oculto {
+  display: none !important;
+}

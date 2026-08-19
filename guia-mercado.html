@@ -1,33 +1,73 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+  <!-- layout:head -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guia do Mercado | Nutri Rafaela Schumacher</title>
-  <meta name="description" content="Guia do mercado: como ler rótulos e listas de ingredientes e sugestões de marcas para pães, laticínios, produtos proteicos, molhos e granolas." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥗</text></svg>" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Guia do mercado · Rafaela Schumacher</title>
+  <meta name="description" content="Como ler rótulos e listas de ingredientes, com sugestões de marcas para facilitar suas escolhas na hora da compra." />
+  <meta name="author" content="Rafaela Schumacher" />
+  <link rel="canonical" href="https://rafaschumacherr.github.io/consultoria-online/guia-mercado.html" />
+
+  <!-- Compartilhamento (WhatsApp, Instagram, redes) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Rafaela Schumacher · Consultoria online" />
+  <meta property="og:title" content="Guia do mercado · Rafaela Schumacher" />
+  <meta property="og:description" content="Como ler rótulos e listas de ingredientes, com sugestões de marcas para facilitar suas escolhas na hora da compra." />
+  <meta property="og:url" content="https://rafaschumacherr.github.io/consultoria-online/guia-mercado.html" />
+  <meta property="og:image" content="https://rafaschumacherr.github.io/consultoria-online/assets/img/og/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Rafaela Schumacher — consultoria online nutricional" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Guia do mercado · Rafaela Schumacher" />
+  <meta name="twitter:description" content="Como ler rótulos e listas de ingredientes, com sugestões de marcas para facilitar suas escolhas na hora da compra." />
+  <meta name="twitter:image" content="https://rafaschumacherr.github.io/consultoria-online/assets/img/og/og-default.jpg" />
+
+  <!-- Ícones e instalação -->
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#fbf9f6" />
+  <meta name="apple-mobile-web-app-title" content="Nutri Rafaela" />
+
+  <!-- Tipografia auto-hospedada: sem conexão externa no caminho crítico -->
+  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/fontes.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/componentes.css" />
+  <link rel="stylesheet" href="assets/css/paginas.css" />
+  <!-- /layout:head -->
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <span class="brand-mark">NRS</span>
-        <span class="brand-name">Nutri Rafaela Schumacher</span>
-      </a>
-      <nav class="main-nav" id="mainNav">
-        <a href="calculadora.html">Calculadora</a>
-        <a href="orientacoes-gerais.html">Orientações Gerais</a>
-        <a href="refeicao-livre.html">Refeição Livre</a>
-        <a href="guia-mercado.html" class="active">Guia do Mercado</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+  <!-- layout:header -->
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true">NRS</span>
+      <span class="brand-name">Rafaela Schumacher</span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+      <a href="calculadora.html" data-nav="calculadora">Calculadora</a>
+      <a href="orientacoes-gerais.html" data-nav="orientacoes-gerais">Orientações Gerais</a>
+      <a href="refeicao-livre.html" data-nav="refeicao-livre">Refeição Livre</a>
+      <a href="guia-mercado.html" data-nav="guia-mercado" class="active" aria-current="page">Guia do Mercado</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+  <!-- /layout:header -->
 
-  <main>
+  <main id="conteudo">
     <section class="hero hero-compact">
       <div class="container hero-inner">
         <p class="eyebrow">Consultoria online nutricional</p>
@@ -35,6 +75,12 @@
         <p class="hero-lead">
           Como avaliar rótulos e listas de ingredientes, com sugestões de marcas para
           facilitar suas escolhas na hora da compra.
+        </p>
+        <!-- Padrão de carimbo de atualização para páginas de conteúdo.
+             Marcas e fórmulas mudam: manter esta data em dia sinaliza cuidado.
+             Atualize o texto e o datetime sempre que revisar a página. -->
+        <p class="atualizacao">
+          Atualizado em <time datetime="2026-08">agosto de 2026</time>
         </p>
       </div>
     </section>
@@ -416,17 +462,41 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <span class="brand-mark small">NRS</span>
-        <span>Nutri Rafaela Schumacher</span>
-      </div>
-      <p>Conteúdo de apoio educativo — consulte sempre sua nutricionista.</p>
+  <!-- layout:footer -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-marca">
+        <span class="brand-mark small" aria-hidden="true">NRS</span>
+        Rafaela Schumacher
+      </p>
+      <p class="footer-profissional">Nutricionista &middot; Consultoria online</p>
+      <!-- CRN: inserir aqui quando a Rafaela informar número e estado.
+           Formato sugerido:
+           <p class="footer-profissional">CRN-10 00000</p> -->
     </div>
-  </footer>
+    <p class="footer-legal">
+      Conteúdo de apoio educativo &mdash; consulte sempre sua nutricionista.
+    </p>
+  </div>
+</footer>
 
-  <script src="assets/js/nav.js"></script>
+<!-- Convite para adicionar à tela de início. Aparece uma vez e some se dispensado. -->
+<aside class="instalar-banner" id="instalarBanner" role="complementary" aria-label="Adicionar à tela de início" hidden>
+  <div class="instalar-banner-texto">
+    <strong>Deixe o portal à mão</strong>
+    <p id="instalarInstrucao">Adicione à tela de início do seu celular para abrir com um toque.</p>
+    <div class="instalar-banner-acoes">
+      <button type="button" class="btn btn-primary" id="instalarAcao">Adicionar</button>
+      <button type="button" class="btn btn-secondary" id="instalarDepois">Agora não</button>
+    </div>
+  </div>
+  <button type="button" class="instalar-fechar" id="instalarFechar" aria-label="Fechar aviso">&times;</button>
+</aside>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/instalar.js"></script>
+  <!-- /layout:footer -->
   <script src="assets/js/mercado.js"></script>
 </body>
 </html>
