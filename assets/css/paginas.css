@@ -8,6 +8,201 @@
   padding: var(--sp-64) 0;
 }
 
+/* ------------------------------------------- home: "comece por aqui"
+   Faixa de acento logo abaixo do banner, para quem acabou de receber
+   o plano e não sabe por onde começar. */
+.inicio {
+  padding: var(--sp-48) 0;
+  background: var(--cor-acento-suave);
+  border-bottom: 1px solid var(--clay-100);
+}
+
+.inicio-cabecalho {
+  max-width: var(--measure);
+  margin-bottom: var(--sp-32);
+}
+
+.inicio-cabecalho h2 {
+  margin-bottom: var(--sp-8);
+}
+
+.inicio-cabecalho p {
+  margin: 0;
+  color: var(--cor-texto-corpo);
+}
+
+.inicio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-24);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.inicio-passo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  padding-top: var(--sp-16);
+  border-top: 2px solid var(--cor-acento);
+}
+
+.inicio-num {
+  font-family: var(--fonte-titulo);
+  font-variation-settings: "opsz" 96;
+  font-size: var(--fs-xl);
+  font-weight: var(--peso-semi);
+  line-height: 1;
+  color: var(--cor-acento);
+  /* Fraunces usa algarismos antigos por padrão: o 3 e o 4 descem abaixo da
+     linha de base e desalinham a fileira de passos. */
+  font-variant-numeric: lining-nums;
+}
+
+.inicio-passo h3 {
+  font-size: var(--fs-base);
+  margin: 0;
+}
+
+.inicio-passo p {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--cor-texto-corpo);
+}
+
+.inicio-tempo {
+  margin-top: auto;
+  padding-top: var(--sp-8);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: var(--peso-semi);
+  color: var(--cor-texto-suave);
+}
+
+/* ------------------------------------- home: cabeçalho das duas faixas */
+.faixa-titulo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-8) var(--sp-24);
+  padding-bottom: var(--sp-12);
+  margin-bottom: var(--sp-24);
+  border-bottom: 1px solid var(--cor-borda-forte);
+}
+
+.faixa-titulo h2 {
+  margin: 0;
+  font-size: var(--fs-xl);
+}
+
+.faixa-titulo p {
+  margin: 0;
+  max-width: none;
+  font-size: var(--fs-sm);
+  color: var(--cor-texto-suave);
+}
+
+.faixa-titulo-segunda {
+  margin-top: var(--sp-64);
+}
+
+/* --------------------------------- home: guias de leitura (peso menor) */
+.lista-guias {
+  display: grid;
+  gap: var(--sp-16);
+}
+
+.guia-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-24);
+  padding: var(--sp-16);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color var(--transicao), box-shadow var(--transicao),
+    transform var(--transicao);
+}
+
+.guia-item:hover {
+  border-color: var(--cor-borda-campo);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.guia-item img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  flex: none;
+}
+
+.guia-item-texto {
+  display: block;
+}
+
+.guia-item-titulo {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-lg);
+  font-weight: var(--peso-semi);
+  color: var(--cor-texto);
+  margin-bottom: var(--sp-4);
+}
+
+.guia-item-desc {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--cor-texto-corpo);
+}
+
+.guia-item-seta {
+  margin-left: auto;
+  flex: none;
+  font-size: var(--fs-lg);
+  color: var(--cor-acento-forte);
+  transition: transform var(--transicao);
+}
+
+.guia-item:hover .guia-item-seta {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------- home: indicação */
+.indicacao {
+  padding: var(--sp-48) 0 var(--sp-64);
+}
+
+.indicacao-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-24);
+  padding: var(--sp-32);
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda-forte);
+  border-radius: var(--radius-lg);
+}
+
+.indicacao-inner p {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--cor-texto-corpo);
+}
+
+.about-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-12);
+}
+
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -56,10 +251,12 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: var(--sp-24);
+  /* Precisa segurar o texto branco também sobre as fotos mais claras. */
   background: linear-gradient(
     180deg,
-    rgba(20, 17, 14, 0) 38%,
-    rgba(20, 17, 14, 0.82) 100%
+    rgba(20, 17, 14, 0) 30%,
+    rgba(20, 17, 14, 0.55) 62%,
+    rgba(20, 17, 14, 0.88) 100%
   );
 }
 
@@ -362,6 +559,46 @@
   .about-avatar {
     width: 104px;
     height: 104px;
+  }
+
+  .inicio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-32) var(--sp-24);
+  }
+
+  .faixa-titulo-segunda {
+    margin-top: var(--sp-48);
+  }
+
+  .indicacao-inner {
+    padding: var(--sp-24);
+  }
+}
+
+@media (max-width: 560px) {
+  .inicio-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-24);
+  }
+
+  .guia-item {
+    align-items: flex-start;
+    gap: var(--sp-16);
+  }
+
+  .guia-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .guia-item-seta {
+    display: none;
+  }
+
+  .about-acoes .btn,
+  .indicacao-inner .btn {
+    width: 100%;
+    text-align: center;
   }
 }
 

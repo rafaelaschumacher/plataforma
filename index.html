@@ -68,48 +68,103 @@
   <!-- /layout:header -->
 
   <main id="conteudo">
-    <section class="hero-photo" style="background-image: linear-gradient(100deg, rgba(10,10,12,0.82) 0%, rgba(10,10,12,0.55) 45%, rgba(10,10,12,0.25) 75%, rgba(10,10,12,0.15) 100%), url('assets/img/home/hero.jpg');">
+    <section class="hero-photo" style="background-image: linear-gradient(100deg, rgba(20,17,14,0.86) 0%, rgba(20,17,14,0.6) 45%, rgba(20,17,14,0.28) 75%, rgba(20,17,14,0.16) 100%), url('assets/img/home/hero.jpg');">
       <div class="container hero-photo-inner">
-        <p class="eyebrow eyebrow-light">Bem-vinda à sua área de suporte</p>
-        <h1 class="hero-photo-title">Tudo o que você precisa para te guiar durante o processo</h1>
+        <p class="eyebrow eyebrow-light">Sua área de apoio</p>
+        <h1 class="hero-photo-title">Seu plano continua com você, todos os dias da semana</h1>
         <p class="hero-photo-lead">
-          Seu espaço exclusivo dentro do meu acompanhamento, com ferramentas e materiais
-          que facilitam sua rotina e ajudam você a colocar tudo em prática entre as consultas.
+          Aqui ficam as ferramentas e os guias que preparei para os dias entre uma
+          consulta e outra. Pode voltar quantas vezes precisar.
         </p>
+      </div>
+    </section>
+
+    <!-- Onboarding de quem acabou de receber o plano -->
+    <section class="inicio" aria-labelledby="comece-titulo">
+      <div class="container">
+        <div class="inicio-cabecalho">
+          <p class="eyebrow">Comece por aqui</p>
+          <h2 id="comece-titulo">Acabou de receber seu plano?</h2>
+          <p>
+            São quatro coisas, dez minutos no total. Depois disso você já consegue
+            tocar a primeira semana sozinha.
+          </p>
+        </div>
+
+        <ol class="inicio-grid">
+          <li class="inicio-passo">
+            <span class="inicio-num">1</span>
+            <h3>Leia o plano inteiro uma vez</h3>
+            <p>Sem pesar nada ainda. Só para saber o que tem nele e o que você vai precisar comprar.</p>
+            <span class="inicio-tempo">2 minutos</span>
+          </li>
+          <li class="inicio-passo">
+            <span class="inicio-num">2</span>
+            <h3>Separe a balança</h3>
+            <p>Qualquer balança digital de cozinha resolve. <a href="orientacoes-gerais.html#pesar">Veja como pesar</a>.</p>
+            <span class="inicio-tempo">1 minuto</span>
+          </li>
+          <li class="inicio-passo">
+            <span class="inicio-num">3</span>
+            <h3>Monte a lista da primeira semana</h3>
+            <p>Anote o que falta em casa. O <a href="guia-mercado.html">guia do mercado</a> ajuda a escolher as marcas.</p>
+            <span class="inicio-tempo">5 minutos</span>
+          </li>
+          <li class="inicio-passo">
+            <span class="inicio-num">4</span>
+            <h3>Salve este portal no celular</h3>
+            <p>Adicione à tela de início. Assim ele abre com um toque no mercado ou no restaurante.</p>
+            <span class="inicio-tempo">1 minuto</span>
+          </li>
+        </ol>
       </div>
     </section>
 
     <section class="how-it-works">
       <div class="container">
-        <h2>Ferramentas disponíveis</h2>
+        <div class="faixa-titulo">
+          <h2>Para usar na hora</h2>
+          <p>Quando a dúvida é agora: no mercado, na cozinha, no restaurante.</p>
+        </div>
+
         <div class="tools-grid tools-grid-photo">
           <a href="calculadora.html" class="tool-card-photo">
             <img src="assets/img/home/calculadora.jpg" alt="" loading="lazy" width="900" height="700" />
             <div class="tool-card-photo-overlay">
               <h3>Calculadora de substituição</h3>
-              <p>Troque alimentos mantendo o valor calórico equivalente ao seu plano.</p>
-            </div>
-          </a>
-          <a href="orientacoes-gerais.html" class="tool-card-photo">
-            <img src="assets/img/home/orientacoes.jpg" alt="" loading="lazy" width="900" height="700" />
-            <div class="tool-card-photo-overlay">
-              <h3>Orientações gerais</h3>
-              <p>Como pesar os alimentos, organizar a rotina e acompanhar sua evolução.</p>
-            </div>
-          </a>
-          <a href="refeicao-livre.html" class="tool-card-photo">
-            <img src="assets/img/home/refeicao-livre.jpg" alt="" loading="lazy" width="900" height="700" />
-            <div class="tool-card-photo-overlay">
-              <h3>Guia da refeição livre</h3>
-              <p>Sugestões prontas por tipo de programa, num tamanho que cabe na semana.</p>
+              <p>Não tem o alimento do plano? Veja por quanto trocar, sem mudar as calorias.</p>
             </div>
           </a>
           <a href="guia-mercado.html" class="tool-card-photo">
             <img src="assets/img/home/guia-mercado.jpg" alt="" loading="lazy" width="900" height="700" />
             <div class="tool-card-photo-overlay">
               <h3>Guia do mercado</h3>
-              <p>Como escolher industrializados e sugestões de marcas recomendadas.</p>
+              <p>Como ler um rótulo em trinta segundos, e as marcas que eu recomendo.</p>
             </div>
+          </a>
+        </div>
+
+        <div class="faixa-titulo faixa-titulo-segunda">
+          <h2>Para ler com calma</h2>
+          <p>Uma vez, com atenção. Depois é só voltar quando surgir a dúvida.</p>
+        </div>
+
+        <div class="lista-guias">
+          <a href="orientacoes-gerais.html" class="guia-item">
+            <img src="assets/img/home/orientacoes.jpg" alt="" loading="lazy" width="176" height="176" />
+            <span class="guia-item-texto">
+              <span class="guia-item-titulo">Como colocar seu plano em prática</span>
+              <span class="guia-item-desc">Pesar, se organizar, ler a balança sem sofrer e saber a hora de me chamar.</span>
+            </span>
+            <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
+          </a>
+          <a href="refeicao-livre.html" class="guia-item">
+            <img src="assets/img/home/refeicao-livre.jpg" alt="" loading="lazy" width="176" height="176" />
+            <span class="guia-item-texto">
+              <span class="guia-item-titulo">Guia da refeição livre</span>
+              <span class="guia-item-desc">Sugestões prontas por tipo de programa, num tamanho que cabe na semana.</span>
+            </span>
+            <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </div>
@@ -120,14 +175,36 @@
         <div class="about-with-avatar">
           <img src="assets/img/home/avatar.jpg" alt="Rafaela Schumacher" class="about-avatar" width="600" height="600" loading="lazy" />
           <div>
-            <h2>Precisa de ajuda?</h2>
+            <h2>Sua próxima consulta</h2>
             <p>
-              As ferramentas deste portal são complementares ao seu acompanhamento nutricional.
-              Para dúvidas específicas sobre seu plano ou ajustes individuais, entre em contato
-              pelo canal da consultoria.
+              O que está aqui resolve o dia a dia. O ajuste fino do seu plano é na
+              consulta &mdash; e se alguma coisa travar antes disso, me chama que a
+              gente resolve na hora.
             </p>
-            <a href="https://wa.me/5547984214838" target="_blank" rel="noopener" class="btn btn-primary">Falar com a nutri</a>
+            <div class="about-acoes">
+              <!-- Trocar pelo link de agendamento quando a Rafaela informar.
+                   Por enquanto aponta para o WhatsApp da consultoria. -->
+              <a href="https://wa.me/5547984214838" target="_blank" rel="noopener" class="btn btn-primary">Marcar consulta</a>
+              <a href="https://wa.me/5547984214838" target="_blank" rel="noopener" class="btn btn-secondary">Tirar uma dúvida</a>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="indicacao">
+      <div class="container">
+        <div class="indicacao-inner">
+          <p>
+            Se este acompanhamento fez sentido para você, indicar uma amiga é o
+            maior elogio que posso receber.
+          </p>
+          <a
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener"
+            href="https://wa.me/?text=Oi!%20Fa%C3%A7o%20acompanhamento%20nutricional%20com%20a%20Rafaela%20Schumacher%20e%20queria%20te%20mostrar%20o%20portal%20dela%3A%20https%3A%2F%2Frafaschumacherr.github.io%2Fconsultoria-online%2F"
+          >Indicar pelo WhatsApp</a>
         </div>
       </div>
     </section>
