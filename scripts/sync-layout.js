@@ -63,7 +63,7 @@ const PAGINAS = {
     nav: "orientacoes-gerais",
     titulo: "Como colocar seu plano em prática · Rafaela Schumacher",
     descricao:
-      "Como pesar, se organizar, ler a balança sem sofrer e saber a hora de me chamar.",
+      "O que realmente faz diferença no dia a dia: saber pesar, se organizar, entender o seu plano e não transformar cada imprevisto em um problema.",
   },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
