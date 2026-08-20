@@ -53,12 +53,6 @@ const PAGINAS = {
     descricao:
       "Veja a quantidade do seu plano e descubra por quanto trocar cada alimento do mesmo grupo, mantendo o valor calórico.",
   },
-  "comece-por-aqui.html": {
-    nav: "comece-por-aqui",
-    titulo: "Seus primeiros 7 dias · Rafaela Schumacher",
-    descricao:
-      "Recebeu o plano e não sabe por onde começar? O passo a passo da primeira semana: o que fazer hoje, o que comprar e o que é normal sentir.",
-  },
   "comer-fora.html": {
     nav: "comer-fora",
     titulo: "Comer fora no dia a dia · Rafaela Schumacher",

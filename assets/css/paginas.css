@@ -72,12 +72,6 @@
   color: var(--cor-texto-corpo);
 }
 
-.inicio-mais {
-  margin: var(--sp-32) 0 0;
-  font-size: var(--fs-sm);
-  font-weight: var(--peso-semi);
-}
-
 .inicio-tempo {
   margin-top: auto;
   padding-top: var(--sp-8);
