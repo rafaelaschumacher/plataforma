@@ -104,10 +104,6 @@
   color: var(--cor-texto-suave);
 }
 
-.faixa-titulo-segunda {
-  margin-top: var(--sp-64);
-}
-
 /* --------------------------------- home: guias de leitura (peso menor) */
 .lista-guias {
   display: grid;
@@ -217,77 +213,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-12);
-}
-
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--sp-24);
-  margin-top: var(--sp-24);
-}
-
-.tools-grid-photo {
-  margin-top: var(--sp-24);
-}
-
-.tool-card-photo {
-  position: relative;
-  display: block;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  text-decoration: none;
-  background: var(--sand-200);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transicao), box-shadow var(--transicao);
-}
-
-.tool-card-photo:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.tool-card-photo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transicao-lenta);
-}
-
-.tool-card-photo:hover img {
-  transform: scale(1.04);
-}
-
-.tool-card-photo-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: var(--sp-24);
-  /* Precisa segurar o texto branco também sobre as fotos mais claras. */
-  background: linear-gradient(
-    180deg,
-    rgba(20, 17, 14, 0) 30%,
-    rgba(20, 17, 14, 0.55) 62%,
-    rgba(20, 17, 14, 0.88) 100%
-  );
-}
-
-.tool-card-photo-overlay h3 {
-  font-family: var(--fonte-titulo);
-  color: var(--branco);
-  margin: 0 0 var(--sp-4);
-  font-size: var(--fs-lg);
-}
-
-.tool-card-photo-overlay p {
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
-  font-size: var(--fs-sm);
-  max-width: none;
 }
 
 /* --------------------------------------------------- bloco "precisa de ajuda" */
@@ -558,14 +483,6 @@
     max-width: none;
   }
 
-  .tools-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tool-card-photo {
-    aspect-ratio: 16 / 10;
-  }
-
   .about-with-avatar {
     flex-direction: column;
     align-items: flex-start;
@@ -580,10 +497,6 @@
   .inicio-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-32) var(--sp-24);
-  }
-
-  .faixa-titulo-segunda {
-    margin-top: var(--sp-48);
   }
 
   .indicacao-inner {
