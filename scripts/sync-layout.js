@@ -53,12 +53,6 @@ const PAGINAS = {
     descricao:
       "Consulte a quantidade indicada na sua prescrição, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente.",
   },
-  "comer-fora.html": {
-    nav: "comer-fora",
-    titulo: "Comer fora no dia a dia · Rafaela Schumacher",
-    descricao:
-      "Como escolher no restaurante por quilo, no delivery, na padaria, na marmita e na viagem sem sair do seu plano.",
-  },
   "orientacoes-gerais.html": {
     nav: "orientacoes-gerais",
     titulo: "Como colocar seu plano em prática · Rafaela Schumacher",

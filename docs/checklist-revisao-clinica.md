@@ -1,68 +1,55 @@
 # Checklist de revisão clínica
 
 Lista das afirmações que precisam do seu aval antes de serem consideradas
-definitivas. Cada item aparece marcado no código com
+definitivas. Quando existirem, aparecem marcadas no código com
 `<!-- REVISAR: validação clínica -->`, na linha exata.
 
-Como usar: leia o trecho, decida entre **aprovar**, **ajustar** ou
-**remover**, e me diz. Onde eu ajustar, apago a marcação junto.
-
-**Status:** 1 item pendente
+**Status:** nenhum item pendente
 **Última atualização:** agosto de 2026
 
 ---
 
-## comer-fora.html
+## Nada aguardando revisão
 
-### 1. Comparativo calórico do combo de padaria
-**Seção 04 · Padaria e café**
+Todo o conteúdo publicado hoje foi escrito por você. As páginas em que eu
+havia redigido texto e marcado afirmações para validação saíram do portal:
 
-> Café com leite integral e açúcar, dois pães de queijo e um suco somam mais
-> do que muitos almoços completos — e ainda deixam você com fome uma hora
-> depois, porque quase não tem proteína.
-
-**O que confirmar:** é um comparativo ilustrativo, sem número. Confirmar se
-a afirmação se sustenta ou se prefere que eu retire o comparativo e mantenha
-só a parte da proteína e da saciedade.
-
----
-
-## Itens retirados
-
-A página `comece-por-aqui.html` foi removida do portal em agosto de 2026 por
-repetir conteúdo da página de orientações gerais. Com ela saíram cinco itens
-que estavam nesta lista:
-
-| Item | Assunto |
+| Página | O que aconteceu |
 |---|---|
-| ~~1~~ | Me chamar antes de começar, se o plano parecer muita coisa |
-| ~~2~~ | Pesar só os alimentos principais nos primeiros dias |
-| ~~3~~ | Margem de tolerância na pesagem |
-| ~~4~~ | Os quatro sintomas esperados na primeira semana |
-| ~~5~~ | Os cinco sinais que pedem contato no mesmo dia |
+| `comece-por-aqui.html` | removida por repetir a página de orientações |
+| `comer-fora.html` | removida a pedido |
 
-Os itens 4 e 5 eram o único conteúdo que não existia em nenhuma outra
-página: o que é esperado sentir na adaptação e quando procurar você com
-urgência. Se um dia quiser recuperá-los, o texto está no histórico do
-repositório, no commit que removeu a página.
+Com elas saíram os seis itens que estavam nesta lista: os cinco da primeira
+(ajustar o plano antes de começar, pesar só o principal nos primeiros dias,
+margem de tolerância na pesagem, sintomas esperados na adaptação e sinais de
+alerta) e o comparativo calórico do combo de padaria, da segunda.
+
+Se um dia quiser recuperar algum desses textos, eles estão no histórico do
+repositório, nos commits que removeram cada página.
 
 ---
 
-## O que eu deliberadamente não escrevi
+## Como usar este arquivo daqui para frente
 
-Para constar, e para você saber onde estão os limites do que está publicado:
+Quando eu escrever conteúdo novo que contenha afirmação clínica — algo que
+oriente conduta, descreva sintoma esperado ou compare alimentos — eu marco no
+código e listo aqui, com o trecho exato e o que precisa ser confirmado. Você
+responde **aprovar**, **ajustar** ou **remover**, e eu apago a marcação junto
+com o ajuste.
 
-- **Nenhuma dosagem, faixa de referência ou valor nutricional novo.**
-- **Nenhuma promessa de resultado, prazo ou antes/depois.**
-- **Nenhuma linguagem de tratamento, cura ou diagnóstico.**
-- **Nenhuma recomendação de suplemento** além de citar whey e barra de
-  proteína como itens práticos de viagem, sem dose e sem indicação.
+## O que eu não escrevo sem você
+
+- Dosagem, faixa de referência ou valor nutricional novo.
+- Promessa de resultado, prazo ou antes/depois.
+- Linguagem de tratamento, cura ou diagnóstico.
+- Recomendação de suplemento com dose ou indicação.
 
 ## Avisos legais em vigor
 
-Todas as páginas mantêm, no rodapé do site:
+Rodapé de todas as páginas:
 
-> Conteúdo de apoio educativo — consulte sempre sua nutricionista.
+> Este portal é um material de apoio para pacientes da consultoria.
+> As orientações gerais não substituem seu plano individualizado.
 
 E, no bloco "Importante" ao final de cada página de conteúdo, a instrução de
 que a prescrição individual prevalece sobre o material geral.
