@@ -51,7 +51,7 @@ const PAGINAS = {
     nav: "calculadora",
     titulo: "Calculadora de substituição · Rafaela Schumacher",
     descricao:
-      "Veja a quantidade do seu plano e descubra por quanto trocar cada alimento do mesmo grupo, mantendo o valor calórico.",
+      "Consulte a quantidade indicada na sua prescrição, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente.",
   },
   "comer-fora.html": {
     nav: "comer-fora",
