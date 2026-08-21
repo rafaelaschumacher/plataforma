@@ -202,27 +202,11 @@
   max-width: 760px;
 }
 
-.about-with-avatar {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-32);
-}
-
-.about-avatar {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 3px solid var(--cor-superficie);
-  box-shadow: var(--shadow-md);
-}
-
-.about-with-avatar h2 {
+.about-ajuda h2 {
   margin-bottom: var(--sp-12);
 }
 
-.about-with-avatar p {
+.about-ajuda p {
   margin: 0 0 var(--sp-24);
 }
 
@@ -457,17 +441,6 @@
 
   .table-toolbar input {
     max-width: none;
-  }
-
-  .about-with-avatar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--sp-24);
-  }
-
-  .about-avatar {
-    width: 104px;
-    height: 104px;
   }
 
   .inicio-grid {
