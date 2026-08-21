@@ -69,7 +69,7 @@ const PAGINAS = {
     nav: "refeicao-livre",
     titulo: "Guia da refeição livre · Rafaela Schumacher",
     descricao:
-      "Como aproveitar de verdade, com um tamanho que cabe na sua semana. Com sugestões prontas por tipo de programa.",
+      "Sugestões prontas de refeição livre por tipo de programa, com orientações para antes, durante e depois.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",
