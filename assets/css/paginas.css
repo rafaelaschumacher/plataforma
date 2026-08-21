@@ -27,8 +27,12 @@
 }
 
 .inicio-cabecalho p {
-  margin: 0;
+  margin: 0 0 var(--sp-12);
   color: var(--cor-texto-corpo);
+}
+
+.inicio-cabecalho p:last-child {
+  margin-bottom: 0;
 }
 
 .inicio-grid {
@@ -67,19 +71,13 @@
 }
 
 .inicio-passo p {
-  margin: 0;
+  margin: 0 0 var(--sp-12);
   font-size: var(--fs-sm);
   color: var(--cor-texto-corpo);
 }
 
-.inicio-tempo {
-  margin-top: auto;
-  padding-top: var(--sp-8);
-  font-size: var(--fs-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: var(--peso-semi);
-  color: var(--cor-texto-suave);
+.inicio-passo p:last-child {
+  margin-bottom: 0;
 }
 
 /* ------------------------------------- home: cabeçalho das duas faixas */
