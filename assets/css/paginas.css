@@ -137,24 +137,6 @@
   flex: none;
 }
 
-/* Miniatura tipográfica, para os guias que ainda não têm foto própria. */
-.guia-item-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 88px;
-  height: 88px;
-  flex: none;
-  border-radius: var(--radius);
-  background: var(--cor-acento-suave);
-  color: var(--cor-acento-escuro);
-  font-family: var(--fonte-titulo);
-  font-variation-settings: "opsz" 96;
-  font-size: var(--fs-xl);
-  font-weight: var(--peso-semi);
-  letter-spacing: 0.02em;
-}
-
 .guia-item-texto {
   display: block;
 }
@@ -509,11 +491,9 @@
     gap: var(--sp-16);
   }
 
-  .guia-item img,
-  .guia-item-tile {
+  .guia-item img {
     width: 64px;
     height: 64px;
-    font-size: var(--fs-lg);
   }
 
   .guia-item-seta {
