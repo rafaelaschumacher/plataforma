@@ -43,16 +43,18 @@
   background: var(--cor-fundo-inverso);
   color: var(--cor-texto-inverso);
   font-family: var(--fonte-titulo);
-  font-weight: var(--peso-forte);
-  font-size: var(--fs-sm);
-  letter-spacing: 0.02em;
+  font-variation-settings: "opsz" 96;
+  font-weight: var(--peso-semi);
+  /* Uma letra só: mesma proporção do favicon (~0,55 do diâmetro). */
+  font-size: 21px;
+  line-height: 1;
   flex-shrink: 0;
 }
 
 .brand-mark.small {
   width: 28px;
   height: 28px;
-  font-size: var(--fs-xs);
+  font-size: 15px;
   margin-right: var(--sp-8);
 }
 
