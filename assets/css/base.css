@@ -1,6 +1,11 @@
 /* ==========================================================================
    BASE — reset, tipografia padrão, acessibilidade e utilitários de layout.
    Depende de tokens.css.
+
+   A tipografia aqui é a identidade da marca: Cormorant Garamond nos títulos
+   e Jost no corpo, os dois em peso 300. O peso leve é identidade — não
+   engrosse um título para dar destaque; destaque se faz com tamanho, respiro
+   ou o itálico dourado do <em>.
    ========================================================================== */
 
 *,
@@ -11,7 +16,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--altura-header) + var(--sp-24));
   -webkit-text-size-adjust: 100%;
+  /* A gaveta do menu fica estacionada fora da tela à direita; sem isto ela
+     cria rolagem horizontal no celular. `clip` (e não `hidden`) porque não
+     cria contexto de rolagem e portanto não quebra o `position: sticky`
+     do cabeçalho. */
+  overflow-x: clip;
 }
 
 /* A rolagem suave é movimento: quem pediu para reduzir, não recebe. */
@@ -33,12 +44,16 @@ html {
 body {
   margin: 0;
   font-family: var(--fonte-corpo);
+  font-weight: var(--peso-leve);
   font-size: var(--fs-base);
   line-height: var(--lh-base);
-  color: var(--cor-texto-corpo);
+  color: var(--cor-texto);
   background: var(--cor-fundo);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-synthesis-weight: none;
+  overflow-x: clip;
+  transition: background-color var(--transicao-lenta), color var(--transicao-lenta);
 }
 
 /* --------------------------------------------------------------- títulos */
@@ -47,45 +62,62 @@ h2,
 h3,
 h4 {
   font-family: var(--fonte-titulo);
-  color: var(--cor-texto);
-  margin: 0 0 var(--sp-12);
+  font-weight: var(--peso-leve);
+  line-height: var(--lh-tight);
   letter-spacing: var(--tracking-titulo);
-  font-variation-settings: "opsz" 32;
+  color: var(--cor-texto);
+  /* Um título nunca termina com uma palavra sozinha na última linha. */
+  text-wrap: balance;
+  margin: 0 0 var(--sp-12);
 }
 
 h1 {
-  font-size: var(--fs-h1);
-  line-height: var(--lh-tight);
-  font-weight: var(--peso-semi);
-  font-variation-settings: "opsz" 96;
+  font-size: var(--fs-3xl);
 }
 
 h2 {
-  font-size: var(--fs-h2);
-  line-height: var(--lh-snug);
-  font-weight: var(--peso-semi);
-  font-variation-settings: "opsz" 48;
+  font-size: var(--fs-2xl);
 }
 
 h3 {
-  font-size: var(--fs-lg);
+  font-size: var(--fs-xl);
   line-height: var(--lh-snug);
-  font-weight: var(--peso-semi);
 }
 
 h4 {
-  font-size: var(--fs-base);
+  font-size: var(--fs-lg);
   line-height: var(--lh-snug);
-  font-weight: var(--peso-semi);
 }
 
 p {
   margin: 0 0 var(--sp-12);
   max-width: var(--measure);
+  text-wrap: pretty;
+  overflow-wrap: break-word;
 }
 
+/* Em parágrafo centralizado o reequilíbrio de linhas afunila o bloco sob o
+   título — o texto passa a "desenhar um triângulo". Decisão de estilo da
+   marca: a última linha curta fica. */
+.hero-photo-lead,
+.fecho p,
+.empty-state {
+  text-wrap: auto;
+}
+
+/* O grifo da marca: itálico dourado, nunca negrito. Serve para destacar uma
+   palavra-chave dentro de um título ou de uma frase. */
+em {
+  font-style: italic;
+  font-weight: var(--peso-normal);
+  color: var(--cor-acento);
+}
+
+/* O portal usa <strong> em texto corrido para marcar o termo que importa numa
+   orientação. Continua sendo ênfase de leitura, não de marca: ganha a cor de
+   título e um pequeno degrau de peso, sem virar negrito pesado. */
 strong {
-  font-weight: var(--peso-semi);
+  font-weight: var(--peso-normal);
   color: var(--cor-texto);
 }
 
@@ -96,9 +128,9 @@ ol {
 
 /* ----------------------------------------------------------------- links */
 a {
-  color: var(--cor-acento-forte);
+  color: var(--cor-acento);
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
   transition: color var(--transicao);
 }
 
@@ -107,11 +139,16 @@ a:hover {
 }
 
 /* ------------------------------------------------- foco visível por teclado
-   Sempre visível para quem navega por teclado, nunca para quem usa mouse. */
-:focus-visible {
+   Sempre visível para quem navega por teclado, nunca para quem usa mouse.
+   Dentro de um painel escuro o anel dourado some no fundo: vira marfim. */
+:where(a, button, summary, input, select, [tabindex]):focus-visible {
   outline: 2px solid var(--cor-foco);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.painel :where(a, button, input, select):focus-visible {
+  outline-color: var(--panel-text);
 }
 
 :focus:not(:focus-visible) {
@@ -119,35 +156,46 @@ a:hover {
 }
 
 /* --------------------------------------------------------- pular para o topo
-   Primeiro elemento focável da página, visível só ao receber foco. */
+   Primeiro elemento focável da página, escondido acima da tela até receber
+   foco. */
 .pular-conteudo {
   position: absolute;
-  left: var(--sp-16);
-  top: var(--sp-8);
-  z-index: 100;
-  transform: translateY(-200%);
-  background: var(--cor-fundo-inverso);
-  color: var(--cor-texto-inverso);
-  padding: var(--sp-12) var(--sp-16);
-  border-radius: var(--radius-sm);
+  left: 50%;
+  top: 0;
+  z-index: 999;
+  transform: translate(-50%, -120%);
+  background: var(--cor-acento);
+  color: var(--on-gold);
+  padding: var(--sp-12) var(--sp-24);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-size: var(--fs-sm);
-  font-weight: var(--peso-semi);
+  font-weight: var(--peso-medio);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
   text-decoration: none;
   transition: transform var(--transicao);
 }
 
 .pular-conteudo:focus {
-  transform: translateY(0);
-  color: var(--cor-texto-inverso);
+  transform: translate(-50%, 0);
+  color: var(--on-gold);
 }
 
 /* ---------------------------------------------------------------- imagens */
-img {
+img,
+svg {
   max-width: 100%;
+  display: block;
+}
+
+img {
   height: auto;
 }
 
-/* ------------------------------------------------------------- formulários */
+/* ------------------------------------------------------------- formulários
+   O design system da marca ainda não define estados de formulário (é uma
+   decisão em aberto), então o portal mantém a sua implementação — só
+   reescrita nos tokens da marca. */
 select,
 input[type="number"],
 input[type="search"],
@@ -159,27 +207,29 @@ input[type="text"] {
   background: var(--cor-superficie);
   font-size: var(--fs-base);
   font-family: inherit;
+  font-weight: var(--peso-leve);
   color: var(--cor-texto);
   transition: border-color var(--transicao), box-shadow var(--transicao);
 }
 
 select:hover,
 input:hover {
-  border-color: var(--sand-600);
+  border-color: var(--cor-acento);
 }
 
 select:focus,
 input:focus {
   outline: none;
-  border-color: var(--cor-acento-forte);
+  border-color: var(--cor-acento);
   box-shadow: 0 0 0 3px var(--cor-acento-suave);
 }
 
 /* ---------------------------------------------------------------- layout */
 .container {
+  width: 100%;
   max-width: var(--largura-container);
-  margin: 0 auto;
-  padding: 0 var(--sp-24);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
 /* Só para leitor de tela. */
@@ -190,7 +240,7 @@ input:focus {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }

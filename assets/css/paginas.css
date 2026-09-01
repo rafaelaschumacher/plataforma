@@ -1,29 +1,33 @@
 /* ==========================================================================
    PÁGINAS — estilos usados em uma única página.
    Depende de tokens.css, base.css e componentes.css.
+
+   O ritmo vertical de toda seção vem de --section-y: nenhuma seção define o
+   próprio padding, para o respiro da página inteira mudar num lugar só.
    ========================================================================== */
 
 /* ================================================================= home */
 .how-it-works {
-  padding: var(--sp-64) 0;
+  padding-block: var(--section-y);
 }
 
 /* ------------------------------------------- home: "comece por aqui"
-   Faixa de acento logo abaixo do banner, para quem acabou de receber
-   o plano e não sabe por onde começar. */
+   Faixa de fundo alternado logo abaixo do banner, para quem acabou de
+   receber o plano e não sabe por onde começar. O contraste com a seção
+   vizinha vem da alternância --bg / --bg-alt da marca. */
 .inicio {
-  padding: var(--sp-48) 0;
-  background: var(--cor-acento-suave);
-  border-bottom: 1px solid var(--clay-100);
+  padding-block: var(--section-y);
+  background: var(--cor-superficie-alt);
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 .inicio-cabecalho {
   max-width: var(--measure);
-  margin-bottom: var(--sp-32);
+  margin-bottom: clamp(32px, 4vw, 48px);
 }
 
 .inicio-cabecalho h2 {
-  margin-bottom: var(--sp-8);
+  margin-bottom: var(--sp-12);
 }
 
 .inicio-cabecalho p {
@@ -38,35 +42,41 @@
 .inicio-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--sp-24);
+  gap: clamp(24px, 2.8vw, 32px);
   list-style: none;
   margin: 0;
   padding: 0;
   max-width: none;
 }
 
+/* Passo numerado da marca: filete de topo, numeral serifado dourado e
+   nenhum cartão em volta. */
 .inicio-passo {
   display: flex;
   flex-direction: column;
   gap: var(--sp-8);
-  padding-top: var(--sp-16);
-  border-top: 2px solid var(--cor-acento);
+  padding-top: var(--sp-24);
+  border-top: 1px solid var(--cor-borda);
 }
 
 .inicio-num {
   font-family: var(--fonte-titulo);
-  font-variation-settings: "opsz" 96;
-  font-size: var(--fs-xl);
-  font-weight: var(--peso-semi);
+  font-size: 1.55rem;
+  font-weight: var(--peso-leve);
   line-height: 1;
   color: var(--cor-acento);
-  /* Fraunces usa algarismos antigos por padrão: o 3 e o 4 descem abaixo da
-     linha de base e desalinham a fileira de passos. */
   font-variant-numeric: lining-nums;
+  margin-bottom: var(--sp-4);
+}
+
+/* O zero à esquerda é o desenho do numeral na marca ("01", "02"). Vem do
+   CSS para o HTML continuar carregando só o número. */
+.inicio-num::before {
+  content: "0";
 }
 
 .inicio-passo h3 {
-  font-size: var(--fs-base);
+  font-size: var(--fs-lg);
   margin: 0;
 }
 
@@ -87,14 +97,13 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--sp-8) var(--sp-24);
-  padding-bottom: var(--sp-12);
-  margin-bottom: var(--sp-24);
-  border-bottom: 1px solid var(--cor-borda-forte);
+  padding-bottom: var(--sp-16);
+  margin-bottom: clamp(24px, 3vw, 36px);
+  border-bottom: 1px solid var(--cor-borda);
 }
 
 .faixa-titulo h2 {
   margin: 0;
-  font-size: var(--fs-xl);
 }
 
 .faixa-titulo p {
@@ -107,33 +116,38 @@
 /* --------------------------------- home: guias de leitura (peso menor) */
 .lista-guias {
   display: grid;
-  gap: var(--sp-16);
+  gap: clamp(14px, 1.8vw, 20px);
 }
 
+/* Cartão da marca — superfície, borda de 1px e raio grande. Como é
+   clicável, recebe o hover completo: sobe 3px, troca a sombra e a borda
+   vira dourada. */
 .guia-item {
   display: flex;
   align-items: center;
-  gap: var(--sp-24);
-  padding: var(--sp-16);
+  gap: clamp(18px, 2.4vw, 28px);
+  padding: clamp(16px, 2vw, 22px);
   background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   text-decoration: none;
   transition: border-color var(--transicao), box-shadow var(--transicao),
     transform var(--transicao);
 }
 
 .guia-item:hover {
-  border-color: var(--cor-borda-campo);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-1px);
+  border-color: var(--cor-acento-borda);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
 .guia-item img {
-  width: 88px;
-  height: 88px;
+  width: 96px;
+  height: 96px;
   object-fit: cover;
-  border-radius: var(--radius);
+  object-position: center;
+  border-radius: var(--radius-md);
   flex: none;
 }
 
@@ -144,8 +158,10 @@
 .guia-item-titulo {
   display: block;
   font-family: var(--fonte-titulo);
-  font-size: var(--fs-lg);
-  font-weight: var(--peso-semi);
+  font-size: var(--fs-xl);
+  font-weight: var(--peso-leve);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-titulo);
   color: var(--cor-texto);
   margin-bottom: var(--sp-4);
 }
@@ -160,7 +176,7 @@
   margin-left: auto;
   flex: none;
   font-size: var(--fs-lg);
-  color: var(--cor-acento-forte);
+  color: var(--cor-acento);
   transition: transform var(--transicao);
 }
 
@@ -170,18 +186,18 @@
 
 /* ----------------------------------- home: frase de encerramento */
 .fecho {
-  padding: var(--sp-64) 0;
+  padding-block: var(--section-y);
   text-align: center;
 }
 
 .fecho p {
   margin: 0 auto;
-  max-width: 34ch;
+  max-width: 30ch;
   font-family: var(--fonte-titulo);
-  font-variation-settings: "opsz" 48;
-  font-size: var(--fs-xl);
-  font-weight: var(--peso-normal);
+  font-size: var(--fs-2xl);
+  font-weight: var(--peso-leve);
   line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-titulo);
   color: var(--cor-texto);
 }
 
@@ -189,13 +205,23 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-12);
+  margin-top: clamp(24px, 3vw, 34px);
 }
 
-/* --------------------------------------------------- bloco "precisa de ajuda" */
+/* --------------------------------------------------- bloco "precisa de ajuda"
+   Na home este bloco é o CTA de fechamento e recebe também a classe
+   .painel — o painel escuro é o que marca a virada final da página na
+   marca. Nas páginas internas o mesmo bloco é só uma seção de apoio, com
+   o fundo alternado. */
 .about-section {
-  padding: var(--sp-48) 0 var(--sp-64);
-  background: var(--sand-100);
+  padding-block: var(--section-y);
+  background: var(--cor-superficie-alt);
   border-top: 1px solid var(--cor-borda);
+}
+
+.about-section.painel {
+  background: var(--panel-grad);
+  border-top-color: transparent;
 }
 
 .about-inner {
@@ -203,101 +229,111 @@
 }
 
 .about-ajuda h2 {
-  margin-bottom: var(--sp-12);
+  margin-bottom: var(--sp-16);
 }
 
 .about-ajuda p {
-  margin: 0 0 var(--sp-24);
+  margin: 0 0 var(--sp-12);
 }
 
 /* ========================================================== calculadora */
 .calculator-section {
-  padding: var(--sp-24) 0 var(--sp-64);
+  padding-block: var(--section-y-curta) var(--section-y);
 }
 
 .section-lead {
-  margin-bottom: var(--sp-24);
+  margin-bottom: clamp(24px, 3vw, 34px);
+  color: var(--cor-texto-corpo);
 }
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-24);
-  margin-top: var(--sp-32);
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: clamp(20px, 2.8vw, 32px);
+  margin-top: clamp(28px, 3.5vw, 40px);
 }
 
+/* Mesmo passo numerado do "comece por aqui": filete de topo e numeral
+   serifado, sem cartão. */
 .step {
-  background: var(--cor-superficie);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--radius-lg);
-  padding: var(--sp-24);
+  padding-top: var(--sp-24);
+  border-top: 1px solid var(--cor-borda);
 }
 
 .step-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--cor-acento-suave);
-  color: var(--cor-acento-escuro);
+  display: block;
   font-family: var(--fonte-titulo);
-  font-weight: var(--peso-forte);
-  margin-bottom: var(--sp-16);
+  font-size: 1.55rem;
+  font-weight: var(--peso-leve);
+  line-height: 1;
+  color: var(--cor-acento);
+  font-variant-numeric: lining-nums;
+  margin-bottom: var(--sp-12);
+}
+
+.step-number::before {
+  content: "0";
 }
 
 .step h3 {
-  font-size: var(--fs-base);
+  font-size: var(--fs-lg);
   margin-bottom: var(--sp-8);
 }
 
 .step p {
   font-size: var(--fs-sm);
+  color: var(--cor-texto-corpo);
   margin: 0;
 }
 
+/* ------------------------------------------------- abas de grupo */
 .group-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-8);
-  margin-bottom: var(--sp-24);
+  margin-bottom: clamp(20px, 2.4vw, 28px);
 }
 
 .group-tab {
   display: flex;
   align-items: center;
   gap: var(--sp-8);
-  padding: var(--sp-12) var(--sp-16);
+  min-height: 44px;
+  padding: 11px 20px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--cor-borda-campo);
-  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda-forte);
+  background: transparent;
   color: var(--cor-texto-corpo);
-  font-family: inherit;
-  font-weight: var(--peso-semi);
-  font-size: var(--fs-sm);
+  font-family: var(--fonte-corpo);
+  font-weight: var(--peso-medio);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
   cursor: pointer;
   transition: background var(--transicao), border-color var(--transicao),
-    color var(--transicao);
+    color var(--transicao), box-shadow var(--transicao);
 }
 
 .group-tab:hover {
-  border-color: var(--cor-texto);
+  border-color: var(--cor-acento);
+  background: var(--cor-acento-suave);
   color: var(--cor-texto);
 }
 
+/* A aba escolhida usa o degradê dourado oficial, como o botão primário. */
 .group-tab.active {
-  background: var(--cor-fundo-inverso);
-  border-color: var(--cor-fundo-inverso);
-  color: var(--cor-texto-inverso);
+  background: var(--gold-grad);
+  border-color: transparent;
+  color: var(--on-gold);
+  box-shadow: var(--shadow-sm);
 }
 
 .calculator-card {
   background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
   border-radius: var(--radius-lg);
-  padding: var(--sp-32);
-  box-shadow: var(--shadow-md);
+  padding: clamp(24px, 3.4vw, 40px);
+  box-shadow: var(--shadow-sm);
 }
 
 .calculator-controls {
@@ -310,8 +346,10 @@
 .field label {
   display: block;
   font-size: var(--fs-sm);
-  font-weight: var(--peso-semi);
-  color: var(--cor-texto-corpo);
+  font-weight: var(--peso-medio);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--cor-texto);
   margin-bottom: var(--sp-8);
 }
 
@@ -338,18 +376,20 @@
   text-overflow: ellipsis;
 }
 
+/* O resultado é o destaque da tela: recebe o preenchimento dourado suave e
+   a borda dourada discreta do card em destaque da marca. */
 .result-summary {
   background: var(--cor-acento-suave);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--cor-acento-borda);
+  border-radius: var(--radius-md);
   padding: var(--sp-16) var(--sp-24);
   margin-bottom: var(--sp-24);
-  font-size: var(--fs-base);
   color: var(--cor-texto);
   max-width: none;
 }
 
 .result-summary strong {
-  color: var(--cor-acento-escuro);
+  color: var(--cor-acento);
 }
 
 .table-toolbar {
@@ -363,7 +403,7 @@
 .table-wrapper {
   overflow-x: auto;
   border: 1px solid var(--cor-borda);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
 }
 
 .equiv-table {
@@ -375,12 +415,12 @@
 
 .equiv-table thead th {
   text-align: left;
-  background: var(--sand-100);
-  color: var(--cor-texto-corpo);
-  font-weight: var(--peso-semi);
+  background: var(--cor-superficie-alt);
+  color: var(--cor-texto-suave);
+  font-weight: var(--peso-medio);
   font-size: var(--fs-xs);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--tracking-label);
   padding: var(--sp-12) var(--sp-16);
   border-bottom: 1px solid var(--cor-borda);
 }
@@ -397,23 +437,23 @@
 }
 
 .equiv-table tbody tr:hover {
-  background: var(--cor-fundo);
+  background: var(--cor-superficie-alt);
 }
 
 .equiv-table .food-name {
-  font-weight: var(--peso-semi);
+  font-weight: var(--peso-normal);
   color: var(--cor-texto);
 }
 
 .equiv-table .equiv-col {
-  font-weight: var(--peso-semi);
+  font-weight: var(--peso-normal);
   white-space: nowrap;
-  color: var(--cor-texto);
+  color: var(--cor-acento);
 }
 
 /* --------------------------------------------------- páginas de conteúdo */
 .article-section {
-  padding: var(--sp-16) 0 var(--sp-64);
+  padding-block: var(--section-y-curta) var(--section-y);
 }
 
 .disclaimer {
@@ -421,22 +461,15 @@
   color: var(--cor-texto-suave);
   background: var(--cor-superficie);
   border: 1px solid var(--cor-borda);
-  border-radius: var(--radius-sm);
-  padding: var(--sp-16) var(--sp-24);
+  border-radius: var(--radius-md);
+  padding: var(--sp-24);
+  max-width: var(--measure);
 }
 
 /* =========================================================== responsivo */
-@media (max-width: 780px) {
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width: 820px) {
   .calculator-controls {
     grid-template-columns: 1fr;
-  }
-
-  .calculator-card {
-    padding: var(--sp-24);
   }
 
   .table-toolbar input {
@@ -447,13 +480,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-32) var(--sp-24);
   }
-
-  .fecho {
-    padding: var(--sp-48) 0;
-  }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 620px) {
   .inicio-grid {
     grid-template-columns: 1fr;
     gap: var(--sp-24);
@@ -465,8 +494,8 @@
   }
 
   .guia-item img {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
   }
 
   .guia-item-seta {
@@ -475,7 +504,6 @@
 
   .about-acoes .btn {
     width: 100%;
-    text-align: center;
   }
 }
 
@@ -500,7 +528,7 @@
 
   .equiv-table tbody tr {
     border: 1px solid var(--cor-borda);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     margin-bottom: var(--sp-8);
     padding: var(--sp-4) var(--sp-16);
     background: var(--cor-superficie);
@@ -524,9 +552,9 @@
     content: attr(data-label);
     display: block;
     font-size: var(--fs-xs);
-    font-weight: var(--peso-semi);
+    font-weight: var(--peso-medio);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: var(--tracking-label);
     color: var(--cor-texto-suave);
     margin-bottom: var(--sp-4);
   }

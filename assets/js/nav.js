@@ -1,18 +1,32 @@
 /**
  * Menu de navegação no celular.
- * Abre e fecha o menu, mantendo aria-expanded correto e permitindo
- * fechar com a tecla Esc ou clicando fora.
+ *
+ * Abaixo de 860px a navegação vira uma gaveta lateral, no padrão do design
+ * system da marca: escurece o fundo com um véu, trava a rolagem da página,
+ * fecha no Esc ou no clique fora e prende o Tab dentro da gaveta enquanto
+ * ela estiver aberta.
+ *
+ * O 860 aparece em três lugares que precisam andar juntos: o
+ * `@media (max-width: 860px)` e o `@media (min-width: 861px)` em
+ * componentes.css, e o matchMedia aqui embaixo.
  */
 (function () {
   const botao = document.getElementById("navToggle");
   const menu = document.getElementById("mainNav");
+  const veu = document.getElementById("navScrim");
   if (!botao || !menu) return;
 
   function definirEstado(aberto) {
     menu.classList.toggle("open", aberto);
     botao.classList.toggle("open", aberto);
+    document.body.classList.toggle("nav-aberto", aberto);
     botao.setAttribute("aria-expanded", aberto ? "true" : "false");
     botao.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+    if (veu) veu.hidden = !aberto;
+    if (aberto) {
+      const primeiro = menu.querySelector("a");
+      if (primeiro) primeiro.focus();
+    }
   }
 
   function fechar(devolverFoco) {
@@ -25,20 +39,42 @@
     definirEstado(!menu.classList.contains("open"));
   });
 
+  // O véu cobre a página inteira: clicar nele é o "clique fora".
+  if (veu) veu.addEventListener("click", () => fechar(false));
+
   // Ao escolher um destino, o menu sai da frente.
   menu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => fechar(false));
   });
 
-  // Esc fecha e devolve o foco ao botão, para quem navega por teclado.
   document.addEventListener("keydown", (evento) => {
-    if (evento.key === "Escape") fechar(true);
+    if (!menu.classList.contains("open")) return;
+
+    // Esc fecha e devolve o foco ao botão, para quem navega por teclado.
+    if (evento.key === "Escape") {
+      fechar(true);
+      return;
+    }
+
+    // Enquanto a gaveta está aberta, o Tab circula dentro dela.
+    if (evento.key !== "Tab") return;
+    const focaveis = Array.from(menu.querySelectorAll("a, button"));
+    if (!focaveis.length) return;
+    const primeiro = focaveis[0];
+    const ultimo = focaveis[focaveis.length - 1];
+    if (evento.shiftKey && document.activeElement === primeiro) {
+      evento.preventDefault();
+      ultimo.focus();
+    } else if (!evento.shiftKey && document.activeElement === ultimo) {
+      evento.preventDefault();
+      primeiro.focus();
+    }
   });
 
-  // Clique fora também fecha.
-  document.addEventListener("click", (evento) => {
-    if (!menu.contains(evento.target) && !botao.contains(evento.target)) {
-      fechar(false);
-    }
+  // Volta ao estado normal ao passar para o layout de desktop — senão a
+  // trava de rolagem continua valendo com o menu já visível na barra.
+  const desktop = matchMedia("(min-width: 861px)");
+  desktop.addEventListener("change", (evento) => {
+    if (evento.matches) fechar(false);
   });
 })();

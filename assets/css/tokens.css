@@ -4,103 +4,164 @@
    Fonte única de verdade para cor, tipografia, espaçamento, raio, sombra e
    movimento. Nenhum outro arquivo deve declarar valor cru dessas categorias.
 
-   Paleta "Argila": neutros quentes (areia/grafite) + acento terracota.
-   Todas as combinações de texto usadas no site foram verificadas em WCAG AA
-   (mínimo 4,5:1). Os valores medidos estão anotados ao lado de cada token.
+   Identidade: "Noir & Champagne" — o design system oficial da marca
+   (skill `rafaela-brand`, em .claude/skills/). Base grafite quase preta,
+   texto marfim e dourado champanhe nos detalhes.
+
+   Os valores de cor, fonte, raio, sombra, container e ritmo de seção são
+   copiados EXATAMENTE do design system da marca — não arredonde, não
+   "melhore", não escolha um tom próximo. Alterar qualquer um deles é uma
+   decisão de identidade visual, não uma decisão técnica: só com pedido
+   explícito da Rafaela, e replicando no site da marca.
+
+   O que é específico deste portal (e por isso pode evoluir aqui sem mexer
+   na marca) está marcado como "decisão do portal": a escala tipográfica em
+   níveis, a escala de espaçamento e a medida de leitura. O design system da
+   marca declara esses três como decisões ainda em aberto, então o portal
+   mantém os seus, construídos com os princípios da marca (clamp fluido,
+   peso leve, rótulo em caixa alta).
    ========================================================================== */
 
+/* ------------------------------------------------------ tema escuro (padrão)
+   Na marca o escuro é o tema principal e o claro é uma alternativa completa:
+   os dois são oficiais e nenhuma tela existe só em um deles. A escolha vem
+   do atributo data-theme no <html>, resolvido por um script inline no <head>
+   antes da primeira pintura (senão a página pisca no tema errado). */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg:            #0F0E0C;
+  --bg-alt:        #15130F;
+  --surface:       #1B1815;
+  --text:          #F2EDE4;
+  --text-muted:    #A79C8B;
+  --text-subtle:   #8D8374;
+  --border:        #2B2620;
+  --border-strong: #3A332A;
+
+  --gold:          #C8A96A;
+  --gold-bright:   #DFC48D;
+  --gold-dim:      rgba(200, 169, 106, 0.30);
+  --gold-wash:     rgba(200, 169, 106, 0.07);
+  --on-gold:       #0F0E0C;
+  --gold-grad:     linear-gradient(135deg, #DFC48D 0%, #C8A96A 45%, #A88B4F 100%);
+
+  --panel-grad:    radial-gradient(120% 140% at 50% 0%, #221D15 0%, #100F0C 72%);
+  --panel-text:    #F4EFE6;
+  --panel-muted:   rgba(244, 239, 230, 0.72);
+
+  --header-bg:     rgba(15, 14, 12, 0.82);
+  --scrim:         rgba(6, 6, 5, 0.72);
+
+  --shadow-sm:   0 1px 2px rgba(0, 0, 0, .28), 0 6px 20px rgba(0, 0, 0, .22);
+  --shadow-md:   0 2px 6px rgba(0, 0, 0, .32), 0 24px 60px rgba(0, 0, 0, .40);
+  --shadow-gold: 0 10px 34px rgba(200, 169, 106, 0.16);
+}
+
+/* --------------------------------------------------------------- tema claro
+   Os dourados são escurecidos o suficiente para o texto passar em AA sobre
+   fundo claro (4,5:1) e para o branco passar sobre o degradê do botão. */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg:            #FAF7F1;
+  --bg-alt:        #F2ECE1;
+  --surface:       #FFFFFF;
+  --text:          #14120F;
+  --text-muted:    #5F5749;
+  --text-subtle:   #6E6657;
+  --border:        #E4DCCC;
+  --border-strong: #D3C7B1;
+
+  --gold:          #856830;
+  --gold-bright:   #6E5522;
+  --gold-dim:      rgba(133, 104, 48, 0.34);
+  --gold-wash:     rgba(133, 104, 48, 0.08);
+  --on-gold:       #FFFFFF;
+  --gold-grad:     linear-gradient(135deg, #8F7030 0%, #7D6029 50%, #684E1E 100%);
+
+  --panel-grad:    radial-gradient(120% 140% at 50% 0%, #262019 0%, #14120F 72%);
+  --panel-text:    #F7F3EA;
+  --panel-muted:   rgba(247, 243, 234, 0.74);
+
+  --header-bg:     rgba(250, 247, 241, 0.85);
+  --scrim:         rgba(20, 18, 15, 0.45);
+
+  --shadow-sm:   0 1px 2px rgba(58, 44, 30, .05), 0 6px 20px rgba(58, 44, 30, .06);
+  --shadow-md:   0 2px 6px rgba(58, 44, 30, .06), 0 24px 60px rgba(58, 44, 30, .12);
+  --shadow-gold: 0 10px 34px rgba(147, 116, 56, 0.14);
+}
+
 :root {
-  /* ---------------------------------------------------------------- cores
-     Escala primitiva. Não use diretamente nos componentes: use os tokens
-     semânticos mais abaixo. Estes existem só para montar aqueles. */
+  /* Os painéis .painel são escuros nos dois temas, então o dourado e o texto
+     usados sobre eles não acompanham o tema — precisam ser sempre os claros. */
+  --gold-on-panel: #DFC48D;
+  --panel-ink:     #14120F;   /* tinta escura constante: fundo de selo, sobre dourado */
 
-  /* Neutros quentes (areia → grafite) */
-  --sand-50: #fbf9f6;
-  --sand-100: #f5f1eb;
-  --sand-200: #e8e2d9;
-  --sand-300: #d2c9bc;
-  --sand-400: #a39889;   /* decorativo apenas — reprova como texto */
-  --sand-500: #7d7365;   /* mínimo para borda de controle (4,43:1) */
-  --sand-600: #665f55;   /* menor tom aprovado para texto (6,00:1) */
-  --sand-700: #4f4941;
-  --sand-800: #3a352f;
-  --sand-900: #2a2622;
-  --sand-950: #1c1a17;
-  --branco: #ffffff;
+  /* Véu sobre a foto do banner da home. Pela mesma razão dos painéis, é
+     constante nos dois temas: o texto sobre a imagem é sempre marfim. A
+     tinta é o grafite da marca (#0F0E0C), só com alfas diferentes ao longo
+     do eixo, para o texto ficar legível à esquerda e a foto respirar à
+     direita. */
+  --foto-scrim: linear-gradient(
+    100deg,
+    rgba(15, 14, 12, 0.90) 0%,
+    rgba(15, 14, 12, 0.66) 45%,
+    rgba(15, 14, 12, 0.34) 75%,
+    rgba(15, 14, 12, 0.20) 100%
+  );
 
-  /* Acento terracota */
-  --clay-50: #f8f0ea;
-  --clay-100: #f0e1d6;
-  --clay-300: #c99878;   /* decorativo apenas */
-  --clay-500: #9c5b3f;   /* 5,02:1 sobre o fundo */
-  --clay-600: #854c33;   /* 6,49:1 sobre o fundo — cor de link */
-  --clay-700: #6e3f2a;
-
-  /* ------------------------------------------------------ cores semânticas
-     É isto que os componentes consomem. */
-  --cor-fundo: var(--sand-50);
-  --cor-superficie: var(--branco);
-  --cor-superficie-alt: var(--sand-100);
-  --cor-fundo-inverso: var(--sand-950);
-
-  --cor-texto: var(--sand-950);          /* 16,52:1 */
-  --cor-texto-corpo: var(--sand-700);    /*  8,46:1 */
-  --cor-texto-suave: var(--sand-600);    /*  6,00:1 — o mais claro permitido */
-  --cor-texto-inverso: var(--branco);    /* 17,36:1 sobre fundo inverso */
-
-  --cor-borda: var(--sand-200);          /* divisória decorativa */
-  --cor-borda-forte: var(--sand-300);
-  --cor-borda-campo: var(--sand-500);    /* controles de formulário: 4,43:1 */
-
-  --cor-acento: var(--clay-500);
-  --cor-acento-forte: var(--clay-600);   /* links e texto de acento */
-  --cor-acento-escuro: var(--clay-700);
-  --cor-acento-suave: var(--clay-50);    /* fundo de destaque */
-  --cor-acento-borda: var(--clay-300);
-
-  --cor-foco: var(--clay-600);
+  /* Em tela estreita o texto ocupa a largura toda e passa por cima da parte
+     clara do véu horizontal. Aqui ele vira vertical: escurece de cima para
+     baixo, atrás de todo o bloco de texto. */
+  --foto-scrim-estreito: linear-gradient(
+    180deg,
+    rgba(15, 14, 12, 0.88) 0%,
+    rgba(15, 14, 12, 0.76) 55%,
+    rgba(15, 14, 12, 0.62) 100%
+  );
 
   /* ----------------------------------------------------------- tipografia
-     Fraunces: variável, com eixo de tamanho óptico (opsz). O corte de
-     display se mantém elegante em títulos grandes e o corte de texto
-     continua legível em corpo pequeno, no mesmo arquivo.
-     Inter: altura de x alta e algarismos tabulares — importa nas tabelas
-     da calculadora, onde os números precisam alinhar em coluna. */
-  --fonte-titulo: "Fraunces", Georgia, "Times New Roman", serif;
-  --fonte-corpo: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
+     Famílias oficiais da marca. O peso leve é identidade: corpo em 300 e
+     títulos em 300 — destaque se faz com tamanho, respiro ou itálico
+     dourado, nunca engrossando. */
+  --fonte-titulo: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --fonte-corpo: "Jost", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
 
-  /* Escala modular, razão 1.25 */
-  --fs-xs: 0.64rem;      /* 10,2px — micro-rótulos em caixa alta */
-  --fs-sm: 0.8rem;       /* 12,8px — notas, legendas */
-  --fs-base: 1rem;       /* 16px   — corpo */
-  --fs-lg: 1.25rem;      /* 20px   — lead */
-  --fs-xl: 1.5625rem;    /* 25px   — h3 */
-  --fs-2xl: 1.953rem;    /* 31px   — h2 */
-  --fs-3xl: 2.441rem;    /* 39px   — h1 */
-  --fs-4xl: 3.052rem;    /* 49px   — display */
+  /* Escala em níveis — decisão do portal, construída no idioma da marca:
+     tudo fluido com clamp(), sem salto por breakpoint. O corpo (--fs-base)
+     é o valor oficial da marca; os demais níveis derivam das medidas reais
+     usadas no site da marca (h1 do hero, h2 de seção, h3 de card). */
+  --fs-xs: 0.66rem;      /* micro-rótulos em caixa alta */
+  --fs-sm: 0.84rem;      /* notas, legendas */
+  --fs-base: clamp(0.95rem, 0.92rem + 0.15vw, 1.02rem);
+  --fs-lg: clamp(1.08rem, 1.02rem + 0.28vw, 1.24rem);          /* lead */
+  --fs-xl: clamp(1.28rem, 1.18rem + 0.4vw, 1.5rem);            /* h3 */
+  --fs-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.1rem);             /* h2 */
+  --fs-3xl: clamp(1.9rem, 1.3rem + 2.6vw, 3rem);               /* h1 */
+  --fs-4xl: clamp(2.1rem, 1.25rem + 4.2vw, 4.1rem);            /* display */
 
-  /* Tamanhos fluidos para os títulos maiores */
-  --fs-h1: clamp(2rem, 1.4rem + 2.6vw, var(--fs-3xl));
-  --fs-h2: clamp(1.5rem, 1.2rem + 1.3vw, var(--fs-2xl));
-  --fs-display: clamp(2.2rem, 1.4rem + 3.4vw, var(--fs-4xl));
 
-  --lh-tight: 1.15;
+  --lh-tight: 1.12;      /* títulos — valor oficial da marca */
   --lh-snug: 1.35;
-  --lh-base: 1.65;
+  --lh-base: 1.75;       /* corpo — valor oficial da marca */
 
-  --peso-normal: 400;
-  --peso-medio: 500;
-  --peso-semi: 600;
-  --peso-forte: 700;
+  --peso-leve: 300;      /* o peso da marca: corpo e títulos */
+  --peso-normal: 400;    /* rótulos, ênfase em <em> */
+  --peso-medio: 500;     /* botões e rótulos de mais presença */
 
-  --tracking-label: 0.1em;   /* caixa alta pequena precisa de respiro */
-  --tracking-titulo: -0.01em;
+  /* Entreletra do rótulo em caixa alta. A marca usa de .12em a .34em:
+     quanto menor o texto, maior a entreletra. */
+  --tracking-label: 0.14em;
+  --tracking-eyebrow: 0.24em;
+  --tracking-titulo: -0.005em;
 
-  --measure: 66ch;           /* 62–68 caracteres por linha */
+  --measure: 66ch;           /* decisão do portal: 62–68 caracteres por linha */
   --measure-estreita: 54ch;
 
-  /* ---------------------------------------------------------- espaçamento */
+  /* ---------------------------------------------------------- espaçamento
+     Escala do portal (a marca ainda não tem uma escala nomeada). */
   --sp-4: 4px;
   --sp-8: 8px;
   --sp-12: 12px;
@@ -111,23 +172,58 @@
   --sp-64: 64px;
   --sp-96: 96px;
 
-  --largura-container: 1080px;
-  --altura-header: 68px;
+  /* Layout e ritmo — valores oficiais da marca. O respiro generoso do
+     --section-y é parte da identidade premium: nenhuma seção define o
+     próprio padding vertical, para o ritmo da página mudar num lugar só. */
+  --container: 1160px;
+  --gutter: clamp(20px, 5vw, 32px);
+  --section-y: clamp(64px, 8.5vw, 118px);
+  --section-y-curta: clamp(40px, 5.5vw, 72px);  /* seções de apoio do portal */
+
+  --largura-container: var(--container);
+  --altura-header: 70px;
 
   /* ------------------------------------------------------- forma e sombra */
-  --radius-sm: 8px;
-  --radius: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
   --radius-full: 999px;
 
-  --shadow-sm: 0 1px 2px rgba(28, 26, 23, 0.05);
-  --shadow-md: 0 4px 16px rgba(28, 26, 23, 0.07);
-  --shadow-lg: 0 12px 32px rgba(28, 26, 23, 0.1);
 
   /* ------------------------------------------------------------- movimento
-     Nada chamativo: transições curtas, sempre ease-out. */
-  --transicao: 220ms ease-out;
-  --transicao-lenta: 300ms ease-out;
+     A curva é oficial da marca e vale para toda transição — não misture
+     ease-in-out no meio. As durações são do portal (a marca escolhe caso a
+     caso, entre .2s e .7s). */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --transicao: 250ms var(--ease);
+  --transicao-lenta: 380ms var(--ease);
+
+  /* ------------------------------------------------------ cores semânticas
+     É isto que os componentes consomem. São apelidos dos tokens da marca:
+     um componente nunca escreve uma cor literal, senão ela só quebra em um
+     dos temas. */
+  --cor-fundo: var(--bg);
+  --cor-superficie: var(--surface);
+  --cor-superficie-alt: var(--bg-alt);
+
+  --cor-texto: var(--text);
+  --cor-texto-corpo: var(--text-muted);
+  --cor-texto-suave: var(--text-subtle);
+
+  --cor-borda: var(--border);
+  --cor-borda-forte: var(--border-strong);
+  /* Campo de formulário precisa de contorno perceptível (WCAG 1.4.11, 3:1).
+     --border-strong não alcança isso em nenhum dos dois temas, então os
+     campos usam o tom de texto de apoio: 5,6:1 no escuro e 4,8:1 no claro,
+     sem sair da paleta da marca. */
+  --cor-borda-campo: var(--text-subtle);
+
+  --cor-acento: var(--gold);
+  --cor-acento-escuro: var(--gold-bright);
+  --cor-acento-suave: var(--gold-wash);
+  --cor-acento-borda: var(--gold-dim);
+
+  --cor-foco: var(--gold-bright);
 }
 
 /* Quem pediu menos movimento no sistema, recebe menos movimento. */

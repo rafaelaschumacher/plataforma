@@ -80,7 +80,7 @@ function montarHead(arquivo, meta) {
   const tituloOg = meta.tituloOg || meta.titulo;
 
   return `  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>${meta.titulo}</title>
   <meta name="description" content="${meta.descricao}" />
   <meta name="author" content="Rafaela Schumacher" />
@@ -107,12 +107,29 @@ function montarHead(arquivo, meta) {
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#fbf9f6" />
+  <meta name="theme-color" content="#0F0E0C" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#FAF7F1" media="(prefers-color-scheme: light)" />
   <meta name="apple-mobile-web-app-title" content="Nutri Rafaela" />
 
-  <!-- Tipografia auto-hospedada: sem conexão externa no caminho crítico -->
-  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- Tema: aplicado antes da primeira pintura para a página não piscar.
+       Precisa ficar inline aqui; num arquivo externo com defer, o portal
+       carregaria no tema errado e trocaria na frente de quem está lendo. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('tema');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      } catch (e) { /* localStorage bloqueado: mantém o padrão escuro */ }
+    })();
+  </script>
+
+  <!-- Tipografia auto-hospedada: sem conexão externa no caminho crítico.
+       O itálico entra na lista porque o sobrenome da assinatura, no topo de
+       toda página, é escrito nele. -->
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Estilos -->
   <link rel="stylesheet" href="assets/css/fontes.css" />

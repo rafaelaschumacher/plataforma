@@ -39,15 +39,30 @@ descrições de compartilhamento:
 sincronia, sem alterar arquivo. O script roda só em tempo de edição — o site
 publicado é HTML estático completo e não depende dele.
 
-Convenções de estilo e componentes: veja `docs/design-system.md`.
+## Identidade visual
+
+O portal usa o design system oficial da marca, **"Noir & Champagne"**, o mesmo
+do site de consultoria. A fonte de verdade é a skill `rafaela-brand`, em
+`.claude/skills/rafaela-brand/` — cores dos dois temas, tipografia, raios,
+sombras, padrões e componentes. **Antes de escolher uma cor, fonte ou espaço
+novo, leia a skill**: valor que já existe lá não se reinventa aqui, e mudar um
+token é decisão de identidade, não decisão técnica.
+
+Como o design system é aplicado neste projeto: `docs/design-system.md`.
+
+O tema escuro é o principal e o claro é uma alternativa completa. Os dois são
+oficiais: nenhuma tela pode existir só em um deles.
 
 ## Estrutura
 
 - `assets/css/` — `fontes.css`, `tokens.css`, `base.css`, `componentes.css`
   e `paginas.css`, carregados nessa ordem.
-- `assets/fonts/` — Fraunces e Inter auto-hospedadas (SIL OFL 1.1).
+- `assets/fonts/` — Cormorant Garamond e Jost auto-hospedadas (SIL OFL 1.1).
 - `assets/layout/` — cabeçalho e rodapé compartilhados.
-- `assets/js/nav.js` — menu mobile (compartilhado por todas as páginas).
+- `assets/js/nav.js` — gaveta de navegação no celular (todas as páginas).
+- `assets/js/tema.js` — botão de troca entre tema claro e escuro.
+- `assets/js/interface.js` — contorno do cabeçalho ao rolar e revelação dos
+  blocos ao entrar na tela.
 - `assets/js/instalar.js` — convite para adicionar à tela de início.
 - `assets/js/data.js` + `assets/js/app.js` — base de alimentos e lógica da
   calculadora.
