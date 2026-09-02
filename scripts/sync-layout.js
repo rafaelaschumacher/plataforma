@@ -42,7 +42,7 @@ const OG_PADRAO = "assets/img/og/og-default.png";
 const PAGINAS = {
   "index.html": {
     nav: null,
-    titulo: "Rafaela Schumacher · Consultoria online nutricional",
+    titulo: "Rafaela Schumacher · Acompanhamento nutricional online",
     tituloOg: "Sua área de apoio · Rafaela Schumacher",
     descricao:
       "Área de apoio às pacientes da consultoria: calculadora de substituição, guia do mercado, orientações e guia da refeição livre.",
@@ -95,14 +95,14 @@ function montarHead(arquivo, meta) {
   <!-- Compartilhamento (WhatsApp, Instagram, redes) -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:site_name" content="Rafaela Schumacher · Consultoria online" />
+  <meta property="og:site_name" content="Rafaela Schumacher · Acompanhamento nutricional online" />
   <meta property="og:title" content="${tituloOg}" />
   <meta property="og:description" content="${meta.descricao}" />
   <meta property="og:url" content="${url}" />
   <meta property="og:image" content="${imagem}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Rafaela Schumacher — consultoria online nutricional" />
+  <meta property="og:image:alt" content="Rafaela Schumacher — acompanhamento nutricional online" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${tituloOg}" />
   <meta name="twitter:description" content="${meta.descricao}" />
