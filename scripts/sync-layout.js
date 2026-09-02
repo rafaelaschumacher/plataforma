@@ -65,6 +65,12 @@ const PAGINAS = {
     descricao:
       "Sugestões prontas de refeição livre por tipo de programa, com orientações para antes, durante e depois.",
   },
+  "comer-fora.html": {
+    nav: "comer-fora",
+    titulo: "Comer fora no dia a dia · Rafaela Schumacher",
+    descricao:
+      "Como escolher bem quando não dá para comer exatamente o que está no plano: no por quilo, no delivery, na padaria, no trabalho e na viagem.",
+  },
   "guia-mercado.html": {
     nav: "guia-mercado",
     titulo: "Guia do mercado · Rafaela Schumacher",

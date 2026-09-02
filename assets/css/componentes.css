@@ -1084,13 +1084,16 @@ body.nav-aberto {
    Os breakpoints reaproveitam os do design system da marca (860 / 620 /
    420), em vez de inventar quebras novas.
 
-   A gaveta abre em 860px porque é onde o cabeçalho deste portal deixa de
-   caber: assinatura (~226px) + quatro links (~390px) + botão de tema
-   (52px) + respiros somam ~770px dentro do container. Ao adicionar ou
-   remover um item do menu, remeça e ajuste os três lugares que andam
-   juntos: este bloco, o `min-width: 861px` logo abaixo e o matchMedia
-   em assets/js/nav.js. */
-@media (max-width: 860px) {
+   A gaveta abre em 1020px porque é onde o cabeçalho deste portal deixa de
+   caber. Medido no navegador, com cinco links: assinatura 211px + menu
+   510px + botão de tema 44px + respiros = 861px com as fontes da marca,
+   mas 908px enquanto elas ainda não carregaram e o texto cai no fallback.
+   É o segundo número que manda: 1021px de viewport deixam 957px de
+   conteúdo, com folga sobre os 908. Ao adicionar ou remover um item do
+   menu, remeça nos dois estados e ajuste os três lugares que andam juntos:
+   este bloco, o `min-width: 1021px` logo abaixo e o matchMedia em
+   assets/js/nav.js. */
+@media (max-width: 1020px) {
   .nav-toggle {
     display: flex;
   }
@@ -1140,7 +1143,7 @@ body.nav-aberto {
   }
 }
 
-@media (min-width: 861px) {
+@media (min-width: 1021px) {
   .nav-scrim {
     display: none;
   }

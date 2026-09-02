@@ -1,14 +1,15 @@
 /**
  * Menu de navegação no celular.
  *
- * Abaixo de 860px a navegação vira uma gaveta lateral, no padrão do design
+ * Abaixo de 1020px a navegação vira uma gaveta lateral, no padrão do design
  * system da marca: escurece o fundo com um véu, trava a rolagem da página,
  * fecha no Esc ou no clique fora e prende o Tab dentro da gaveta enquanto
  * ela estiver aberta.
  *
- * O 860 aparece em três lugares que precisam andar juntos: o
- * `@media (max-width: 860px)` e o `@media (min-width: 861px)` em
- * componentes.css, e o matchMedia aqui embaixo.
+ * O 1020 aparece em três lugares que precisam andar juntos: o
+ * `@media (max-width: 1020px)` e o `@media (min-width: 1021px)` em
+ * componentes.css, e o matchMedia aqui embaixo. Ao mexer no menu, remeça o
+ * cabeçalho também com as fontes de fallback: é esse o caso mais largo.
  */
 (function () {
   const botao = document.getElementById("navToggle");
@@ -73,7 +74,7 @@
 
   // Volta ao estado normal ao passar para o layout de desktop — senão a
   // trava de rolagem continua valendo com o menu já visível na barra.
-  const desktop = matchMedia("(min-width: 861px)");
+  const desktop = matchMedia("(min-width: 1021px)");
   desktop.addEventListener("change", (evento) => {
     if (evento.matches) fechar(false);
   });
