@@ -142,15 +142,6 @@
   transform: translateY(-3px);
 }
 
-.guia-item img {
-  width: 96px;
-  height: 96px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: var(--radius-md);
-  flex: none;
-}
-
 .guia-item-texto {
   display: block;
 }
@@ -501,10 +492,6 @@
     gap: var(--sp-16);
   }
 
-  .guia-item img {
-    width: 72px;
-    height: 72px;
-  }
 
   .guia-item-seta {
     display: none;
