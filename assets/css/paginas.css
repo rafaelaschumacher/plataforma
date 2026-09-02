@@ -291,7 +291,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-8);
-  margin-bottom: clamp(20px, 2.4vw, 28px);
+  margin-bottom: var(--sp-12);
+}
+
+/* Diz o que cabe no grupo escolhido — é o que torna a regra "troque dentro do
+   mesmo grupo" utilizável. O texto vem de data.js, junto com os alimentos. */
+.group-desc {
+  margin: 0 0 clamp(20px, 2.4vw, 28px);
+  font-size: var(--fs-sm);
+  color: var(--cor-texto-suave);
 }
 
 .group-tab {

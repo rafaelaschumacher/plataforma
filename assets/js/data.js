@@ -11,7 +11,7 @@ const GRUPOS = [
     id: "carboidratos",
     nome: "Carboidratos",
     icone: "🌾",
-    descricao: "Pães, cereais, massas, tubérculos e raízes.",
+    descricao: "Pães, biscoitos, cereais, massas, tubérculos e raízes.",
     baseId: "pao_frances",
     alimentos: [
       { id: "pao_frances", nome: "Pão francês", kcal: 300, g: 50 },
@@ -42,7 +42,7 @@ const GRUPOS = [
     id: "proteinas",
     nome: "Proteínas",
     icone: "🍗",
-    descricao: "Carnes, aves, peixes, ovos e derivados.",
+    descricao: "Carnes, aves, peixes, ovos, frios e proteínas vegetais.",
     baseId: "frango_grelhado",
     alimentos: [
       { id: "frango_grelhado", nome: "Peito de frango grelhado", kcal: 159, g: 100 },
@@ -66,7 +66,7 @@ const GRUPOS = [
     id: "gorduras",
     nome: "Gorduras",
     icone: "🥑",
-    descricao: "Óleos, oleaginosas e fontes de gordura boa.",
+    descricao: "Azeite, óleos, castanhas, sementes, pastas e abacate.",
     baseId: "azeite",
     alimentos: [
       { id: "azeite", nome: "Azeite de oliva extra virgem", kcal: 884, g: 13, unidade: "ml" },
@@ -161,7 +161,7 @@ const GRUPOS = [
     id: "doces",
     nome: "Doces",
     icone: "🍬",
-    descricao: "Açúcares e sobremesas.",
+    descricao: "Açúcares, doces e cereais matinais adoçados.",
     baseId: "mel",
     alimentos: [
       { id: "mel", nome: "Mel", kcal: 309, g: 20 },

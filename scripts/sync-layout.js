@@ -51,7 +51,7 @@ const PAGINAS = {
     nav: "calculadora",
     titulo: "Calculadora de substituição · Rafaela Schumacher",
     descricao:
-      "Consulte a quantidade indicada na sua prescrição, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente.",
+      "Consulte a quantidade indicada no seu plano, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente.",
   },
   "orientacoes-gerais.html": {
     nav: "orientacoes-gerais",

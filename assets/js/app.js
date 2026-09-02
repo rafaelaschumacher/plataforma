@@ -12,6 +12,7 @@
   const equivTableBody = document.getElementById("equivTableBody");
   const filtroTabela = document.getElementById("filtroTabela");
   const qtdSuffix = document.getElementById("qtdSuffix");
+  const grupoDescricao = document.getElementById("grupoDescricao");
 
   let state = {
     grupoId: GRUPOS[0].id,
@@ -38,6 +39,13 @@
     });
   }
 
+  /* A regra da ferramenta é trocar dentro do mesmo grupo. Sem saber o que cabe
+     em cada um, a paciente não consegue nem começar — e há casos que não são
+     óbvios, como o abacate em Gorduras. */
+  function renderDescricao() {
+    grupoDescricao.textContent = getGrupo(state.grupoId).descricao;
+  }
+
   function renderTabs() {
     grupoTabs.innerHTML = "";
     GRUPOS.forEach((grupo) => {
@@ -53,6 +61,7 @@
         state.filtro = "";
         filtroTabela.value = "";
         renderTabs();
+        renderDescricao();
         renderAlimentoSelect();
         const alimento = getAlimento(grupo, state.alimentoId);
         qtdGramasInput.value = alimento.g;
@@ -153,6 +162,7 @@
 
   function init() {
     renderTabs();
+    renderDescricao();
     renderAlimentoSelect();
     const grupo = getGrupo(state.grupoId);
     const alimento = getAlimento(grupo, state.alimentoId);

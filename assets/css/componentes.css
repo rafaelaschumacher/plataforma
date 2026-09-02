@@ -412,7 +412,7 @@ body.nav-aberto {
    etiquetas de subgrupo, carimbo de atualização, cabeçalho de tabela. */
 .guide-index-title,
 .guide-note-label,
-.market-search-label,
+.rotulo-busca,
 .market-subgroup h4,
 .info-card h4 {
   font-family: var(--fonte-corpo);
@@ -879,7 +879,7 @@ body.nav-aberto {
   max-width: 420px;
 }
 
-.market-search-label {
+.rotulo-busca {
   display: block;
   margin-bottom: var(--sp-8);
 }

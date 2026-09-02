@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Calculadora de substituição · Rafaela Schumacher</title>
-  <meta name="description" content="Consulte a quantidade indicada na sua prescrição, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente." />
+  <meta name="description" content="Consulte a quantidade indicada no seu plano, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente." />
   <meta name="author" content="Rafaela Schumacher" />
   <link rel="canonical" href="https://rafaelaschumacher.github.io/plataforma/calculadora.html" />
 
@@ -14,7 +14,7 @@
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Rafaela Schumacher · Consultoria online" />
   <meta property="og:title" content="Calculadora de substituição · Rafaela Schumacher" />
-  <meta property="og:description" content="Consulte a quantidade indicada na sua prescrição, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente." />
+  <meta property="og:description" content="Consulte a quantidade indicada no seu plano, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente." />
   <meta property="og:url" content="https://rafaelaschumacher.github.io/plataforma/calculadora.html" />
   <meta property="og:image" content="https://rafaelaschumacher.github.io/plataforma/assets/img/og/og-default.png" />
   <meta property="og:image:width" content="1200" />
@@ -22,7 +22,7 @@
   <meta property="og:image:alt" content="Rafaela Schumacher — consultoria online nutricional" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Calculadora de substituição · Rafaela Schumacher" />
-  <meta name="twitter:description" content="Consulte a quantidade indicada na sua prescrição, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente." />
+  <meta name="twitter:description" content="Consulte a quantidade indicada no seu plano, escolha o alimento que quer trocar e veja quanto consumir de outra opção equivalente." />
   <meta name="twitter:image" content="https://rafaelaschumacher.github.io/plataforma/assets/img/og/og-default.png" />
 
   <!-- Ícones e instalação -->
@@ -97,10 +97,10 @@
   <main id="conteudo">
     <section class="hero hero-compact">
       <div class="container hero-inner" data-reveal>
-        <p class="eyebrow">Lista de substituição de alimentos</p>
+        <p class="eyebrow">Consultoria online nutricional</p>
         <h1>Calculadora de substituição de alimentos</h1>
         <p class="hero-lead">
-          Consulte a quantidade indicada na sua prescrição, escolha o alimento que
+          Consulte a quantidade indicada no seu plano, escolha o alimento que
           quer trocar e veja quanto consumir de outra opção equivalente.
         </p>
       </div>
@@ -113,12 +113,12 @@
           <div class="step" style="--i:0" data-reveal>
             <span class="step-number">1</span>
             <h3>Encontre o alimento no seu plano</h3>
-            <p>Veja qual alimento e qual quantidade foram prescritos.</p>
+            <p>Veja qual alimento e qual quantidade estão no seu plano.</p>
           </div>
           <div class="step" style="--i:1" data-reveal>
             <span class="step-number">2</span>
             <h3>Informe o que está no seu plano</h3>
-            <p>Selecione o alimento prescrito e a quantidade que aparece no seu plano.</p>
+            <p>Selecione o alimento do seu plano e a quantidade que aparece nele.</p>
           </div>
           <div class="step" style="--i:2" data-reveal>
             <span class="step-number">3</span>
@@ -135,6 +135,7 @@
         <p class="section-lead">Selecione o grupo do alimento que você quer substituir.</p>
 
         <div class="group-tabs" id="grupoTabs" role="tablist"></div>
+        <p class="group-desc" id="grupoDescricao"></p>
 
         <div class="calculator-card" data-reveal>
           <div class="calculator-controls">
@@ -155,7 +156,8 @@
           <div class="result-summary" id="resultSummary"></div>
 
           <div class="table-toolbar">
-            <input type="search" id="filtroTabela" placeholder="Buscar alimento..." />
+            <label for="filtroTabela" class="rotulo-busca">Buscar na tabela</label>
+            <input type="search" id="filtroTabela" placeholder="Nome do alimento" />
           </div>
 
           <div class="table-wrapper">
