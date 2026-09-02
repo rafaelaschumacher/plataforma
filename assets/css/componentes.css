@@ -859,6 +859,21 @@ body.nav-aberto {
   margin-bottom: var(--sp-12);
 }
 
+/* Pill de contorno fino, no formato da tag da marca. Marca as sugestões que
+   já trazem uma opção sem carne dentro da própria lista. */
+.meal-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 14px;
+  border: 1px solid var(--cor-acento-borda);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--peso-medio);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
+
 /* A nota fica numa faixa de fundo alternado, sem virar um segundo cartão. */
 .meal-card .meal-note {
   font-size: var(--fs-sm);

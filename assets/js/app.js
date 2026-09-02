@@ -54,7 +54,7 @@
       btn.className = "group-tab" + (grupo.id === state.grupoId ? " active" : "");
       btn.setAttribute("role", "tab");
       btn.setAttribute("aria-selected", grupo.id === state.grupoId ? "true" : "false");
-      btn.innerHTML = `<span>${grupo.icone}</span><span>${grupo.nome}</span>`;
+      btn.textContent = grupo.nome;
       btn.addEventListener("click", () => {
         state.grupoId = grupo.id;
         state.alimentoId = grupo.baseId;
