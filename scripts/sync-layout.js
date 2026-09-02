@@ -69,7 +69,7 @@ const PAGINAS = {
     nav: "comer-fora",
     titulo: "Comer fora no dia a dia · Rafaela Schumacher",
     descricao:
-      "Como escolher no restaurante por quilo, no delivery, na padaria e na viagem sem sair do que foi combinado no seu plano.",
+      "Como escolher bem quando não dá para comer exatamente o que está no plano: no por quilo, no delivery, na padaria, no trabalho e na viagem.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",
