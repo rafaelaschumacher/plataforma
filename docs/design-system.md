@@ -364,20 +364,42 @@ sincronia, sem alterar nada.
 ### O cabeçalho tem um limite de largura real
 
 Abaixo de **1020px** a navegação vira gaveta lateral. O número não é
-arbitrário — foi medido no navegador, com os cinco links atuais:
+arbitrário — sai de medição no navegador.
 
-| Estado | Assinatura | Menu | Tema | Mínimo com respiros e gutter |
-|---|---|---|---|---|
-| Com as fontes da marca | 211px | 510px | 44px | **861px** |
-| Com as fontes de fallback | 230px | 538px | 44px | **908px** |
+**Como medir.** Desligue as duas media queries da gaveta numa cópia do CSS
+(`max-width: 1px` / `min-width: 2px`), para o menu ficar em linha em qualquer
+largura. Depois encolha o viewport de 1px em 1px até a `.main-nav` ganhar uma
+segunda linha ou o `.header-inner` estourar. A largura logo acima disso é o
+mínimo real. Repita com os `.woff2` bloqueados, para medir também o estado de
+fallback.
 
-**É a segunda linha que manda.** Enquanto Cormorant e Jost não carregam, o
+Isso está automatizado em `scripts/medir-cabecalho.js` — ele faz a cópia, mede
+os dois estados e imprime os dois números:
+
+```
+node scripts/medir-cabecalho.js
+```
+
+| Links no menu | Com as fontes da marca | Com as fontes de fallback |
+|---|---|---|
+| 5 | 797px | 844px |
+| 6 (hoje, com o Check-in) | 872px | **923px** |
+
+**É a segunda coluna que manda.** Enquanto Cormorant e Jost não carregam, o
 texto cai em Georgia e na sans do sistema, que são mais largas. Um breakpoint
 dimensionado só para o primeiro caso estoura durante o carregamento — e, como
 o CSS usa `overflow-x: clip`, o botão de tema sairia da tela sem gerar barra de
 rolagem, ou seja, sem nenhum aviso visual.
 
-Com 1021px de viewport sobram 957px de conteúdo, contra os 908 necessários.
+Com 1020px de gaveta sobram quase 100px de folga sobre os 923 necessários. Dá
+para um sétimo link antes de o número precisar subir — o sexto custou 79px, e
+um item a mais custa mais ou menos o mesmo.
+
+> Uma versão anterior desta tabela trazia 861px e 908px para cinco links.
+> Aqueles números somavam um respiro de 48px em cada lado do menu, em vez dos
+> 16px que o CSS realmente aplica; a conclusão continuava certa, mas a conta
+> não era comparável entre revisões. Os números acima são o ponto de quebra
+> medido, sem margem embutida.
 
 Esse número está em três lugares que **precisam andar juntos**:
 
