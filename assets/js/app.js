@@ -99,10 +99,14 @@
     const unidade = unidadeDe(alimento);
     qtdSuffix.textContent = unidade;
 
+    /* Sem quantidade não há resumo a dar: a caixa some e a instrução fica só
+       na tabela, onde a resposta apareceria. Antes as duas mostravam a mesma
+       frase ao mesmo tempo. */
+    resultSummary.hidden = qtdGramas <= 0;
     resultSummary.innerHTML =
       qtdGramas > 0
-        ? `No seu plano: <strong>${formatNumber(qtdGramas, 1)} ${unidade}</strong> de <strong>${alimento.nome}</strong>, o que corresponde a aproximadamente <strong>${formatNumber(kcalTotal, 0)} kcal</strong>. Veja abaixo o quanto comer de cada alimento do grupo "${grupo.nome}" para fazer a troca.`
-        : `Informe a quantidade que está no seu plano para ver as opções de troca.`;
+        ? `No seu plano: <strong>${formatNumber(qtdGramas, 1)} ${unidade}</strong> de <strong>${alimento.nome}</strong>, o que corresponde a aproximadamente <strong>${formatNumber(kcalTotal, 0)} kcal</strong>. Veja abaixo o quanto comer de cada alimento do grupo “${grupo.nome}” para fazer a troca.`
+        : "";
 
     renderTable();
   }
@@ -120,7 +124,7 @@
     equivTableBody.innerHTML = "";
 
     if (kcalTotal <= 0) {
-      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Informe uma quantidade maior que zero para ver as opções de troca.</td></tr>`;
+      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Informe a quantidade que está no seu plano para ver as opções de troca.</td></tr>`;
       return;
     }
 
