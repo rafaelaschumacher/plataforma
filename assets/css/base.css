@@ -14,6 +14,17 @@
   box-sizing: border-box;
 }
 
+/* O atributo hidden precisa vencer qualquer `display` de componente.
+   Sem o !important, o `display` declarado numa classe (ex: `.btn`) ganha do
+   `[hidden] { display: none }` do navegador, e o elemento continua na tela
+   mesmo com o JavaScript tendo pedido para escondê-lo. Foi o que acontecia
+   com o botão "Adicionar" do convite de instalação no iPhone: o script o
+   marcava como hidden, o `.btn` o trazia de volta, e ele ficava visível sem
+   ter o que fazer — no iOS não existe API de instalação para ele chamar. */
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--altura-header) + var(--sp-24));
