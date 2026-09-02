@@ -1,4 +1,10 @@
 (function () {
+  /* A lista cobre os alimentos mais usados nos planos, não todos. Quando a
+     busca não encontra, o caminho é falar com a nutricionista — senão a
+     paciente improvisa a troca sozinha, que é o que a calculadora existe
+     para evitar. */
+  const WHATSAPP = "https://wa.me/5547984214838";
+
   const grupoTabs = document.getElementById("grupoTabs");
   const alimentoSelect = document.getElementById("alimentoSelect");
   const qtdGramasInput = document.getElementById("qtdGramas");
@@ -110,7 +116,7 @@
     }
 
     if (filtrados.length === 0) {
-      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Nenhum alimento encontrado.</td></tr>`;
+      equivTableBody.innerHTML = `<tr><td colspan="2" class="empty-state">Não encontrei esse alimento na lista. Ela cobre os mais usados nos planos, mas não é completa — <a href="${WHATSAPP}" target="_blank" rel="noopener">me chama no WhatsApp</a> que eu te digo a equivalência certa.</td></tr>`;
       return;
     }
 
