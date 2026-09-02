@@ -27,10 +27,10 @@ const RAIZ = path.resolve(__dirname, "..");
 const PASTA_LAYOUT = path.join(RAIZ, "assets", "layout");
 
 /** Endereço público do site. Trocar aqui se um dia houver domínio próprio. */
-const BASE = "https://rafaschumacherr.github.io/consultoria-online";
+const BASE = "https://rafaelaschumacher.github.io/plataforma";
 
 /** Imagem padrão de compartilhamento (WhatsApp, Instagram, redes). */
-const OG_PADRAO = "assets/img/og/og-default.jpg";
+const OG_PADRAO = "assets/img/og/og-default.png";
 
 /**
  * Metadados de cada página. É a fonte única de título, descrição e imagem
