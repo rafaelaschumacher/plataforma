@@ -363,20 +363,32 @@ sincronia, sem alterar nada.
 
 ### O cabeçalho tem um limite de largura real
 
-Abaixo de **860px** a navegação vira gaveta lateral. O número não é arbitrário:
-assinatura (~226px) + quatro links (~390px) + botão de tema (52px) + respiros
-somam ~770px dentro do container. Abaixo disso os links começam a espremer a
-assinatura.
+Abaixo de **1020px** a navegação vira gaveta lateral. O número não é
+arbitrário — foi medido no navegador, com os cinco links atuais:
+
+| Estado | Assinatura | Menu | Tema | Mínimo com respiros e gutter |
+|---|---|---|---|---|
+| Com as fontes da marca | 211px | 510px | 44px | **861px** |
+| Com as fontes de fallback | 230px | 538px | 44px | **908px** |
+
+**É a segunda linha que manda.** Enquanto Cormorant e Jost não carregam, o
+texto cai em Georgia e na sans do sistema, que são mais largas. Um breakpoint
+dimensionado só para o primeiro caso estoura durante o carregamento — e, como
+o CSS usa `overflow-x: clip`, o botão de tema sairia da tela sem gerar barra de
+rolagem, ou seja, sem nenhum aviso visual.
+
+Com 1021px de viewport sobram 957px de conteúdo, contra os 908 necessários.
 
 Esse número está em três lugares que **precisam andar juntos**:
 
 | Onde | O quê |
 |---|---|
-| `assets/css/componentes.css` | `@media (max-width: 860px)` — transforma a `.main-nav` em gaveta |
-| `assets/css/componentes.css` | `@media (min-width: 861px)` — esconde o `.nav-scrim` |
-| `assets/js/nav.js` | `matchMedia('(min-width: 861px)')` — fecha o menu ao voltar ao desktop |
+| `assets/css/componentes.css` | `@media (max-width: 1020px)` — transforma a `.main-nav` em gaveta |
+| `assets/css/componentes.css` | `@media (min-width: 1021px)` — esconde o `.nav-scrim` |
+| `assets/js/nav.js` | `matchMedia('(min-width: 1021px)')` — fecha o menu ao voltar ao desktop |
 
-**Ao adicionar ou remover um item do menu, remeça o cabeçalho e ajuste os três.**
+**Ao adicionar ou remover um item do menu, remeça o cabeçalho nos dois estados
+e ajuste os três.**
 
 A gaveta fica estacionada fora da tela à direita, e é por isso que `html` e
 `body` usam `overflow-x: clip` — `clip`, e não `hidden`, porque `hidden` cria
@@ -390,7 +402,7 @@ tema, deixando os dois inalcançáveis com o menu aberto.
 
 ### Breakpoints
 
-Reaproveite os que já existem — **860**, **820**, **640**, **620** e **420** —
+Reaproveite os que já existem — **1020**, **820**, **640**, **620** e **420** —
 em vez de criar uma quebra nova para um componente só. Todos são valores que o
 site da marca também usa.
 

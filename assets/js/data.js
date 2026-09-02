@@ -10,7 +10,6 @@ const GRUPOS = [
   {
     id: "carboidratos",
     nome: "Carboidratos",
-    icone: "🌾",
     descricao: "Pães, biscoitos, cereais, massas, tubérculos e raízes.",
     baseId: "pao_frances",
     alimentos: [
@@ -41,7 +40,6 @@ const GRUPOS = [
   {
     id: "proteinas",
     nome: "Proteínas",
-    icone: "🍗",
     descricao: "Carnes, aves, peixes, ovos, frios e proteínas vegetais.",
     baseId: "frango_grelhado",
     alimentos: [
@@ -65,7 +63,6 @@ const GRUPOS = [
   {
     id: "gorduras",
     nome: "Gorduras",
-    icone: "🥑",
     descricao: "Azeite, óleos, castanhas, sementes, pastas e abacate.",
     baseId: "azeite",
     alimentos: [
@@ -87,7 +84,6 @@ const GRUPOS = [
   {
     id: "leguminosas",
     nome: "Leguminosas",
-    icone: "🫘",
     descricao: "Feijões, lentilha, grão-de-bico e outros grãos.",
     baseId: "feijao_carioca",
     alimentos: [
@@ -107,7 +103,6 @@ const GRUPOS = [
   {
     id: "frutas",
     nome: "Frutas",
-    icone: "🍎",
     descricao: "Frutas frescas e desidratadas.",
     baseId: "banana_prata",
     alimentos: [
@@ -135,7 +130,6 @@ const GRUPOS = [
   {
     id: "laticinios",
     nome: "Laticínios",
-    icone: "🥛",
     descricao: "Leite e derivados.",
     baseId: "leite_desnatado",
     alimentos: [
@@ -160,7 +154,6 @@ const GRUPOS = [
   {
     id: "doces",
     nome: "Doces",
-    icone: "🍬",
     descricao: "Açúcares, doces e cereais matinais adoçados.",
     baseId: "mel",
     alimentos: [

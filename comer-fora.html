@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <!-- layout:head -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Comer fora no dia a dia · Rafaela Schumacher</title>
+  <meta name="description" content="Como escolher no restaurante por quilo, no delivery, na padaria e na viagem sem sair do que foi combinado no seu plano." />
+  <meta name="author" content="Rafaela Schumacher" />
+  <link rel="canonical" href="https://rafaelaschumacher.github.io/plataforma/comer-fora.html" />
+
+  <!-- Compartilhamento (WhatsApp, Instagram, redes) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Rafaela Schumacher · Consultoria online" />
+  <meta property="og:title" content="Comer fora no dia a dia · Rafaela Schumacher" />
+  <meta property="og:description" content="Como escolher no restaurante por quilo, no delivery, na padaria e na viagem sem sair do que foi combinado no seu plano." />
+  <meta property="og:url" content="https://rafaelaschumacher.github.io/plataforma/comer-fora.html" />
+  <meta property="og:image" content="https://rafaelaschumacher.github.io/plataforma/assets/img/og/og-default.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Rafaela Schumacher — consultoria online nutricional" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Comer fora no dia a dia · Rafaela Schumacher" />
+  <meta name="twitter:description" content="Como escolher no restaurante por quilo, no delivery, na padaria e na viagem sem sair do que foi combinado no seu plano." />
+  <meta name="twitter:image" content="https://rafaelaschumacher.github.io/plataforma/assets/img/og/og-default.png" />
+
+  <!-- Ícones e instalação -->
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0F0E0C" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#FAF7F1" media="(prefers-color-scheme: light)" />
+  <meta name="apple-mobile-web-app-title" content="Nutri Rafaela" />
+
+  <!-- Tema: aplicado antes da primeira pintura para a página não piscar.
+       Precisa ficar inline aqui; num arquivo externo com defer, o portal
+       carregaria no tema errado e trocaria na frente de quem está lendo. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('tema');
+        if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      } catch (e) { /* localStorage bloqueado: mantém o padrão escuro */ }
+    })();
+  </script>
+
+  <!-- Tipografia auto-hospedada: sem conexão externa no caminho crítico.
+       O itálico entra na lista porque o sobrenome da assinatura, no topo de
+       toda página, é escrito nele. -->
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="assets/css/fontes.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/componentes.css" />
+  <link rel="stylesheet" href="assets/css/paginas.css" />
+  <!-- /layout:head -->
+</head>
+<body>
+  <!-- layout:header -->
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+<div class="nav-scrim" id="navScrim" hidden></div>
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Rafaela Schumacher, nutricionista — início">
+      <span class="brand-selo" aria-hidden="true"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Rafaela Schumacher"><circle cx="100.0" cy="100.0" r="88" stroke="currentColor" stroke-width="1.5"/><path d="M105.70 136.88Q103.74 136.88 99.26 132.31Q94.79 127.74 88.49 119.22Q82.19 110.70 74.38 99.02L81.08 96.94Q91.09 111.22 98.09 119.69Q105.08 128.17 110.46 131.81Q115.84 135.46 120.85 135.46Q121.18 135.46 121.18 136.17Q121.18 136.88 120.85 136.88Q114.95 136.88 111.22 136.88Q107.49 136.88 105.70 136.88ZM75.98 62.77Q85.42 62.77 90.42 67.05Q95.41 71.34 95.41 78.32Q95.41 84.72 91.70 89.85Q88.00 94.99 81.92 97.94Q75.84 100.89 68.64 100.89Q67.46 100.89 65.99 100.79Q64.51 100.70 63.29 100.58V127.32Q63.29 130.74 63.97 132.51Q64.66 134.28 66.85 134.87Q69.05 135.46 73.36 135.46Q73.69 135.46 73.69 136.17Q73.69 136.88 73.36 136.88Q70.48 136.88 67.04 136.76Q63.59 136.64 59.39 136.64Q55.52 136.64 51.92 136.76Q48.32 136.88 45.45 136.88Q45.19 136.88 45.19 136.17Q45.19 135.46 45.45 135.46Q49.76 135.46 51.96 134.87Q54.15 134.28 54.94 132.51Q55.73 130.74 55.73 127.32V72.68Q55.73 69.26 55.00 67.55Q54.27 65.84 52.12 65.19Q49.98 64.54 45.66 64.54Q45.33 64.54 45.33 63.83Q45.33 63.12 45.66 63.12Q48.44 63.12 51.98 63.30Q55.52 63.48 59.39 63.48Q63.10 63.48 67.90 63.12Q72.70 62.77 75.98 62.77ZM87.43 81.77Q87.43 75.28 85.49 71.53Q83.56 67.77 80.00 66.13Q76.43 64.49 71.45 64.49Q67.11 64.49 65.20 66.08Q63.29 67.66 63.29 72.92V97.75Q64.94 97.89 66.87 98.01Q68.81 98.12 70.32 98.12Q79.83 98.12 83.63 93.96Q87.43 89.79 87.43 81.77Z" fill="currentColor"/><path d="M118.87 76.93Q118.87 81.79 121.27 85.25Q123.66 88.71 127.47 91.33Q131.29 93.95 135.51 96.47Q139.90 99.02 143.92 101.86Q147.95 104.71 150.60 108.59Q153.26 112.47 153.26 118.14Q153.26 123.73 150.46 128.31Q147.66 132.89 142.27 135.59Q136.88 138.29 129.00 138.29Q126.21 138.29 123.41 137.87Q120.62 137.44 117.87 136.52Q115.12 135.60 112.38 134.14Q111.82 133.78 111.60 133.28Q111.39 132.77 111.30 131.90L109.81 115.87Q109.69 115.28 110.34 115.22Q110.99 115.16 111.11 115.63Q111.84 119.20 113.40 122.84Q114.95 126.49 117.42 129.54Q119.89 132.58 123.43 134.48Q126.97 136.38 131.69 136.38Q135.16 136.38 138.39 135.10Q141.62 133.83 143.69 130.88Q145.75 127.93 145.75 122.81Q145.75 117.07 143.23 113.22Q140.70 109.36 136.81 106.54Q132.91 103.72 128.57 101.19Q124.44 98.67 120.57 95.92Q116.70 93.17 114.29 89.45Q111.89 85.73 111.89 80.26Q111.89 74.03 115.08 69.93Q118.28 65.84 123.34 63.83Q128.41 61.83 133.83 61.83Q137.14 61.83 140.68 62.50Q144.22 63.17 147.64 64.61Q148.63 64.99 149.02 65.53Q149.41 66.08 149.41 66.69L150.26 80.16Q150.26 80.61 149.63 80.65Q149.01 80.68 148.87 80.24Q148.54 77.88 147.47 75.01Q146.41 72.14 144.43 69.54Q142.45 66.95 139.38 65.26Q136.31 63.57 131.97 63.57Q127.32 63.57 124.43 65.51Q121.54 67.44 120.21 70.45Q118.87 73.46 118.87 76.93Z" fill="currentColor"/></svg></span>
+      <span class="brand-texto">
+        <span class="brand-nome">Rafaela <em>Schumacher</em></span>
+        <span class="brand-cargo">Nutricionista</span>
+      </span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+      <a href="calculadora.html" data-nav="calculadora">Calculadora</a>
+      <a href="orientacoes-gerais.html" data-nav="orientacoes-gerais">Orientações</a>
+      <a href="refeicao-livre.html" data-nav="refeicao-livre">Refeição livre</a>
+      <a href="comer-fora.html" data-nav="comer-fora" class="active" aria-current="page">Comer fora</a>
+      <a href="guia-mercado.html" data-nav="guia-mercado">Mercado</a>
+    </nav>
+    <div class="header-ferramentas">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar entre tema claro e escuro">
+        <svg class="icone-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+  <!-- /layout:header -->
+
+  <main id="conteudo">
+    <section class="hero hero-compact">
+      <div class="container hero-inner" data-reveal>
+        <p class="eyebrow">Consultoria online nutricional</p>
+        <h1>Comer fora no dia a dia</h1>
+        <p class="hero-lead">
+          Não é a refeição livre: é terça-feira. Como escolher no por quilo, no
+          delivery, na padaria e na viagem sem sair do que a gente combinou.
+        </p>
+        <p class="atualizacao">
+          Atualizado em <time datetime="2026-08">agosto de 2026</time>
+        </p>
+      </div>
+    </section>
+
+    <section class="article-section">
+      <div class="container guide-layout">
+        <aside class="guide-index" aria-label="Índice da página">
+          <p class="guide-index-title">Nesta página</p>
+          <ol>
+            <li><a href="#regra">A regra que serve para tudo</a></li>
+            <li><a href="#quilo">Restaurante por quilo</a></li>
+            <li><a href="#delivery">Delivery</a></li>
+            <li><a href="#padaria">Padaria e café</a></li>
+            <li><a href="#trabalho">Trabalho e viagem</a></li>
+          </ol>
+        </aside>
+
+        <div class="guide-content">
+          <!-- 01 -->
+          <section class="guide-section" data-reveal id="regra">
+            <p class="section-label"><span class="section-num">01</span> A regra que serve para tudo</p>
+
+            <div class="info-card info-card-full guide-intro">
+              <p>
+                Comer fora no dia a dia é diferente da
+                <a href="refeicao-livre.html">refeição livre</a>. A refeição
+                livre é um evento, uma vez por semana, com tamanho combinado.
+              </p>
+              <p>
+                Isso aqui é terça-feira: você almoça fora porque a rotina pediu,
+                e a refeição precisa parecer com o que está no seu plano.
+              </p>
+            </div>
+
+            <div class="info-card info-card-full">
+              <h3>Monte o prato nesta ordem</h3>
+              <p>
+                Serve para buffet, delivery, restaurante ou café da manhã de
+                hotel. Muda o cenário, não a lógica.
+              </p>
+
+              <div class="guide-defs">
+                <div>
+                  <h4>1. Vegetais</h4>
+                  <p>
+                    Metade do prato. Dão volume, ocupam espaço e praticamente não
+                    mudam a conta.
+                  </p>
+                </div>
+                <div>
+                  <h4>2. Proteína</h4>
+                  <p>
+                    Um filé, um pedaço de carne, dois ovos. É a que mais segura a
+                    fome e a que a gente mais erra para menos quando come fora.
+                  </p>
+                </div>
+                <div>
+                  <h4>3. Carboidrato</h4>
+                  <p>
+                    Uma porção, do tamanho parecido com a do seu plano. Arroz,
+                    batata, massa, mandioca &mdash; o que tiver.
+                  </p>
+                </div>
+              </div>
+
+              <div class="callout callout-spaced">
+                Se ficar em dúvida se acertou, me manda a foto do prato. Uma ou
+                duas vezes e você já calibra o olho sozinha.
+              </div>
+            </div>
+          </section>
+
+          <!-- 02 -->
+          <section class="guide-section" data-reveal id="quilo">
+            <p class="section-label"><span class="section-num">02</span> Restaurante por quilo</p>
+
+            <div class="info-card info-card-full">
+              <h3>É o melhor cenário possível</h3>
+              <p>
+                No por quilo você monta o prato, então você decide tudo. É onde
+                fica mais fácil chegar perto do seu plano.
+              </p>
+
+              <div class="guide-block">
+                <h4>Uma volta só no buffet</h4>
+                <p>
+                  Dê uma olhada em tudo antes de pegar o prato. Decidir com o
+                  prato na mão, com fila atrás, é decidir no susto.
+                </p>
+              </div>
+
+              <div class="guide-block">
+                <h4>O que costuma passar despercebido</h4>
+                <p>
+                  Nada aqui é proibido, mas são os itens que mudam bastante a
+                  conta sem mudar a sensação de saciedade.
+                </p>
+                <ul class="guide-cols">
+                  <li>molho cremoso na salada;</li>
+                  <li>farofa e batata palha;</li>
+                  <li>empanados e à milanesa;</li>
+                  <li>strogonoff e molhos brancos;</li>
+                  <li>arroz colorido, regado com azeite;</li>
+                  <li>queijo ralado por cima da massa.</li>
+                </ul>
+              </div>
+
+              <div class="guide-block">
+                <h4>Uma escolha simples que resolve</h4>
+                <p>
+                  Tempere a salada com azeite pedido à parte, limão, sal e
+                  vinagre. O molho pronto do buffet costuma ser o item mais
+                  calórico da bancada de saladas.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 03 -->
+          <section class="guide-section" data-reveal id="delivery">
+            <p class="section-label"><span class="section-num">03</span> Delivery</p>
+
+            <div class="info-card info-card-full">
+              <h3>O cardápio trabalha contra você</h3>
+              <p>
+                Os aplicativos são desenhados para vender volume: combo, borda
+                recheada, adicionais, sobremesa por mais alguns reais. Saber
+                disso já ajuda.
+              </p>
+
+              <div class="guide-defs">
+                <div>
+                  <h4>Procure a aba certa</h4>
+                  <p>
+                    Quase todo restaurante tem prato executivo ou salada, mesmo
+                    os de lanche. Costuma não estar na primeira tela.
+                  </p>
+                </div>
+                <div>
+                  <h4>Molho à parte</h4>
+                  <p>
+                    Vem sempre em quantidade maior do que você usaria. Pedindo à
+                    parte, você decide quanto.
+                  </p>
+                </div>
+                <div>
+                  <h4>Um item, não combo</h4>
+                  <p>
+                    Combo é desconto por volume, não por fome. Você paga menos
+                    por comer mais do que precisa.
+                  </p>
+                </div>
+              </div>
+
+              <div class="guide-block">
+                <h4>Escolhas que funcionam bem</h4>
+                <ul class="guide-cols">
+                  <li>executivo de grelhado com arroz, feijão e salada;</li>
+                  <li>poke com arroz, proteína grelhada e vegetais;</li>
+                  <li>marmita de rotisseria;</li>
+                  <li>sopa de legumes com proteína;</li>
+                  <li>wrap ou sanduíche natural de frango;</li>
+                  <li>salada com proteína e uma porção de carboidrato.</li>
+                </ul>
+              </div>
+
+              <div class="callout callout-spaced">
+                Se a única opção for lanche, prefira o mais simples do cardápio:
+                um hambúrguer, um queijo, sem bacon e sem molho especial. Batata
+                pequena, se for.
+              </div>
+            </div>
+          </section>
+
+          <!-- 04 -->
+          <section class="guide-section" data-reveal id="padaria">
+            <p class="section-label"><span class="section-num">04</span> Padaria e café</p>
+
+            <div class="info-card info-card-full">
+              <h3>Parece leve, e é onde mais escapa</h3>
+              <p>
+                Um pão de queijo aqui, um café com leite ali. Como nada parece
+                uma refeição de verdade, é fácil perder a noção do total.
+              </p>
+
+              <div class="guide-defs">
+                <div>
+                  <h4>Café da manhã</h4>
+                  <p>
+                    Pão francês com ovo mexido ou queijo branco. Café com leite
+                    desnatado. Se quiser tirar parte do miolo do pão, tudo bem.
+                  </p>
+                </div>
+                <div>
+                  <h4>Lanche da tarde</h4>
+                  <p>
+                    Iogurte natural com fruta, ou uma tapioca simples com queijo.
+                    Café puro ou com leite desnatado.
+                  </p>
+                </div>
+                <div>
+                  <h4>O que pesa mais</h4>
+                  <p>
+                    Croissant, folhado, bolo, misto quente com muita manteiga,
+                    pão de queijo em sequência.
+                  </p>
+                </div>
+              </div>
+
+              <!-- REVISAR: validação clínica — comparação calórica entre o
+                   combo típico de padaria e um almoço completo. Confirmar se a
+                   afirmação está adequada ou se prefere retirar o comparativo. -->
+              <div class="callout callout-spaced">
+                Café com leite integral e açúcar, dois pães de queijo e um suco
+                somam mais do que muitos almoços completos &mdash; e ainda deixam
+                você com fome uma hora depois, porque quase não tem proteína.
+              </div>
+            </div>
+          </section>
+
+          <!-- 05 -->
+          <section class="guide-section" data-reveal id="trabalho">
+            <p class="section-label"><span class="section-num">05</span> Trabalho e viagem</p>
+
+            <div class="info-card info-card-full">
+              <h3>Marmita</h3>
+              <p>
+                É a opção que mais protege a rotina, porque tira a decisão do
+                momento em que você está com fome e sem tempo.
+              </p>
+
+              <div class="guide-block">
+                <h4>Como facilitar</h4>
+                <ul>
+                  <li>Cozinhe uma vez para três ou quatro dias.</li>
+                  <li>Divida nos potes no dia do preparo, não na hora de sair.</li>
+                  <li>Congele o que passar de três dias na geladeira.</li>
+                  <li>Se der, monte a salada na hora, separada.</li>
+                </ul>
+              </div>
+
+              <div class="guide-block">
+                <h4>Se não tiver micro-ondas</h4>
+                <p>
+                  Saladas com proteína fria resolvem bem: frango desfiado, atum,
+                  ovo cozido, grão-de-bico. Levam carboidrato junto sem problema.
+                </p>
+              </div>
+            </div>
+
+            <div class="info-card info-card-full">
+              <h3>Almoço de trabalho</h3>
+              <p>
+                É o cenário com menos controle e mais pressão social. Duas coisas
+                ajudam bastante.
+              </p>
+
+              <div class="guide-defs guide-defs-2">
+                <div>
+                  <h4>Peça primeiro</h4>
+                  <p>
+                    Quem pede primeiro não é influenciado pela mesa. Se der, já
+                    escolha antes de sentar.
+                  </p>
+                </div>
+                <div>
+                  <h4>Entrada e sobremesa são opcionais</h4>
+                  <p>
+                    Você não precisa recusar em voz alta nem explicar nada. Só
+                    não precisa pedir.
+                  </p>
+                </div>
+              </div>
+
+              <div class="callout callout-spaced">
+                Grelhado com acompanhamento e salada existe em praticamente todo
+                restaurante de almoço executivo, mesmo quando não está em
+                destaque no cardápio. Vale perguntar.
+              </div>
+            </div>
+
+            <div class="info-card info-card-full">
+              <h3>Viagem curta</h3>
+              <p>
+                Dois ou três dias fora não desmontam nada. O que ajuda é não
+                depender só do que aparecer pela frente.
+              </p>
+
+              <div class="guide-defs guide-defs-2">
+                <div>
+                  <h4>O que levar na bolsa</h4>
+                  <ul>
+                    <li>castanhas em porção;</li>
+                    <li>fruta que não amassa;</li>
+                    <li>barra de proteína;</li>
+                    <li>sachê de whey.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Café da manhã de hotel</h4>
+                  <p>
+                    Ovos, frutas, iogurte natural e pão integral costumam estar
+                    disponíveis. Monte como você faria em casa.
+                  </p>
+                </div>
+              </div>
+
+              <div class="callout callout-spaced">
+                Se a viagem for longa, ou se você já sabe que vai ficar sem opção
+                nenhuma, me chama antes de viajar. A gente monta um plano B com
+                calma.
+              </div>
+
+              <a href="https://wa.me/5547984214838" target="_blank" rel="noopener" class="btn btn-primary guide-cta">Falar com a nutri</a>
+            </div>
+          </section>
+
+          <aside class="guide-note" aria-label="Observação importante">
+            <p class="guide-note-label">Importante</p>
+            <p>
+              As sugestões desta página são gerais e servem para o dia a dia. Se
+              alguma coisa no seu plano individual estiver diferente do que está
+              aqui, vale o que combinamos na consulta.
+            </p>
+            <p>
+              Conteúdo de apoio educativo: não substitui a orientação individual
+              da sua nutricionista.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- layout:footer -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-marca">
+        <span class="brand">
+      <span class="brand-selo" aria-hidden="true"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" role="img" aria-label="Rafaela Schumacher"><circle cx="100.0" cy="100.0" r="88" stroke="currentColor" stroke-width="1.5"/><path d="M105.70 136.88Q103.74 136.88 99.26 132.31Q94.79 127.74 88.49 119.22Q82.19 110.70 74.38 99.02L81.08 96.94Q91.09 111.22 98.09 119.69Q105.08 128.17 110.46 131.81Q115.84 135.46 120.85 135.46Q121.18 135.46 121.18 136.17Q121.18 136.88 120.85 136.88Q114.95 136.88 111.22 136.88Q107.49 136.88 105.70 136.88ZM75.98 62.77Q85.42 62.77 90.42 67.05Q95.41 71.34 95.41 78.32Q95.41 84.72 91.70 89.85Q88.00 94.99 81.92 97.94Q75.84 100.89 68.64 100.89Q67.46 100.89 65.99 100.79Q64.51 100.70 63.29 100.58V127.32Q63.29 130.74 63.97 132.51Q64.66 134.28 66.85 134.87Q69.05 135.46 73.36 135.46Q73.69 135.46 73.69 136.17Q73.69 136.88 73.36 136.88Q70.48 136.88 67.04 136.76Q63.59 136.64 59.39 136.64Q55.52 136.64 51.92 136.76Q48.32 136.88 45.45 136.88Q45.19 136.88 45.19 136.17Q45.19 135.46 45.45 135.46Q49.76 135.46 51.96 134.87Q54.15 134.28 54.94 132.51Q55.73 130.74 55.73 127.32V72.68Q55.73 69.26 55.00 67.55Q54.27 65.84 52.12 65.19Q49.98 64.54 45.66 64.54Q45.33 64.54 45.33 63.83Q45.33 63.12 45.66 63.12Q48.44 63.12 51.98 63.30Q55.52 63.48 59.39 63.48Q63.10 63.48 67.90 63.12Q72.70 62.77 75.98 62.77ZM87.43 81.77Q87.43 75.28 85.49 71.53Q83.56 67.77 80.00 66.13Q76.43 64.49 71.45 64.49Q67.11 64.49 65.20 66.08Q63.29 67.66 63.29 72.92V97.75Q64.94 97.89 66.87 98.01Q68.81 98.12 70.32 98.12Q79.83 98.12 83.63 93.96Q87.43 89.79 87.43 81.77Z" fill="currentColor"/><path d="M118.87 76.93Q118.87 81.79 121.27 85.25Q123.66 88.71 127.47 91.33Q131.29 93.95 135.51 96.47Q139.90 99.02 143.92 101.86Q147.95 104.71 150.60 108.59Q153.26 112.47 153.26 118.14Q153.26 123.73 150.46 128.31Q147.66 132.89 142.27 135.59Q136.88 138.29 129.00 138.29Q126.21 138.29 123.41 137.87Q120.62 137.44 117.87 136.52Q115.12 135.60 112.38 134.14Q111.82 133.78 111.60 133.28Q111.39 132.77 111.30 131.90L109.81 115.87Q109.69 115.28 110.34 115.22Q110.99 115.16 111.11 115.63Q111.84 119.20 113.40 122.84Q114.95 126.49 117.42 129.54Q119.89 132.58 123.43 134.48Q126.97 136.38 131.69 136.38Q135.16 136.38 138.39 135.10Q141.62 133.83 143.69 130.88Q145.75 127.93 145.75 122.81Q145.75 117.07 143.23 113.22Q140.70 109.36 136.81 106.54Q132.91 103.72 128.57 101.19Q124.44 98.67 120.57 95.92Q116.70 93.17 114.29 89.45Q111.89 85.73 111.89 80.26Q111.89 74.03 115.08 69.93Q118.28 65.84 123.34 63.83Q128.41 61.83 133.83 61.83Q137.14 61.83 140.68 62.50Q144.22 63.17 147.64 64.61Q148.63 64.99 149.02 65.53Q149.41 66.08 149.41 66.69L150.26 80.16Q150.26 80.61 149.63 80.65Q149.01 80.68 148.87 80.24Q148.54 77.88 147.47 75.01Q146.41 72.14 144.43 69.54Q142.45 66.95 139.38 65.26Q136.31 63.57 131.97 63.57Q127.32 63.57 124.43 65.51Q121.54 67.44 120.21 70.45Q118.87 73.46 118.87 76.93Z" fill="currentColor"/></svg></span>
+      <span class="brand-texto">
+        <span class="brand-nome">Rafaela <em>Schumacher</em></span>
+        <span class="brand-cargo">Nutricionista</span>
+      </span>
+    </span>
+      </p>
+      <p class="footer-profissional">Nutricionista &middot; Consultoria online</p>
+      <!-- CRN: inserir aqui quando a Rafaela informar número e estado.
+           Formato sugerido:
+           <p class="footer-profissional">CRN-10 00000</p> -->
+    </div>
+    <p class="footer-legal">
+      Este portal é um material de apoio para pacientes da consultoria.
+      As orientações gerais não substituem seu plano individualizado.
+    </p>
+  </div>
+</footer>
+
+<!-- Convite para adicionar à tela de início. Aparece uma vez e some se dispensado. -->
+<aside class="instalar-banner" id="instalarBanner" role="complementary" aria-label="Adicionar à tela de início" hidden>
+  <div class="instalar-banner-texto">
+    <strong>Deixe o portal à mão</strong>
+    <p id="instalarInstrucao">Adicione à tela de início do seu celular para abrir com um toque.</p>
+    <div class="instalar-banner-acoes">
+      <button type="button" class="btn btn-primary" id="instalarAcao">Adicionar</button>
+      <button type="button" class="btn btn-secondary" id="instalarDepois">Agora não</button>
+    </div>
+  </div>
+  <button type="button" class="instalar-fechar" id="instalarFechar" aria-label="Fechar aviso">&times;</button>
+</aside>
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/tema.js"></script>
+<script src="assets/js/interface.js"></script>
+<script src="assets/js/instalar.js"></script>
+  <!-- /layout:footer -->
+</body>
+</html>
