@@ -4,25 +4,25 @@
   <!-- layout:head -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Rafaela Schumacher · Acompanhamento nutricional online</title>
-  <meta name="description" content="Área de apoio às pacientes da consultoria: calculadora de substituição, guia do mercado, orientações e guia da refeição livre." />
+  <title>Guias · Rafaela Schumacher</title>
+  <meta name="description" content="Os materiais de apoio da consultoria reunidos: guia do mercado, comer fora no dia a dia e guia da refeição livre." />
   <meta name="author" content="Rafaela Schumacher" />
-  <link rel="canonical" href="https://rafaelaschumacher.github.io/plataforma/" />
+  <link rel="canonical" href="https://rafaelaschumacher.github.io/plataforma/guias.html" />
 
   <!-- Compartilhamento (WhatsApp, Instagram, redes) -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Rafaela Schumacher · Acompanhamento nutricional online" />
-  <meta property="og:title" content="Sua área de apoio · Rafaela Schumacher" />
-  <meta property="og:description" content="Área de apoio às pacientes da consultoria: calculadora de substituição, guia do mercado, orientações e guia da refeição livre." />
-  <meta property="og:url" content="https://rafaelaschumacher.github.io/plataforma/" />
+  <meta property="og:title" content="Guias · Rafaela Schumacher" />
+  <meta property="og:description" content="Os materiais de apoio da consultoria reunidos: guia do mercado, comer fora no dia a dia e guia da refeição livre." />
+  <meta property="og:url" content="https://rafaelaschumacher.github.io/plataforma/guias.html" />
   <meta property="og:image" content="https://rafaelaschumacher.github.io/plataforma/assets/img/og/og-default.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Rafaela Schumacher — acompanhamento nutricional online" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sua área de apoio · Rafaela Schumacher" />
-  <meta name="twitter:description" content="Área de apoio às pacientes da consultoria: calculadora de substituição, guia do mercado, orientações e guia da refeição livre." />
+  <meta name="twitter:title" content="Guias · Rafaela Schumacher" />
+  <meta name="twitter:description" content="Os materiais de apoio da consultoria reunidos: guia do mercado, comer fora no dia a dia e guia da refeição livre." />
   <meta name="twitter:image" content="https://rafaelaschumacher.github.io/plataforma/assets/img/og/og-default.png" />
 
   <!-- Ícones e instalação -->
@@ -80,7 +80,7 @@
       <a href="calculadora.html" data-nav="calculadora">Calculadora</a>
       <a href="orientacoes-gerais.html" data-nav="orientacoes-gerais">Orientações</a>
       <div class="nav-grupo">
-        <a href="guias.html" data-nav="guias">Guias<span class="nav-grupo-marca" aria-hidden="true">+</span></a>
+        <a href="guias.html" data-nav="guias" class="active" aria-current="page">Guias<span class="nav-grupo-marca" aria-hidden="true">+</span></a>
         <div class="nav-submenu">
           <a href="guia-mercado.html" data-nav="guia-mercado">Mercado</a>
           <a href="comer-fora.html" data-nav="comer-fora">Comer fora</a>
@@ -102,153 +102,42 @@
   <!-- /layout:header -->
 
   <main id="conteudo">
-    <!-- O véu sobre a foto agora é um ::before com o token --foto-scrim, para
-         a tinta do degradê vir do design system e não de um valor solto aqui. -->
-    <section class="hero-photo" style="background-image: url('assets/img/home/hero.jpg');">
-      <div class="container hero-photo-inner" data-reveal>
-        <p class="eyebrow eyebrow-light">Bem-vinda à sua área de suporte</p>
-        <h1 class="hero-photo-title">Tudo o que você precisa para seguir seu plano</h1>
-        <p class="hero-photo-lead">
-          Um espaço exclusivo para pacientes da consultoria, com ferramentas e
-          materiais para facilitar sua rotina alimentar entre as consultas.
+    <section class="hero hero-compact">
+      <div class="container hero-inner" data-reveal>
+        <p class="eyebrow">Acompanhamento nutricional online</p>
+        <h1>Guias</h1>
+        <p class="hero-lead">
+          Os materiais de apoio para as situações que mais aparecem entre uma
+          consulta e outra.
         </p>
       </div>
     </section>
 
-    <!-- Onboarding de quem acabou de receber o plano -->
-    <section class="inicio" aria-labelledby="comece-titulo">
+    <section class="article-section">
       <div class="container">
-        <div class="inicio-cabecalho" data-reveal>
-          <p class="eyebrow">Comece por aqui</p>
-          <h2 id="comece-titulo">Recebeu seu plano?</h2>
-          <p>
-            Antes de começar, faça só o básico: entenda o que foi planejado, veja
-            o que você precisa ter em casa e organize sua primeira semana.
-          </p>
-          <p>Não precisa tentar deixar tudo perfeito de uma vez.</p>
-          <p>
-            Depois, conforme as dúvidas forem aparecendo, você pode voltar aqui.
-          </p>
-        </div>
-
-        <ol class="inicio-grid" data-reveal-cascata>
-          <li class="inicio-passo" style="--i:0" data-reveal>
-            <span class="inicio-num">1</span>
-            <h3>Dê uma olhada no seu plano</h3>
-            <p>Leia o plano inteiro antes de começar a pesar ou preparar tudo.</p>
-            <p>
-              Veja como as refeições estão distribuídas, quais alimentos aparecem
-              com mais frequência e se tem alguma orientação específica para você.
-            </p>
-            <p>Não precisa decorar. É só entender o que foi planejado.</p>
-          </li>
-          <li class="inicio-passo" style="--i:1" data-reveal>
-            <span class="inicio-num">2</span>
-            <h3>Veja o que você precisa em casa</h3>
-            <p>
-              Olhe para os próximos dias e veja o que já tem e o que precisa
-              comprar. Não precisa comprar tudo de uma vez.
-            </p>
-          </li>
-          <li class="inicio-passo" style="--i:2" data-reveal>
-            <span class="inicio-num">3</span>
-            <h3>Organize os primeiros dias</h3>
-            <p>
-              Pense nos dias mais corridos e deixe algumas coisas adiantadas
-              &mdash; uma proteína pronta, arroz, frutas lavadas. Você não precisa
-              preparar a semana inteira de uma vez.
-            </p>
-            <p>
-              <a href="orientacoes-gerais.html#rotina">Como me organizar na rotina</a>
-            </p>
-          </li>
-          <li class="inicio-passo" style="--i:3" data-reveal>
-            <span class="inicio-num">4</span>
-            <h3>Salve este portal</h3>
-            <p>
-              Aqui estão as ferramentas e orientações que você pode consultar ao
-              longo do acompanhamento.
-            </p>
-            <p>
-              Deixe salvo no celular para voltar quando precisar: substituições,
-              orientações, refeição livre, guia do mercado e o que mais estiver
-              disponível por aqui.
-            </p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="how-it-works">
-      <div class="container">
-        <div class="faixa-titulo" data-reveal>
-          <h2>Materiais de apoio</h2>
-        </div>
-
         <div class="lista-guias" data-reveal-cascata>
-          <a href="orientacoes-gerais.html" class="guia-item" style="--i:0" data-reveal>
-            <span class="guia-item-texto">
-              <span class="guia-item-titulo">Como colocar seu plano em prática</span>
-              <span class="guia-item-desc">Como pesar, se organizar e fazer o plano funcionar na sua rotina.</span>
-            </span>
-            <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="calculadora.html" class="guia-item" style="--i:1" data-reveal>
-            <span class="guia-item-texto">
-              <span class="guia-item-titulo">Calculadora de substituição</span>
-              <span class="guia-item-desc">Quer variar o alimento do plano? Veja opções equivalentes e a quantidade para fazer a troca.</span>
-            </span>
-            <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="guia-mercado.html" class="guia-item" style="--i:2" data-reveal>
+          <a href="guia-mercado.html" class="guia-item" style="--i:0" data-reveal>
             <span class="guia-item-texto">
               <span class="guia-item-titulo">Guia do mercado</span>
               <span class="guia-item-desc">Como escolher produtos, entender os rótulos e encontrar as marcas que eu recomendo.</span>
             </span>
             <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
           </a>
-          <a href="refeicao-livre.html" class="guia-item" style="--i:3" data-reveal>
-            <span class="guia-item-texto">
-              <span class="guia-item-titulo">Guia da refeição livre</span>
-              <span class="guia-item-desc">Ideias prontas para aproveitar sua refeição livre sem precisar ficar calculando tudo.</span>
-            </span>
-            <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="comer-fora.html" class="guia-item" style="--i:4" data-reveal>
+          <a href="comer-fora.html" class="guia-item" style="--i:1" data-reveal>
             <span class="guia-item-texto">
               <span class="guia-item-titulo">Comer fora no dia a dia</span>
               <span class="guia-item-desc">Como escolher no por quilo, no delivery, na padaria e na viagem quando não dá para comer o que está no plano.</span>
             </span>
             <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
           </a>
+          <a href="refeicao-livre.html" class="guia-item" style="--i:2" data-reveal>
+            <span class="guia-item-texto">
+              <span class="guia-item-titulo">Guia da refeição livre</span>
+              <span class="guia-item-desc">Ideias prontas para aproveitar sua refeição livre sem precisar ficar calculando tudo.</span>
+            </span>
+            <span class="guia-item-seta" aria-hidden="true">&rarr;</span>
+          </a>
         </div>
-      </div>
-    </section>
-
-    <section class="about-section painel">
-      <div class="container about-inner about-ajuda" data-reveal>
-        <h2>Quando precisar, me chama</h2>
-        <p>
-          As ferramentas daqui foram feitas para facilitar sua rotina. Mas nem
-          tudo precisa ser resolvido sozinha.
-        </p>
-        <p>
-          Se alguma coisa não estiver funcionando no seu plano, sua rotina
-          mudou ou você ficou com alguma dúvida, me chama. A gente ajusta
-          juntas na consulta ou pelo WhatsApp da consultoria.
-        </p>
-        <div class="about-acoes">
-          <a href="https://wa.me/5547984214838" target="_blank" rel="noopener" class="btn btn-primary">Falar com a nutri</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="fecho">
-      <div class="container" data-reveal>
-        <p>
-          Mais do que seguir um plano, a ideia é aprender a fazer a alimentação
-          caber na sua vida.
-        </p>
       </div>
     </section>
   </main>
