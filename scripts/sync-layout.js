@@ -82,6 +82,13 @@ const PAGINAS = {
     descricao:
       "Como escolher bem quando não dá para comer exatamente o que está no plano: no por quilo, no delivery, na padaria, no trabalho e na viagem.",
   },
+  "whey-protein.html": {
+    nav: "whey-protein",
+    grupo: "guias",
+    titulo: "Whey protein · Rafaela Schumacher",
+    descricao:
+      "Os tipos de whey, como calcular a porcentagem de proteína na porção e como avaliar a marca antes de comprar.",
+  },
   "guia-mercado.html": {
     nav: "guia-mercado",
     grupo: "guias",
