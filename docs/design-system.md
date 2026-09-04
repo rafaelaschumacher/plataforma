@@ -361,6 +361,35 @@ mapa e deixe os três marcadores no HTML:
 `node scripts/sync-layout.js --check` falha se alguma página estiver fora de
 sincronia, sem alterar nada.
 
+### Grupo "Guias" no menu — `.nav-grupo`, `.nav-submenu`
+
+O único item do menu que tem filhos. Ele é **um link de verdade** para
+`guias.html`, que lista os guias em cartões — o painel suspenso é só um atalho
+por cima disso. Quem chega sem JavaScript, sem mouse ou por leitor de tela
+continua alcançando tudo pela página.
+
+**O painel não usa JavaScript.** Abre no `:hover` e no `:focus-within` do
+`.nav-grupo`, então mouse e teclado funcionam pelo mesmo caminho e ele fecha
+sozinho quando o foco sai. Fechado ele usa `visibility: hidden`, e não só
+`opacity: 0` — é isso que o tira da ordem de tabulação enquanto está escondido.
+
+Três detalhes que parecem pequenos e não são:
+
+| Detalhe | Por quê |
+|---|---|
+| `.nav-submenu::before`, uma faixa invisível acima do painel | Cobre o vão entre o link e o painel. Sem ela o mouse atravessa um pedaço de nada no caminho e o painel fecha na cara de quem está indo até ele. |
+| O painel abre alinhado à **direita** (`right: -18px`) | "Guias" é o último item do menu. Alinhado à esquerda, o painel encostaria fora da tela em janela estreita. |
+| Na gaveta do celular não existe painel | Os guias ficam listados abertos abaixo do "Guias", com o filete dourado marcando que pendem dele. São três linhas a mais numa gaveta que sobra espaço — mais simples e mais visível do que um accordion. |
+
+A marca de "abre" é o mesmo `+` dourado do accordion do FAQ da marca, girando
+45° quando o painel abre. É o único indicador de expandir que o design system
+tem; o sistema de ícones ainda é uma decisão em aberto.
+
+**No `sync-layout.js`**, as páginas que pertencem ao grupo trazem
+`grupo: "guias"` além do `nav`. Com isso o link do grupo fica dourado junto
+quando a leitora está em qualquer guia — mas sem `aria-current`, que pertence a
+uma página só.
+
 ### O cabeçalho tem um limite de largura real
 
 Abaixo de **1020px** a navegação vira gaveta lateral. O número não é

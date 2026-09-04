@@ -38,6 +38,9 @@ const OG_PADRAO = "assets/img/og/og-default.png";
  * regeradas a cada execução.
  *
  * nav: valor do data-nav do link que deve ficar marcado como página atual.
+ * grupo: para páginas dentro de um grupo do menu (os guias), o data-nav do
+ *   link do grupo — ele fica marcado junto, para o menu mostrar em que
+ *   seção a leitora está.
  */
 const PAGINAS = {
   "index.html": {
@@ -59,20 +62,36 @@ const PAGINAS = {
     descricao:
       "O que realmente faz diferença no dia a dia: saber pesar, se organizar, entender o seu plano e não transformar cada imprevisto em um problema.",
   },
+  "guias.html": {
+    nav: "guias",
+    titulo: "Guias · Rafaela Schumacher",
+    descricao:
+      "Os materiais de apoio da consultoria reunidos: guia do mercado, comer fora no dia a dia e guia da refeição livre.",
+  },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
+    grupo: "guias",
     titulo: "Guia da refeição livre · Rafaela Schumacher",
     descricao:
       "Sugestões prontas de refeição livre por tipo de programa, com orientações para antes, durante e depois.",
   },
   "comer-fora.html": {
     nav: "comer-fora",
+    grupo: "guias",
     titulo: "Comer fora no dia a dia · Rafaela Schumacher",
     descricao:
       "Como escolher bem quando não dá para comer exatamente o que está no plano: no por quilo, no delivery, na padaria, no trabalho e na viagem.",
   },
+  "whey-protein.html": {
+    nav: "whey-protein",
+    grupo: "guias",
+    titulo: "Whey protein · Rafaela Schumacher",
+    descricao:
+      "Os tipos de whey, como calcular a porcentagem de proteína na porção e como avaliar a marca antes de comprar.",
+  },
   "guia-mercado.html": {
     nav: "guia-mercado",
+    grupo: "guias",
     titulo: "Guia do mercado · Rafaela Schumacher",
     descricao:
       "Como ler rótulos e listas de ingredientes, com sugestões de marcas para facilitar suas escolhas na hora da compra.",
@@ -145,14 +164,22 @@ function montarHead(arquivo, meta) {
   <link rel="stylesheet" href="assets/css/paginas.css" />`;
 }
 
-/** Marca o link da página atual no cabeçalho. */
-function marcarNavegacao(html, nav) {
+/** Marca o link da página atual no cabeçalho, e o do grupo a que ela pertence. */
+function marcarNavegacao(html, nav, grupo) {
   return html.replace(
     /<a href="([^"]+)" data-nav="([^"]+)">/g,
-    (linhaInteira, href, chave) =>
-      chave === nav
-        ? `<a href="${href}" data-nav="${chave}" class="active" aria-current="page">`
-        : linhaInteira
+    (linhaInteira, href, chave) => {
+      // A página atual: dourado e aria-current, como sempre.
+      if (chave === nav) {
+        return `<a href="${href}" data-nav="${chave}" class="active" aria-current="page">`;
+      }
+      // O grupo que a contém: dourado também, para o menu dizer onde a
+      // leitora está — mas sem aria-current, que pertence a uma página só.
+      if (grupo && chave === grupo) {
+        return `<a href="${href}" data-nav="${chave}" class="active">`;
+      }
+      return linhaInteira;
+    }
   );
 }
 
@@ -190,7 +217,7 @@ function main() {
 
     let html = original;
     html = substituirBloco(html, "head", montarHead(arquivo, meta), arquivo);
-    html = substituirBloco(html, "header", marcarNavegacao(header, meta.nav), arquivo);
+    html = substituirBloco(html, "header", marcarNavegacao(header, meta.nav, meta.grupo), arquivo);
     html = substituirBloco(html, "footer", footer, arquivo);
 
     if (html === original) {

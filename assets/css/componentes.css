@@ -175,6 +175,82 @@
   transform: scaleX(1);
 }
 
+/* -------------------------------------------------- grupo "Guias" no menu
+   "Guias" é um link de verdade — leva à página que lista os guias — e, no
+   desktop, também abre um painel de atalho. O painel é só CSS: aparece no
+   :hover e no :focus-within, então funciona com mouse e com teclado sem
+   nenhum JavaScript, e some sozinho quando o foco sai. Com `visibility`
+   (e não só `opacity`) ele sai da ordem de tabulação enquanto está fechado.
+
+   A marca de "abre" é o mesmo `+` dourado do accordion do FAQ, girando 45°
+   quando abre — é o único indicador de expandir que a marca tem. */
+.nav-grupo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-grupo > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-grupo-marca {
+  font-size: 0.9em;
+  line-height: 1;
+  color: var(--cor-acento);
+  transition: transform var(--transicao);
+}
+
+.nav-grupo:hover .nav-grupo-marca,
+.nav-grupo:focus-within .nav-grupo-marca {
+  transform: rotate(45deg);
+}
+
+.nav-submenu {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: -18px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  min-width: 190px;
+  padding: var(--sp-16) var(--sp-24);
+  background: var(--cor-superficie-alt);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transicao), transform var(--transicao),
+    visibility 0s linear 200ms;
+}
+
+/* A faixa invisível cobre o vão entre o link e o painel: sem ela, o mouse
+   atravessa um pedaço de nada no caminho e o painel fecha na cara de quem
+   está indo até ele. */
+.nav-submenu::before {
+  content: "";
+  position: absolute;
+  inset: -15px 0 100% 0;
+}
+
+.nav-grupo:hover .nav-submenu,
+.nav-grupo:focus-within .nav-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity var(--transicao), transform var(--transicao),
+    visibility 0s;
+}
+
+.nav-submenu a {
+  white-space: nowrap;
+}
+
 /* ------------------------------------------------------- botão de tema
    Único controle que muda a aparência do portal inteiro. 44×44 é o alvo
    mínimo de toque. */
@@ -1139,6 +1215,64 @@ body.nav-aberto {
   }
 
   .main-nav a:last-child {
+    border-bottom: none;
+  }
+
+  /* Na gaveta não há painel: o grupo vira só mais uma parte da lista, com
+     os guias listados abaixo do próprio "Guias". Deixar tudo aberto é mais
+     simples e mais visível do que um accordion — são quatro linhas a mais
+     numa gaveta que sobra espaço. */
+  .nav-grupo {
+    display: block;
+  }
+
+  .nav-grupo > a {
+    display: flex;
+  }
+
+  .nav-grupo-marca {
+    display: none;
+  }
+
+  .nav-submenu {
+    position: static;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+    gap: 0;
+  }
+
+  .nav-submenu::before {
+    display: none;
+  }
+
+  /* O filete dourado marca que estes pendem do "Guias" de cima. */
+  .nav-submenu a {
+    position: relative;
+    padding-left: var(--sp-24);
+    font-size: 0.72rem;
+    color: var(--cor-texto-suave);
+  }
+
+  .nav-submenu a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 12px;
+    height: 1px;
+    background: var(--cor-acento);
+    opacity: 0.75;
+  }
+
+  .nav-grupo:last-child .nav-submenu a:last-child {
     border-bottom: none;
   }
 }
