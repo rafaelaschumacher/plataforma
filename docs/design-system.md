@@ -274,6 +274,27 @@ nada é destaque.
 
 `.callout-spaced` acrescenta respiro acima.
 
+### Tabela — `.table-wrapper` + `.equiv-table`
+
+Abaixo de 640px a tabela deixa de ser tabela: cada linha vira um cartão
+empilhado e o `<thead>` some. Quem carrega os nomes das colunas a partir daí é
+o atributo **`data-label` em cada `<td>`**, que o CSS imprime como rótulo em
+versalete acima do valor.
+
+**Toda célula precisa do `data-label`.** Sem ele o cartão mostra os valores
+soltos, sem dizer o que cada um é — no computador a tabela parece perfeita e o
+problema só aparece no celular. Foi exatamente o que aconteceu na primeira
+versão da tabela do guia de whey.
+
+```html
+<td class="food-name" data-label="Tipo">Concentrado</td>
+<td class="equiv-col" data-label="Proteína por porção">70% a 80%</td>
+<td data-label="Carboidrato por porção">até 5 g</td>
+```
+
+`.food-name` destaca a primeira coluna e `.equiv-col` põe o valor em dourado —
+use no número que a leitora veio buscar.
+
 ### Chip — `.product-chip`
 
 Pill de contorno fino, no formato da tag da marca. Item de marca no guia do
