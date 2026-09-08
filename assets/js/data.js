@@ -58,6 +58,7 @@ const GRUPOS = [
       { id: "peito_peru", nome: "Peito de peru (frios)", kcal: 111, g: 30 },
       { id: "tofu", nome: "Tofu grelhado", kcal: 76, g: 100 },
       { id: "pts", nome: "Proteína texturizada de soja hidratada", kcal: 89, g: 100 },
+      { id: "whey", nome: "Whey protein (concentrado, em pó)", kcal: 390, g: 30 },
     ],
   },
   {
@@ -68,7 +69,6 @@ const GRUPOS = [
     alimentos: [
       { id: "azeite", nome: "Azeite de oliva extra virgem", kcal: 884, g: 13, unidade: "ml" },
       { id: "oleo_vegetal", nome: "Óleo de soja / girassol / canola", kcal: 884, g: 13, unidade: "ml" },
-      { id: "margarina", nome: "Margarina", kcal: 596, g: 5 },
       { id: "castanha_para", nome: "Castanha-do-pará", kcal: 656, g: 8 },
       { id: "castanha_caju", nome: "Castanha de caju", kcal: 570, g: 10 },
       { id: "amendoas", nome: "Amêndoas", kcal: 579, g: 10 },
