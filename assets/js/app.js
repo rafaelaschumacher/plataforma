@@ -39,6 +39,40 @@
     });
   }
 
+  /* Nem toda paciente tem balança na hora da refeição, então onde o alimento
+     tem uma unidade que dá para contar — fatia, pão, ovo, pote, castanha — a
+     resposta vem nela, com a grama do lado. Onde não dá para contar (arroz,
+     carne moída, aveia), fica só a grama: colher e xícara variam demais de
+     uma casa para outra para servirem de medida.
+
+     A contagem arredonda para meia unidade. Abaixo de meia, a unidade não
+     ajuda ("0,3 pão") e só a grama aparece. */
+  function formatUnidades(n, un) {
+    const inteiro = Math.floor(n);
+    const meio = n - inteiro >= 0.5;
+    const texto =
+      inteiro === 0 ? "½" : meio ? `${inteiro}½` : String(inteiro);
+    const plural = n > 1 || (inteiro === 0 && false);
+    return `${texto} ${plural ? un.p : un.s}`;
+  }
+
+  function quantidadeTexto(alimento, gramas) {
+    const peso = `${formatNumber(gramas, 1)} ${unidadeDe(alimento)}`;
+    if (!alimento.un) return peso;
+    /* Meia castanha não existe: o que é miúdo conta inteiro. */
+    const miudo = alimento.un.g < 10;
+    const bruto = gramas / alimento.un.g;
+    const n = miudo ? Math.round(bruto) : Math.round(bruto * 2) / 2;
+    if (n < (miudo ? 1 : 0.5)) return peso;
+
+    /* A contagem só entra quando bate com o peso. "1 unidade · 40 g" de um pão
+       de 50 g mandaria a paciente comer um quarto a mais do que a conta diz —
+       nesses casos a grama vai sozinha, que é a resposta exata. A folga de 15%
+       é bem menor que o erro que o arredondamento de 5 em 5 g já introduz. */
+    if (Math.abs(n * alimento.un.g - gramas) / gramas > 0.15) return peso;
+    return `${formatUnidades(n, alimento.un)} · ${peso}`;
+  }
+
   /* A regra da ferramenta é trocar dentro do mesmo grupo. Sem saber o que cabe
      em cada um, a paciente não consegue nem começar — e há casos que não são
      óbvios, como o abacate em Gorduras. */
@@ -105,7 +139,7 @@
     resultSummary.hidden = qtdGramas <= 0;
     resultSummary.innerHTML =
       qtdGramas > 0
-        ? `No seu plano: <strong>${formatNumber(qtdGramas, 1)} ${unidade}</strong> de <strong>${alimento.nome}</strong>, o que corresponde a aproximadamente <strong>${formatNumber(kcalTotal, 0)} kcal</strong>. Veja abaixo o quanto comer de cada alimento do grupo “${grupo.nome}” para fazer a troca.`
+        ? `No seu plano: <strong>${quantidadeTexto(alimento, qtdGramas)}</strong> de <strong>${alimento.nome}</strong>, o que corresponde a aproximadamente <strong>${formatNumber(kcalTotal, 0)} kcal</strong>. Veja abaixo o quanto comer de cada alimento do grupo “${grupo.nome}” para fazer a troca.`
         : "";
 
     renderTable();
@@ -143,7 +177,7 @@
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td class="food-name" data-label="Se quiser trocar por">${alimento.nome}</td>
-          <td class="equiv-col" data-label="Quanto comer">≈ ${formatNumber(equivGramas, 0)} ${unidadeDe(alimento)}</td>
+          <td class="equiv-col" data-label="Quanto comer">≈ ${quantidadeTexto(alimento, equivGramas)}</td>
         `;
         equivTableBody.appendChild(tr);
       });
