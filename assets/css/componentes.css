@@ -564,7 +564,13 @@ body.nav-aberto {
      ela é trocada por outro recorte — um style inline venceria o media query. */
   background-image: url("../img/home/hero.jpg");
   background-size: cover;
-  background-position: center;
+  /* Ancorado no canto superior direito, não no centro. A altura da faixa é
+     praticamente fixa, então quanto mais larga a tela, mais larga a proporção
+     da caixa — 2,6:1 em 1440px, 3,5:1 em 1920px, 4,7:1 em 2560px. Com `center`
+     o `cover` tira de todos os lados e acaba cortando a cabeça nas telas
+     largas. Ancorado aqui, o corte horizontal come o fundo estendido da
+     esquerda e o vertical come o torso embaixo — o rosto nunca. */
+  background-position: right top;
   background-repeat: no-repeat;
 }
 

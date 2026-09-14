@@ -363,8 +363,21 @@ tem isso.
 
 | Arquivo | Onde vale | Como é feito |
 |---|---|---|
-| `hero.jpg` | acima de 620px | 1920×736. O fundo liso do retrato é **estendido para a esquerda** até dar 2,61:1, criando a coluna livre onde o texto assenta. O sujeito fica em ~76% da largura, no lado claro do véu. |
+| `hero.jpg` | acima de 620px | 2576×736. O fundo liso do retrato é **estendido para a esquerda** até dar 3,5:1, criando a coluna livre onde o texto assenta. |
 | `hero-estreito.jpg` | 620px para baixo | 1080×916. Recorte vertical direto da foto, sem extensão. |
+
+**A proporção da imagem é ditada pela tela mais larga, não pela mais comum.**
+A altura da faixa é praticamente fixa (~551px), então quanto mais larga a tela,
+mais larga fica a proporção da caixa: 2,6:1 em 1440px, 3,5:1 em 1920px, 4,7:1
+em 2560px. Quando a caixa fica mais larga que a imagem, o `cover` amplia para
+preencher a largura e corta em cima e embaixo — foi assim que a primeira versão,
+feita em 2,61:1, decepou a cabeça em 1920px. Daí duas regras:
+
+- a imagem vai a **3,5:1**, cobrindo sem corte vertical até 1920px;
+- o `background-position` é **`right top`**, não `center`. Ancorado no canto, o
+  corte horizontal come o fundo estendido da esquerda e o vertical come o torso
+  embaixo. O rosto nunca entra na conta. Com `center` o corte vem dos quatro
+  lados e não há proporção de imagem que resolva.
 
 **A extensão só funciona com fundo liso.** Ela pega a faixa de 60px mais à
 esquerda da foto e a alarga. Meça antes: se a variação do fundo ao longo da
@@ -379,6 +392,10 @@ fechado embaixo, onde está o texto.
 
 Os três véus são tokens (`--foto-scrim`, `--foto-scrim-estreito`,
 `--foto-scrim-alto`), nunca degradês soltos na regra.
+
+> **Ao trocar a foto, teste acima de 1440px.** O desktop "padrão" não é o caso
+> difícil — o caso difícil é a tela larga, onde a caixa fica mais larga que a
+> imagem. Meça pelo menos 1440, 1920 e 2560.
 
 > **Ao trocar a foto, remeça o contraste** — e meça **só os pixels cobertos por
 > letra**, não a caixa do texto. A caixa inclui o espaço vazio depois da última
