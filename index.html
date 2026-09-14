@@ -104,8 +104,10 @@
 
   <main id="conteudo">
     <!-- O véu sobre a foto agora é um ::before com o token --foto-scrim, para
-         a tinta do degradê vir do design system e não de um valor solto aqui. -->
-    <section class="hero-photo" style="background-image: url('assets/img/home/hero.jpg');">
+         a tinta do degradê vir do design system e não de um valor solto aqui.
+         A imagem também mora no CSS: abaixo de 620px ela é trocada por um
+         recorte vertical, e um style inline aqui venceria o media query. -->
+    <section class="hero-photo">
       <div class="container hero-photo-inner" data-reveal>
         <p class="eyebrow eyebrow-light">Bem-vinda à sua área de suporte</p>
         <h1 class="hero-photo-title">Tudo o que você precisa para seguir seu plano</h1>

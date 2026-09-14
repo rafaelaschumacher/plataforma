@@ -560,6 +560,9 @@ body.nav-aberto {
   position: relative;
   isolation: isolate;
   padding-block: clamp(72px, 11vw, 132px);
+  /* A imagem fica aqui, e não num style inline no HTML, porque abaixo de 620px
+     ela é trocada por outro recorte — um style inline venceria o media query. */
+  background-image: url("../img/home/hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1327,10 +1330,20 @@ body.nav-aberto {
 }
 
 @media (max-width: 620px) {
+  /* Aqui o bloco de texto ocupa o banner inteiro, então não sobra coluna livre
+     para o retrato: com o recorte largo o título cairia em cima do rosto. A
+     solução é dar altura ao banner e separar as duas coisas — a foto ganha uma
+     faixa no alto e o texto desce para baixo dela. Por isso são dois arquivos:
+     `hero.jpg` é deitado e tem o fundo estendido à esquerda; `hero-estreito.jpg`
+     é o recorte vertical da foto original, sem extensão nenhuma. */
   .hero-photo {
-    /* Em tela estreita o recorte sobe: mantém o ponto de interesse da foto
-       visível em vez de aceitar o corte no centro geométrico. */
-    background-position: center 28%;
+    background-image: url("../img/home/hero-estreito.jpg");
+    background-position: center top;
+    padding-block-start: clamp(260px, 72vw, 320px);
+  }
+
+  .hero-photo::before {
+    background: var(--foto-scrim-alto);
   }
 
   .footer-inner {

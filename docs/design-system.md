@@ -348,6 +348,44 @@ Bloco de encerramento das páginas de conteúdo, fora dos cartões.
 O aviso "conteúdo de apoio educativo — consulte sempre sua nutricionista"
 fica no rodapé do site (`.footer-legal`) e é obrigatório em todas as páginas.
 
+### Banner com foto — `.hero-photo`
+
+Só a home usa. É uma `<section>` com a foto no `background`, um `::before` com o
+véu, e o conteúdo por cima. **A imagem fica no CSS, não num `style` inline no
+HTML** — abaixo de 620px ela é trocada, e um `style` inline venceria o media
+query.
+
+São dois arquivos, e a razão é geométrica. O banner é deitado (2,61:1 no
+desktop) e as fotos da marca são retratos 2:3. Cortar uma faixa horizontal de um
+retrato produz um close: para o rosto ter tamanho normal num quadro de 1440px,
+seriam precisos cerca de 2500px de largura de imagem, e um retrato em pé não
+tem isso.
+
+| Arquivo | Onde vale | Como é feito |
+|---|---|---|
+| `hero.jpg` | acima de 620px | 1920×736. O fundo liso do retrato é **estendido para a esquerda** até dar 2,61:1, criando a coluna livre onde o texto assenta. O sujeito fica em ~76% da largura, no lado claro do véu. |
+| `hero-estreito.jpg` | 620px para baixo | 1080×916. Recorte vertical direto da foto, sem extensão. |
+
+**A extensão só funciona com fundo liso.** Ela pega a faixa de 60px mais à
+esquerda da foto e a alarga. Meça antes: se a variação do fundo ao longo da
+coluna passar de uns poucos pontos por canal, a emenda aparece e o caminho é
+outro (fotografar deitado, ou aceitar o sujeito menor).
+
+Abaixo de 620px o texto passa a ocupar o banner inteiro e colide com o rosto. A
+solução não é mover a foto, é **dar altura ao banner**: `padding-block-start`
+sobe para `clamp(260px, 72vw, 320px)`, a foto ancora em `center top` e o véu
+inverte para `--foto-scrim-alto` — quase limpo em cima, onde está o rosto, e
+fechado embaixo, onde está o texto.
+
+Os três véus são tokens (`--foto-scrim`, `--foto-scrim-estreito`,
+`--foto-scrim-alto`), nunca degradês soltos na regra.
+
+> **Ao trocar a foto, remeça o contraste** — e meça **só os pixels cobertos por
+> letra**, não a caixa do texto. A caixa inclui o espaço vazio depois da última
+> linha; medindo a caixa, a foto atual acusa 3,76:1 em 1024px, e o valor real
+> sob os glifos é 7,34:1. O jeito honesto é fotografar a seção com e sem o
+> texto, diferenciar as duas imagens e amostrar o fundo só onde o glifo cobre.
+
 ### Pendentes
 
 `acordeao` ainda não existe — entra junto com a página de perguntas

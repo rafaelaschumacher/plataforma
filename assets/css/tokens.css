@@ -112,6 +112,18 @@
     rgba(15, 14, 12, 0.20) 100%
   );
 
+  /* No celular a foto ganha uma faixa própria no alto e o texto desce para
+     baixo dela. O véu inverte: quase limpo em cima, para o rosto aparecer, e
+     fechado embaixo, onde o texto passa. A virada é rápida de propósito — um
+     degradê longo deixaria meio rosto na penumbra. */
+  --foto-scrim-alto: linear-gradient(
+    180deg,
+    rgba(15, 14, 12, 0.12) 0%,
+    rgba(15, 14, 12, 0.30) 34%,
+    rgba(15, 14, 12, 0.82) 52%,
+    rgba(15, 14, 12, 0.88) 100%
+  );
+
   /* Em tela estreita o texto ocupa a largura toda e passa por cima da parte
      clara do véu horizontal. Aqui ele vira vertical: escurece de cima para
      baixo, atrás de todo o bloco de texto. */
