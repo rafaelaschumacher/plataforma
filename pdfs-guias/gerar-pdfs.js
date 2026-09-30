@@ -1,5 +1,6 @@
 // Gera um PDF por guia publicado, com a identidade do portal e tipografia
 // ampliada para leitura no celular, em folha A4.
+// Depois de gerar, rode comprimir.py para reduzir o tamanho e juntar os guias.
 const path = require('path');
 const { chromium } = require('playwright');
 
@@ -31,7 +32,7 @@ const CSS = `
   .guide-layout { display: block !important; }
   .pdf-assinatura { display: flex; justify-content: flex-start; margin-bottom: 64px; }
   h1, h2, h3, h4, .section-label { break-after: avoid; page-break-after: avoid; }
-  p, li, .callout, .guide-block, .guide-defs > div, .market-subgroup h4, .product-chip, tr, .guide-note, .meal-card
+  p, li, .callout, .guide-block, .guide-defs > div, .market-subgroup h4, .product-chip, .product-card, tr, .guide-note, .meal-card
     { break-inside: avoid; page-break-inside: avoid; }
   a { text-decoration: none; }
   .site-footer { break-inside: avoid; page-break-inside: avoid; margin-top: 48px !important; }
@@ -85,6 +86,13 @@ const RODAPE = `
       if (indice && hero) hero.appendChild(indice);
       document.querySelectorAll('details').forEach((d) => (d.open = true));
     }, TEMA);
+    // As fotos de produto carregam sob demanda na página; no PDF não há
+    // rolagem, então todas são carregadas antes de imprimir.
+    await page.evaluate(async () => {
+      document.querySelectorAll('img[loading="lazy"]').forEach((i) => i.removeAttribute('loading'));
+      await Promise.all([...document.images].map((i) =>
+        i.complete && i.naturalWidth ? 0 : new Promise((r) => { i.onload = i.onerror = r; })));
+    });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(300);
     const destino = path.join(SAIDA, `${nome}${TEMA === 'light' ? '-claro' : ''}.pdf`);

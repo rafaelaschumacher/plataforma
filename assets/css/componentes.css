@@ -1030,6 +1030,45 @@ body.nav-aberto {
   transition: border-color var(--transicao), color var(--transicao);
 }
 
+/* Card com a foto oficial da embalagem. Mantém a classe .product-chip para a
+   busca do guia continuar funcionando; os produtos sem foto seguem como pill,
+   numa linha logo abaixo dos cards. */
+.product-grid--fotos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
+  gap: var(--sp-12);
+}
+
+.product-grid--fotos + .product-grid {
+  margin-top: var(--sp-12);
+}
+
+.product-chip.product-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-color: var(--cor-borda);
+  border-radius: var(--radius-md);
+  background: var(--cor-superficie);
+}
+
+.product-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  background: var(--foto-produto-fundo);
+}
+
+.product-card figcaption {
+  padding: var(--sp-8) var(--sp-12) var(--sp-12);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--cor-texto);
+}
+
 .product-chip:hover {
   border-color: var(--cor-acento-borda);
   color: var(--cor-acento);

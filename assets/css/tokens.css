@@ -98,6 +98,11 @@
      usados sobre eles não acompanham o tema — precisam ser sempre os claros. */
   --gold-on-panel: #DFC48D;
   --panel-ink:     #14120F;   /* tinta escura constante: fundo de selo, sobre dourado */
+  /* Fundo das fotos de embalagem. As fotos oficiais das marcas vêm sobre
+     branco puro, então o quadro é branco nos dois temas (mesmo valor da
+     superfície do tema claro): assim a foto não fica com uma borda de outro
+     tom em volta. */
+  --foto-produto-fundo: #FFFFFF;
 
   /* Véu sobre a foto do banner da home. Pela mesma razão dos painéis, é
      constante nos dois temas: o texto sobre a imagem é sempre marfim. A
