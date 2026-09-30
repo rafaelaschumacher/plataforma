@@ -1,5 +1,5 @@
 // Gera um PDF por guia publicado, com a identidade do portal e tipografia
-// ampliada para leitura no celular (página estreita, formato 9:16).
+// ampliada para leitura no celular, em folha A4.
 const path = require('path');
 const { chromium } = require('playwright');
 
@@ -13,44 +13,41 @@ const GUIAS = [
   ['whey-protein.html', '4-whey-protein'],
 ];
 
-// Largura de página ~ largura de um celular; a altura segue 9:16.
-const LARGURA = 420;
-const ALTURA = Math.round(LARGURA * 16 / 9);
+// Folha A4 (210 × 297 mm = 794 × 1123 px), o formato em que materiais de
+// paciente costumam circular. O corpo fica em ~13,5 pt: um pouco acima do
+// usual em PDFs de nutrição (9–11 pt), para ler no celular sem zoom.
+const LARGURA = 794;
+const ALTURA = 1123;
 
 const CSS = `
-  html { font-size: 128% !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html { font-size: 116% !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   html, body { background: var(--bg) !important; }
   @page { background: var(--bg); }
   .site-header, .nav-scrim, .instalar-banner, .pular-conteudo,
   .market-search, .empty-state, .theme-toggle, .nav-toggle { display: none !important; }
   [data-reveal], [data-reveal-cascata] > * { opacity: 1 !important; transform: none !important; transition: none !important; }
   * { animation: none !important; }
+  .container { padding-inline: 56px !important; }
   .guide-layout { display: block !important; }
-  .pdf-assinatura { display: flex; justify-content: flex-start; margin-bottom: 28px; }
-  .pdf-assinatura .brand-nome { font-size: 1.2rem; }
-  .pdf-assinatura .brand-cargo { font-size: .5rem; }
+  .pdf-assinatura { display: flex; justify-content: flex-start; margin-bottom: 64px; }
   h1, h2, h3, h4, .section-label { break-after: avoid; page-break-after: avoid; }
-  p, li, .callout, .guide-block, .guide-defs > div, .market-subgroup h4, .product-chip, tr, .guide-note
+  p, li, .callout, .guide-block, .guide-defs > div, .market-subgroup h4, .product-chip, tr, .guide-note, .meal-card
     { break-inside: avoid; page-break-inside: avoid; }
   a { text-decoration: none; }
-  .site-footer { break-inside: avoid; page-break-inside: avoid; margin-top: 40px !important; }
+  .site-footer { break-inside: avoid; page-break-inside: avoid; margin-top: 48px !important; }
   /* Capa: assinatura, título, resumo e sumário ocupam a primeira página inteira. */
-  .hero { min-height: ${ALTURA - 60}px; box-sizing: border-box; break-after: page; page-break-after: always; border-bottom: 0 !important; }
-  .hero { padding-block: 20px 0 !important; }
-  .hero .pdf-assinatura { margin-bottom: 22px; }
-  .hero .eyebrow { display: none; }
-  .hero .hero-lead { font-size: 1rem; line-height: 1.5; }
-  .hero .guide-index { margin-top: 18px; padding: 14px 18px !important; }
-  .hero .guide-index-title { margin-bottom: 8px !important; }
-  .hero .guide-index a { padding-top: 2px !important; padding-bottom: 2px !important; line-height: 1.3; font-size: .8rem; }
-  .article-section { padding-top: 8px !important; }
+  .hero { min-height: ${ALTURA - 110}px; box-sizing: border-box; break-after: page; page-break-after: always;
+          border-bottom: 0 !important; padding-block: 48px 0 !important; }
+  .hero h1 { font-size: 3.2rem; }
+  .hero .guide-index { margin-top: 56px; max-width: 520px; }
+  .article-section { padding-top: 16px !important; }
 `;
 
 // Rodapé de cada página: a assinatura em texto e a paginação. O template roda
 // isolado da página, sem acesso às fontes dela, por isso usa fonte do sistema.
 const RODAPE = `
-  <div style="width:100%; padding:0 24px 10px; display:flex; justify-content:space-between;
-              font-family: Helvetica, Arial, sans-serif; font-size:8px; letter-spacing:.16em;
+  <div style="width:100%; padding:0 56px 14px; display:flex; justify-content:space-between;
+              font-family: Helvetica, Arial, sans-serif; font-size:10px; letter-spacing:.16em;
               text-transform:uppercase; color:#A79C8B;">
     <span>Rafaela Schumacher · Nutricionista</span>
     <span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
@@ -96,7 +93,7 @@ const RODAPE = `
       width: LARGURA + 'px',
       height: ALTURA + 'px',
       printBackground: true,
-      margin: { top: '26px', bottom: '40px', left: '0', right: '0' },
+      margin: { top: '40px', bottom: '52px', left: '0', right: '0' },
       displayHeaderFooter: true,
       headerTemplate: '<span></span>',
       footerTemplate: RODAPE,
