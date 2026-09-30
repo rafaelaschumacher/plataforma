@@ -505,6 +505,14 @@ body.nav-aberto {
   color: var(--cor-texto);
 }
 
+/* Os subtítulos dos cards e dos subgrupos carregam conteúdo ("Comece pelo
+   primeiro", "Coma normal no dia"), não são só etiquetas: usam o topo da
+   faixa de rótulo para continuarem legíveis no celular. */
+.market-subgroup h4,
+.info-card h4 {
+  font-size: var(--fs-rotulo);
+}
+
 /* ================================================================= heros */
 .hero {
   position: relative;
@@ -962,7 +970,9 @@ body.nav-aberto {
 /* A nota fica numa faixa de fundo alternado, sem virar um segundo cartão. */
 .meal-card .meal-note {
   font-size: var(--fs-sm);
-  color: var(--cor-texto-suave);
+  /* Cor de corpo, não a suave: a nota traz instrução ("peça sem maionese"),
+     e precisa ser lida, não só notada. */
+  color: var(--cor-texto-corpo);
   background: var(--cor-superficie-alt);
   border-radius: var(--radius-sm);
   padding: var(--sp-12) var(--sp-16);

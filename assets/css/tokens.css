@@ -146,6 +146,9 @@
      é o valor oficial da marca; os demais níveis derivam das medidas reais
      usadas no site da marca (h1 do hero, h2 de seção, h3 de card). */
   --fs-xs: 0.66rem;      /* micro-rótulos em caixa alta */
+  --fs-rotulo: 0.75rem;  /* subtítulo em caixa alta que carrega conteúdo (h4 dos cards).
+                            Topo da faixa de rótulo da marca (.53rem–.75rem): abaixo
+                            disso fica pequeno demais para ler no celular. */
   --fs-sm: 0.84rem;      /* notas, legendas */
   --fs-base: clamp(0.95rem, 0.92rem + 0.15vw, 1.02rem);
   --fs-lg: clamp(1.08rem, 1.02rem + 0.28vw, 1.24rem);          /* lead */
