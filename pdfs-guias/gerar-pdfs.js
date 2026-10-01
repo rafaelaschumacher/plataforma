@@ -46,6 +46,40 @@ const CSS = `
   .hero h1 { font-size: 3.2rem; }
   .hero .guide-index { margin-top: 56px; max-width: 520px; }
   .article-section { padding-top: 16px !important; }
+
+  /* ---- Diagramação de PDF, não de site ----
+     No site, cada bloco é um card que a pessoa rola. No papel, um card alto
+     acaba partido entre duas páginas. Aqui: cada seção abre página nova, os
+     cards de conteúdo viram blocos separados por um fio, e nada que seja uma
+     unidade de leitura (bloco, destaque, card de produto ou de refeição) é
+     dividido entre páginas. */
+  .guide-section { break-before: page; page-break-before: always; margin: 0 !important; }
+  .section-label { margin-bottom: 28px !important; }
+  .guide-content > .guide-note { break-before: page; page-break-before: always; }
+  .info-card:not(.meal-card) {
+    background: none !important; border: 0 !important; box-shadow: none !important;
+    border-radius: 0 !important; padding: 0 !important; margin: 0 0 36px !important;
+  }
+  .info-card:not(.meal-card) + .info-card:not(.meal-card),
+  .info-grid > .info-card + .info-card {
+    border-top: 1px solid var(--cor-borda) !important; padding-top: 30px !important;
+  }
+  .info-grid { display: block !important; }
+  .guide-intro p { font-size: 1.08rem; color: var(--cor-texto); }
+  .info-card h3 { font-size: 1.7rem; margin-bottom: 14px; }
+  h3, h4, .section-label, .guide-list-title, .market-subgroup > h4 { break-after: avoid; page-break-after: avoid; }
+  h3 + p, h4 + p, h4 + ul, h4 + ol, .market-subgroup > h4 + * { break-before: avoid; page-break-before: avoid; }
+  p { orphans: 3; widows: 3; }
+  .guide-block, .guide-defs > div, .callout, .guide-note, .meal-card, .product-card,
+  .table-wrapper, table, ol, .info-grid > .info-card { break-inside: avoid; page-break-inside: avoid; }
+  .meal-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+  .product-grid--fotos { grid-template-columns: repeat(5, 1fr) !important; gap: 10px !important; }
+  .product-card figcaption { font-size: .78rem !important; padding: 6px 8px 8px !important; }
+  .guide-note { margin-top: 0 !important; }
+  /* Grupos de produtos cabem numa página: título e fotos ficam juntos. */
+  .market-subgroup { break-inside: avoid; page-break-inside: avoid; }
+  /* Destaque e frase final ficam com o texto que comentam, nunca sozinhos. */
+  p + .callout, .callout + p, .info-card > p:last-child { break-before: avoid; page-break-before: avoid; }
 `;
 
 // Rodapé de cada página: a assinatura em texto e a paginação. O template roda
