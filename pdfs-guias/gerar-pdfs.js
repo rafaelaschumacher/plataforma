@@ -11,18 +11,50 @@ const TEMA = process.argv[3] || 'light';
 // 'forte': variante de leitura com letra maior e mais encorpada (corpo em 400,
 // destaques em 500, títulos em 400), para quem lê no celular com dificuldade.
 const FORTE = process.argv[4] !== 'leve';
+// [página, nome do arquivo, capa: início do título, grifo dourado, frase]
 const GUIAS = [
-  ['guia-mercado.html', '1-guia-do-mercado'],
-  ['comer-fora.html', '2-comer-fora-no-dia-a-dia'],
-  ['refeicao-livre.html', '3-guia-da-refeicao-livre'],
-  ['whey-protein.html', '4-whey-protein'],
+  ['guia-mercado.html', '1-guia-do-mercado', 'Guia para o', 'mercado', 'O que colocar no carrinho para a semana'],
+  ['comer-fora.html', '2-comer-fora-no-dia-a-dia', 'Guia para', 'comer fora', 'Como escolher no cardápio sem travar'],
+  ['refeicao-livre.html', '3-guia-da-refeicao-livre', 'Guia de', 'refeição livre', 'Como comer o que você gosta sem bagunçar a semana'],
+  ['whey-protein.html', '4-whey-protein', 'Guia de', 'whey protein', 'Como ler o rótulo e escolher a marca'],
 ];
+
 
 // Folha A4 (210 × 297 mm = 794 × 1123 px), o formato em que materiais de
 // paciente costumam circular. O corpo fica em ~13,5 pt: um pouco acima do
 // usual em PDFs de nutrição (9–11 pt), para ler no celular sem zoom.
 const LARGURA = 794;
 const ALTURA = 1123;
+
+// Capa: página inteira no painel escuro da marca (escuro nos dois temas),
+// com selo, título com grifo dourado, filete e assinatura. Sai num PDF à
+// parte, sem margem nem número de página; comprimir.py junta na frente.
+const CSS_CAPA = `
+  @page { margin: 0; }
+  html, body { margin: 0; padding: 0; background: #100F0C; }
+  .capa {
+    box-sizing: border-box; width: ${LARGURA}px; height: ${ALTURA}px;
+    background: var(--panel-grad); color: var(--panel-text);
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    padding: 96px 80px 72px; text-align: center;
+  }
+  .capa-selo { width: 92px; height: 92px; color: var(--gold-on-panel); }
+  .capa-meio { display: flex; flex-direction: column; align-items: center; }
+  .capa h1 {
+    margin: 0; font-family: var(--fonte-titulo); font-weight: 400; font-size: 64px;
+    line-height: 1.12; letter-spacing: -0.005em; color: var(--panel-text);
+  }
+  .capa h1 em { display: block; font-style: italic; font-weight: 400; color: var(--gold-on-panel); }
+  .capa-filete { width: 64px; height: 1px; background: var(--gold-on-panel); margin: 40px 0 32px; opacity: .8; }
+  .capa-frase {
+    margin: 0; max-width: 460px; font-family: var(--fonte-corpo); font-weight: 400;
+    font-size: 19px; line-height: 1.5; color: var(--panel-muted);
+  }
+  .capa-assinatura {
+    margin: 0; font-family: var(--fonte-corpo); font-weight: 400; font-size: 12px;
+    letter-spacing: .32em; text-transform: uppercase; color: var(--panel-muted);
+  }
+`;
 
 const CSS = `
   html { font-size: 116% !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -110,7 +142,7 @@ const RODAPE = `
     try { localStorage.setItem('tema', tema); localStorage.setItem('instalar-dispensado', '1'); } catch (e) {}
   }, TEMA);
 
-  for (const [arquivo, nome] of GUIAS) {
+  for (const [arquivo, nome, capaInicio, capaGrifo, capaFrase] of GUIAS) {
     const page = await ctx.newPage();
     await page.emulateMedia({ media: 'screen' });
     await page.goto('file://' + path.join(RAIZ, arquivo), { waitUntil: 'load' });
@@ -153,6 +185,30 @@ const RODAPE = `
       footerTemplate: RODAPE,
     });
     console.log('ok', destino);
+
+    // Capa, na mesma página já carregada (tokens e fontes da marca prontos).
+    await page.evaluate(({ inicio, grifo, frase }) => {
+      const selo = document.querySelector('.brand-selo').innerHTML;
+      document.body.innerHTML = `
+        <div class="capa">
+          <div class="capa-selo">${selo}</div>
+          <div class="capa-meio">
+            <h1>${inicio}<em>${grifo}</em></h1>
+            <div class="capa-filete"></div>
+            <p class="capa-frase">${frase}</p>
+          </div>
+          <p class="capa-assinatura">Rafaela Schumacher · Nutricionista</p>
+        </div>`;
+    }, { inicio: capaInicio, grifo: capaGrifo, frase: capaFrase });
+    await page.addStyleTag({ content: CSS_CAPA });
+    await page.evaluate(() => document.fonts.ready);
+    await page.pdf({
+      path: path.join(path.dirname(destino), '_capa-' + path.basename(destino)),
+      width: LARGURA + 'px',
+      height: ALTURA + 'px',
+      printBackground: true,
+      margin: { top: '0', bottom: '0', left: '0', right: '0' },
+    });
     await page.close();
   }
   await browser.close();
