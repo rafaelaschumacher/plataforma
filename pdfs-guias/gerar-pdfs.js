@@ -6,10 +6,11 @@ const { chromium } = require('playwright');
 
 const RAIZ = path.join(__dirname, '..');
 const SAIDA = process.argv[2] || __dirname;
-const TEMA = process.argv[3] || 'dark';
+// Padrão aprovado pela Rafaela em 01/10/2026: tema claro, letra encorpada.
+const TEMA = process.argv[3] || 'light';
 // 'forte': variante de leitura com letra maior e mais encorpada (corpo em 400,
 // destaques em 500, títulos em 400), para quem lê no celular com dificuldade.
-const FORTE = process.argv[4] === 'forte';
+const FORTE = process.argv[4] !== 'leve';
 const GUIAS = [
   ['guia-mercado.html', '1-guia-do-mercado'],
   ['comer-fora.html', '2-comer-fora-no-dia-a-dia'],
@@ -106,7 +107,7 @@ const RODAPE = `
     });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(300);
-    const destino = path.join(SAIDA, `${nome}${TEMA === 'light' ? '-claro' : ''}${FORTE ? '-letra-maior' : ''}.pdf`);
+    const destino = path.join(SAIDA, `${nome}${TEMA === 'dark' ? '-escuro' : ''}${FORTE ? '' : '-letra-fina'}.pdf`);
     await page.pdf({
       path: destino,
       width: LARGURA + 'px',
