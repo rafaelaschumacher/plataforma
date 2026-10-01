@@ -7,6 +7,9 @@ const { chromium } = require('playwright');
 const RAIZ = path.join(__dirname, '..');
 const SAIDA = process.argv[2] || __dirname;
 const TEMA = process.argv[3] || 'dark';
+// 'forte': variante de leitura com letra maior e mais encorpada (corpo em 400,
+// destaques em 500, títulos em 400), para quem lê no celular com dificuldade.
+const FORTE = process.argv[4] === 'forte';
 const GUIAS = [
   ['guia-mercado.html', '1-guia-do-mercado'],
   ['comer-fora.html', '2-comer-fora-no-dia-a-dia'],
@@ -46,6 +49,14 @@ const CSS = `
 
 // Rodapé de cada página: a assinatura em texto e a paginação. O template roda
 // isolado da página, sem acesso às fontes dela, por isso usa fonte do sistema.
+const CSS_FORTE = `
+  html { font-size: 130% !important; }
+  body, p, li, td, figcaption, .product-chip, .hero-lead { font-weight: 400 !important; }
+  strong, b, .info-card h4, .market-subgroup h4, .section-label, .guide-note-label { font-weight: 500 !important; }
+  h1, h2, h3, .brand-nome, em { font-weight: 400 !important; }
+  .product-card figcaption { color: var(--cor-texto) !important; }
+`;
+
 const RODAPE = `
   <div style="width:100%; padding:0 56px 14px; display:flex; justify-content:space-between;
               font-family: Helvetica, Arial, sans-serif; font-size:10px; letter-spacing:.16em;
@@ -68,7 +79,7 @@ const RODAPE = `
     const page = await ctx.newPage();
     await page.emulateMedia({ media: 'screen' });
     await page.goto('file://' + path.join(RAIZ, arquivo), { waitUntil: 'load' });
-    await page.addStyleTag({ content: CSS });
+    await page.addStyleTag({ content: CSS + (FORTE ? CSS_FORTE : '') });
     await page.evaluate((tema) => {
       document.documentElement.dataset.theme = tema;
       document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('visivel'));
@@ -95,7 +106,7 @@ const RODAPE = `
     });
     await page.evaluate(() => document.fonts.ready);
     await page.waitForTimeout(300);
-    const destino = path.join(SAIDA, `${nome}${TEMA === 'light' ? '-claro' : ''}.pdf`);
+    const destino = path.join(SAIDA, `${nome}${TEMA === 'light' ? '-claro' : ''}${FORTE ? '-letra-maior' : ''}.pdf`);
     await page.pdf({
       path: destino,
       width: LARGURA + 'px',

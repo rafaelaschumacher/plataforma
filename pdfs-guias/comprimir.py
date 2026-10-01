@@ -4,11 +4,12 @@
 # Troca só as fotos (imagens com 200 px ou mais) por JPEG, uma a uma: a
 # reescrita automática de imagens do PyMuPDF quebrava os degradês do PDF.
 # Requer PyMuPDF e Pillow: pip install pymupdf pillow
-import glob, io, os
+import glob, io, os, sys
 import pymupdf
 from PIL import Image
 
-aqui = os.path.dirname(os.path.abspath(__file__))
+# Pasta opcional como argumento (padrão: a pasta deste script).
+aqui = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
 guias = sorted(glob.glob(os.path.join(aqui, '[1-4]-*.pdf')))
 
 for f in guias:
