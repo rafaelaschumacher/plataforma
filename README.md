@@ -77,7 +77,7 @@ Medidas caseiras são aproximações e podem variar conforme preparo, marca e
 tamanho do alimento.
 
 Orientações gerais, guia da refeição livre e guia do mercado: material
-elaborado pela nutricionista Rafaela Schumacher para sua consultoria online.
+elaborado pela nutricionista Rafaela Schumacher para sua consultoria nutricional.
 
 ## Deploy
 

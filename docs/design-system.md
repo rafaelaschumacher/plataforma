@@ -253,7 +253,7 @@ um cartão no topo.
 ```html
 <div class="container guide-layout">
   <aside class="guide-index" aria-label="Índice da página">
-    <p class="guide-index-title">Nesta página</p>
+    <p class="guide-index-title">O que você encontra aqui</p>
     <ol><li><a href="#ancora">Nome da seção</a></li></ol>
   </aside>
   <div class="guide-content">…</div>
