@@ -17,6 +17,7 @@ const GUIAS = [
   ['comer-fora.html', '2-comer-fora-no-dia-a-dia', 'Guia para', 'comer fora', 'Como escolher no cardápio sem travar'],
   ['refeicao-livre.html', '3-guia-da-refeicao-livre', 'Guia de', 'refeição livre', 'Como comer o que você gosta sem bagunçar a semana'],
   ['whey-protein.html', '4-whey-protein', 'Guia de', 'whey protein', 'Como ler o rótulo e escolher a marca'],
+  ['refeicoes-rapidas.html', '5-refeicoes-em-10-minutos', 'Guia de', 'refeições em 10 minutos', 'O que ter em casa para não depender do delivery'],
 ];
 
 

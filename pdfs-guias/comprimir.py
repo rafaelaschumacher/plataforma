@@ -10,7 +10,7 @@ from PIL import Image
 
 # Pasta opcional como argumento (padrão: a pasta deste script).
 aqui = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
-guias = sorted(glob.glob(os.path.join(aqui, '[1-4]-*.pdf')))
+guias = sorted(glob.glob(os.path.join(aqui, '[1-9]-*.pdf')))
 
 for f in guias:
     # Junta a capa (gerada à parte por gerar-pdfs.js) na frente do guia.
