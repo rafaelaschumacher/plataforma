@@ -19,6 +19,7 @@ const GUIAS = [
   ['whey-protein.html', '4-whey-protein', 'Guia de', 'whey protein', 'Como ler o rótulo e escolher a marca'],
   ['refeicoes-rapidas.html', '5-refeicoes-em-10-minutos', 'Guia de', 'refeições em 10 minutos', 'O que ter em casa para não depender do delivery'],
   ['fome-e-vontade.html', '6-fome-vontade-e-beliscos', 'Guia para entender', 'a vontade de comer', 'Os gatilhos do belisco e do doce, e o que ajuda de verdade'],
+  ['intestino.html', '7-intestino-em-dia', 'Guia para o', 'intestino em dia', 'O que muda quando o plano muda, e o que ajuda'],
 ];
 
 

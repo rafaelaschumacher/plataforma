@@ -66,7 +66,7 @@ const PAGINAS = {
     nav: "guias",
     titulo: "Guias · Rafaela Schumacher",
     descricao:
-      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos e fome emocional.",
+      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos, fome emocional e intestino.",
   },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
@@ -102,6 +102,13 @@ const PAGINAS = {
     titulo: "Fome, vontade e beliscos · Rafaela Schumacher",
     descricao:
       "Por que a vontade de comer aparece mesmo sem fome, os gatilhos mais comuns do belisco e do doce, e os hábitos que ajudam a lidar com isso.",
+  },
+  "intestino.html": {
+    nav: "intestino",
+    grupo: "guias",
+    titulo: "Intestino em dia · Rafaela Schumacher",
+    descricao:
+      "O que é normal, por que o intestino muda quando o plano muda e o que ajuda com intestino preso, gases, estufamento e intestino solto.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",
