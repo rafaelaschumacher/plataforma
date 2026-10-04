@@ -11,10 +11,16 @@ from PIL import Image
 # Pasta opcional como argumento (padrão: a pasta deste script).
 aqui = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
 guias = sorted(glob.glob(os.path.join(aqui, '[1-9]-*.pdf')))
+# O caderno de registros também recebe capa, mas não entra no arquivo com todos os guias.
+outros = sorted(glob.glob(os.path.join(aqui, 'caderno-*.pdf')))
 
-for f in guias:
+for f in guias + outros:
     # Junta a capa (gerada à parte por gerar-pdfs.js) na frente do guia.
     capa = os.path.join(os.path.dirname(f), '_capa-' + os.path.basename(f))
+    # Só processa o que acabou de ser gerado (ainda com a capa à parte).
+    # Rodar de novo sobre um PDF já pronto recomprimiria as fotos à toa.
+    if not os.path.exists(capa):
+        continue
     if os.path.exists(capa):
         # Insere a capa na frente do próprio guia (e não o contrário): assim
         # os links internos do sumário continuam apontando para as seções.
@@ -58,5 +64,6 @@ for f in guias:
             if link.get('kind') == pymupdf.LINK_NAMED and link.get('page', -1) >= 0:
                 todos[inicio + n].insert_link({'kind': pymupdf.LINK_GOTO, 'from': link['from'],
                                                'page': inicio + link['page']})
-todos.set_metadata({'title': 'Guias · Rafaela Schumacher', 'author': 'Rafaela Schumacher'})
-todos.save(os.path.join(aqui, '0-todos-os-guias.pdf'), garbage=3, deflate=True)
+if todos.page_count:
+    todos.set_metadata({'title': 'Guias · Rafaela Schumacher', 'author': 'Rafaela Schumacher'})
+    todos.save(os.path.join(aqui, '0-todos-os-guias.pdf'), garbage=3, deflate=True)
