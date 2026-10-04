@@ -66,7 +66,7 @@ const PAGINAS = {
     nav: "guias",
     titulo: "Guias · Rafaela Schumacher",
     descricao:
-      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos, fome emocional e intestino.",
+      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos, fome emocional, intestino e sono.",
   },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
@@ -109,6 +109,13 @@ const PAGINAS = {
     titulo: "Intestino em dia · Rafaela Schumacher",
     descricao:
       "O que é normal, por que o intestino muda quando o plano muda e o que ajuda com intestino preso, gases, estufamento e intestino solto.",
+  },
+  "sono.html": {
+    nav: "sono",
+    grupo: "guias",
+    titulo: "Sono, estresse e apetite · Rafaela Schumacher",
+    descricao:
+      "Por que o sono e o estresse mexem com a fome, as escolhas e a recuperação do treino, e o que ajuda a dormir melhor.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",
