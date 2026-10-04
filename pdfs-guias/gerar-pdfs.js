@@ -11,18 +11,21 @@ const TEMA = process.argv[3] || 'light';
 // 'forte': variante de leitura com letra maior e mais encorpada (corpo em 400,
 // destaques em 500, títulos em 400), para quem lê no celular com dificuldade.
 const FORTE = process.argv[4] !== 'leve';
+// [página, nome do arquivo, capa: início do título, grifo dourado, frase]
 const GUIAS = [
-  ['guia-mercado.html', '1-guia-do-mercado'],
-  ['comer-fora.html', '2-comer-fora-no-dia-a-dia'],
-  ['refeicao-livre.html', '3-guia-da-refeicao-livre'],
-  ['whey-protein.html', '4-whey-protein'],
+  ['guia-mercado.html', '1-guia-do-mercado', 'Guia para o', 'mercado', 'O que colocar no carrinho para a semana'],
+  ['comer-fora.html', '2-comer-fora-no-dia-a-dia', 'Guia para', 'comer fora', 'Como escolher no cardápio sem travar'],
+  ['refeicao-livre.html', '3-guia-da-refeicao-livre', 'Guia de', 'refeição livre', 'Como comer o que você gosta sem bagunçar a semana'],
+  ['whey-protein.html', '4-whey-protein', 'Guia de', 'whey protein', 'Como ler o rótulo e escolher a marca'],
+  ['refeicoes-rapidas.html', '5-refeicoes-em-10-minutos', 'Guia de', 'refeições em 10 minutos', 'O que ter em casa para não depender do delivery'],
+  ['fome-e-vontade.html', '6-fome-vontade-e-beliscos', 'Guia para entender', 'a vontade de comer', 'Os gatilhos do belisco e do doce, e o que ajuda de verdade'],
+  ['intestino.html', '7-intestino-em-dia', 'Guia para o', 'intestino em dia', 'O que muda quando o plano muda, e o que ajuda'],
+  ['sono.html', '8-sono-estresse-e-apetite', 'Guia para', 'dormir melhor', 'Sono, estresse e apetite: como um mexe com o outro'],
+  ['festas-e-eventos.html', '9-festas-e-eventos', 'Guia para', 'festas e eventos', 'Como aproveitar sem perder o rumo'],
 ];
 
-// Folha A4 (210 × 297 mm = 794 × 1123 px), o formato em que materiais de
-// paciente costumam circular. O corpo fica em ~13,5 pt: um pouco acima do
-// usual em PDFs de nutrição (9–11 pt), para ler no celular sem zoom.
-const LARGURA = 794;
-const ALTURA = 1123;
+
+const { LARGURA, ALTURA, CSS_CAPA, RODAPE } = require('./comum');
 
 const CSS = `
   html { font-size: 116% !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -82,8 +85,7 @@ const CSS = `
   p + .callout, .callout + p, .info-card > p:last-child { break-before: avoid; page-break-before: avoid; }
 `;
 
-// Rodapé de cada página: a assinatura em texto e a paginação. O template roda
-// isolado da página, sem acesso às fontes dela, por isso usa fonte do sistema.
+// Variante de leitura: letra maior e mais encorpada.
 const CSS_FORTE = `
   html { font-size: 130% !important; }
   body, p, li, td, figcaption, .product-chip, .hero-lead { font-weight: 400 !important; }
@@ -91,14 +93,6 @@ const CSS_FORTE = `
   h1, h2, h3, .brand-nome, em { font-weight: 400 !important; }
   .product-card figcaption { color: var(--cor-texto) !important; }
 `;
-
-const RODAPE = `
-  <div style="width:100%; padding:0 56px 14px; display:flex; justify-content:space-between;
-              font-family: Helvetica, Arial, sans-serif; font-size:10px; letter-spacing:.16em;
-              text-transform:uppercase; color:#A79C8B;">
-    <span>Rafaela Schumacher · Nutricionista</span>
-    <span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
-  </div>`;
 
 (async () => {
   const browser = await chromium.launch();
@@ -110,7 +104,7 @@ const RODAPE = `
     try { localStorage.setItem('tema', tema); localStorage.setItem('instalar-dispensado', '1'); } catch (e) {}
   }, TEMA);
 
-  for (const [arquivo, nome] of GUIAS) {
+  for (const [arquivo, nome, capaInicio, capaGrifo, capaFrase] of GUIAS) {
     const page = await ctx.newPage();
     await page.emulateMedia({ media: 'screen' });
     await page.goto('file://' + path.join(RAIZ, arquivo), { waitUntil: 'load' });
@@ -153,6 +147,30 @@ const RODAPE = `
       footerTemplate: RODAPE,
     });
     console.log('ok', destino);
+
+    // Capa, na mesma página já carregada (tokens e fontes da marca prontos).
+    await page.evaluate(({ inicio, grifo, frase }) => {
+      const selo = document.querySelector('.brand-selo').innerHTML;
+      document.body.innerHTML = `
+        <div class="capa">
+          <div class="capa-selo">${selo}</div>
+          <div class="capa-meio">
+            <h1>${inicio}<em>${grifo}</em></h1>
+            <div class="capa-filete"></div>
+            <p class="capa-frase">${frase}</p>
+          </div>
+          <p class="capa-assinatura">Rafaela Schumacher · Nutricionista</p>
+        </div>`;
+    }, { inicio: capaInicio, grifo: capaGrifo, frase: capaFrase });
+    await page.addStyleTag({ content: CSS_CAPA });
+    await page.evaluate(() => document.fonts.ready);
+    await page.pdf({
+      path: path.join(path.dirname(destino), '_capa-' + path.basename(destino)),
+      width: LARGURA + 'px',
+      height: ALTURA + 'px',
+      printBackground: true,
+      margin: { top: '0', bottom: '0', left: '0', right: '0' },
+    });
     await page.close();
   }
   await browser.close();

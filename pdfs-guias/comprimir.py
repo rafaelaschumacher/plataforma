@@ -10,9 +10,26 @@ from PIL import Image
 
 # Pasta opcional como argumento (padrão: a pasta deste script).
 aqui = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
-guias = sorted(glob.glob(os.path.join(aqui, '[1-4]-*.pdf')))
+guias = sorted(glob.glob(os.path.join(aqui, '[1-9]-*.pdf')))
+# O caderno de registros também recebe capa, mas não entra no arquivo com todos os guias.
+outros = sorted(glob.glob(os.path.join(aqui, 'caderno-*.pdf')))
 
-for f in guias:
+for f in guias + outros:
+    # Junta a capa (gerada à parte por gerar-pdfs.js) na frente do guia.
+    capa = os.path.join(os.path.dirname(f), '_capa-' + os.path.basename(f))
+    # Só processa o que acabou de ser gerado (ainda com a capa à parte).
+    # Rodar de novo sobre um PDF já pronto recomprimiria as fotos à toa.
+    if not os.path.exists(capa):
+        continue
+    if os.path.exists(capa):
+        # Insere a capa na frente do próprio guia (e não o contrário): assim
+        # os links internos do sumário continuam apontando para as seções.
+        junto = pymupdf.open(f)
+        junto.insert_pdf(pymupdf.open(capa), start_at=0)
+        junto.save(f + '.tmp')
+        junto.close()
+        os.replace(f + '.tmp', f)
+        os.remove(capa)
     d = pymupdf.open(f)
     feitos = set()
     for pagina in d:
@@ -37,6 +54,16 @@ for f in guias:
 
 todos = pymupdf.open()
 for f in guias:
-    todos.insert_pdf(pymupdf.open(f))
-todos.set_metadata({'title': 'Guias · Rafaela Schumacher', 'author': 'Rafaela Schumacher'})
-todos.save(os.path.join(aqui, '0-todos-os-guias.pdf'), garbage=3, deflate=True)
+    guia = pymupdf.open(f)
+    inicio = todos.page_count
+    todos.insert_pdf(guia)
+    # Os links do sumário são destinos nomeados, que a junção descarta:
+    # recria cada um apontando direto para a página dentro do arquivo único.
+    for n, pagina in enumerate(guia):
+        for link in pagina.get_links():
+            if link.get('kind') == pymupdf.LINK_NAMED and link.get('page', -1) >= 0:
+                todos[inicio + n].insert_link({'kind': pymupdf.LINK_GOTO, 'from': link['from'],
+                                               'page': inicio + link['page']})
+if todos.page_count:
+    todos.set_metadata({'title': 'Guias · Rafaela Schumacher', 'author': 'Rafaela Schumacher'})
+    todos.save(os.path.join(aqui, '0-todos-os-guias.pdf'), garbage=3, deflate=True)

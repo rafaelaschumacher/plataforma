@@ -48,7 +48,7 @@ const PAGINAS = {
     titulo: "Rafaela Schumacher · Acompanhamento nutricional",
     tituloOg: "Sua área de apoio · Rafaela Schumacher",
     descricao:
-      "Área de apoio às pacientes da consultoria: calculadora de substituição, guia do mercado, orientações e guia da refeição livre.",
+      "Área de apoio aos pacientes da consultoria: calculadora de substituição, guia do mercado, orientações e guia da refeição livre.",
   },
   "calculadora.html": {
     nav: "calculadora",
@@ -66,7 +66,7 @@ const PAGINAS = {
     nav: "guias",
     titulo: "Guias · Rafaela Schumacher",
     descricao:
-      "Os materiais de apoio da consultoria reunidos: guia do mercado, comer fora no dia a dia e guia da refeição livre.",
+      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos, fome emocional, intestino, sono e festas.",
   },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
@@ -88,6 +88,41 @@ const PAGINAS = {
     titulo: "Whey protein · Rafaela Schumacher",
     descricao:
       "Os tipos de whey, como calcular a porcentagem de proteína na porção e como avaliar a marca antes de comprar.",
+  },
+  "refeicoes-rapidas.html": {
+    nav: "refeicoes-rapidas",
+    grupo: "guias",
+    titulo: "Refeições em 10 minutos · Rafaela Schumacher",
+    descricao:
+      "O que manter em casa e combinações prontas para montar uma refeição completa em até 10 minutos, sem depender do delivery.",
+  },
+  "fome-e-vontade.html": {
+    nav: "fome-e-vontade",
+    grupo: "guias",
+    titulo: "Fome, vontade e beliscos · Rafaela Schumacher",
+    descricao:
+      "Por que a vontade de comer aparece mesmo sem fome, os gatilhos mais comuns do belisco e do doce, e os hábitos que ajudam a lidar com isso.",
+  },
+  "intestino.html": {
+    nav: "intestino",
+    grupo: "guias",
+    titulo: "Intestino em dia · Rafaela Schumacher",
+    descricao:
+      "O que é normal, por que o intestino muda quando o plano muda e o que ajuda com intestino preso, gases, estufamento e intestino solto.",
+  },
+  "sono.html": {
+    nav: "sono",
+    grupo: "guias",
+    titulo: "Sono, estresse e apetite · Rafaela Schumacher",
+    descricao:
+      "Por que o sono e o estresse mexem com a fome, as escolhas e a recuperação do treino, e o que ajuda a dormir melhor.",
+  },
+  "festas-e-eventos.html": {
+    nav: "festas-e-eventos",
+    grupo: "guias",
+    titulo: "Festas e eventos · Rafaela Schumacher",
+    descricao:
+      "Como aproveitar casamento, aniversário, churrasco, happy hour e fim de ano sem passar a semana tentando compensar.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",
