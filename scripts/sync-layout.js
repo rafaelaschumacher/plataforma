@@ -66,7 +66,7 @@ const PAGINAS = {
     nav: "guias",
     titulo: "Guias · Rafaela Schumacher",
     descricao:
-      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein e refeições em 10 minutos.",
+      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos e fome emocional.",
   },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
@@ -95,6 +95,13 @@ const PAGINAS = {
     titulo: "Refeições em 10 minutos · Rafaela Schumacher",
     descricao:
       "O que manter em casa e combinações prontas para montar uma refeição completa em até 10 minutos, sem depender do delivery.",
+  },
+  "fome-e-vontade.html": {
+    nav: "fome-e-vontade",
+    grupo: "guias",
+    titulo: "Fome, vontade e beliscos · Rafaela Schumacher",
+    descricao:
+      "Por que a vontade de comer aparece mesmo sem fome, os gatilhos mais comuns do belisco e do doce, e os hábitos que ajudam a lidar com isso.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",
