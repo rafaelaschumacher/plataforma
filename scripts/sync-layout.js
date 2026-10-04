@@ -66,7 +66,7 @@ const PAGINAS = {
     nav: "guias",
     titulo: "Guias · Rafaela Schumacher",
     descricao:
-      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos, fome emocional, intestino e sono.",
+      "Os materiais de apoio da consultoria reunidos: mercado, comer fora, refeição livre, whey protein, refeições em 10 minutos, fome emocional, intestino, sono e festas.",
   },
   "refeicao-livre.html": {
     nav: "refeicao-livre",
@@ -116,6 +116,13 @@ const PAGINAS = {
     titulo: "Sono, estresse e apetite · Rafaela Schumacher",
     descricao:
       "Por que o sono e o estresse mexem com a fome, as escolhas e a recuperação do treino, e o que ajuda a dormir melhor.",
+  },
+  "festas-e-eventos.html": {
+    nav: "festas-e-eventos",
+    grupo: "guias",
+    titulo: "Festas e eventos · Rafaela Schumacher",
+    descricao:
+      "Como aproveitar casamento, aniversário, churrasco, happy hour e fim de ano sem passar a semana tentando compensar.",
   },
   "guia-mercado.html": {
     nav: "guia-mercado",

@@ -21,6 +21,7 @@ const GUIAS = [
   ['fome-e-vontade.html', '6-fome-vontade-e-beliscos', 'Guia para entender', 'a vontade de comer', 'Os gatilhos do belisco e do doce, e o que ajuda de verdade'],
   ['intestino.html', '7-intestino-em-dia', 'Guia para o', 'intestino em dia', 'O que muda quando o plano muda, e o que ajuda'],
   ['sono.html', '8-sono-estresse-e-apetite', 'Guia para', 'dormir melhor', 'Sono, estresse e apetite: como um mexe com o outro'],
+  ['festas-e-eventos.html', '9-festas-e-eventos', 'Guia para', 'festas e eventos', 'Como aproveitar sem perder o rumo'],
 ];
 
 
