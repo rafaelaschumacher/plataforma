@@ -22,6 +22,8 @@ const GUIAS = [
   ['intestino.html', '7-intestino-em-dia', 'Guia para o', 'intestino em dia', 'O que muda quando o plano muda, e o que ajuda'],
   ['sono.html', '8-sono-estresse-e-apetite', 'Guia para', 'dormir melhor', 'Sono, estresse e apetite: como um mexe com o outro'],
   ['festas-e-eventos.html', '9-festas-e-eventos', 'Guia para', 'festas e eventos', 'Como aproveitar sem perder o rumo'],
+  // Material de base, fora do arquivo com todos os guias.
+  ['orientacoes-gerais.html', 'orientacoes-gerais', 'Como colocar seu plano', 'em prática', 'O que faz diferença no dia a dia, entre uma consulta e outra'],
 ];
 
 
@@ -82,7 +84,7 @@ const CSS = `
   /* Grupos de produtos cabem numa página: título e fotos ficam juntos. */
   .market-subgroup { break-inside: avoid; page-break-inside: avoid; }
   /* Destaque e frase final ficam com o texto que comentam, nunca sozinhos. */
-  p + .callout, .callout + p, .info-card > p:last-child { break-before: avoid; page-break-before: avoid; }
+  p + .callout, .callout + p, .guide-defs + .callout, .guide-block + .callout, .info-card > p:last-child { break-before: avoid; page-break-before: avoid; }
 `;
 
 // Variante de leitura: letra maior e mais encorpada.

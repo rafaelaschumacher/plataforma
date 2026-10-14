@@ -11,8 +11,9 @@ from PIL import Image
 # Pasta opcional como argumento (padrão: a pasta deste script).
 aqui = sys.argv[1] if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
 guias = sorted(glob.glob(os.path.join(aqui, '[1-9]-*.pdf')))
-# O caderno de registros também recebe capa, mas não entra no arquivo com todos os guias.
-outros = sorted(glob.glob(os.path.join(aqui, 'caderno-*.pdf')))
+# O caderno de registros e as orientações gerais também recebem capa, mas não
+# entram no arquivo com todos os guias.
+outros = sorted(glob.glob(os.path.join(aqui, 'caderno-*.pdf')) + glob.glob(os.path.join(aqui, 'orientacoes-*.pdf')))
 
 for f in guias + outros:
     # Junta a capa (gerada à parte por gerar-pdfs.js) na frente do guia.
