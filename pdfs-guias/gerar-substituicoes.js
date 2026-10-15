@@ -25,7 +25,7 @@ const GRUPOS = ctx.GRUPOS;
 // colunas por dentro (frutas, que é um subgrupo grande só).
 const PAGINAS = {
   carboidratos: [
-    [['Pães e biscoitos', ['pao_frances', 'pao_forma_integral', 'pao_forma_tradicional', 'pao_sirio', 'cream_cracker', 'torrada', 'magic_toast', 'biscoito_arroz']],
+    [['Pães e biscoitos', ['pao_frances', 'pao_forma_integral', 'pao_forma_tradicional', 'pao_sirio', 'torrada', 'magic_toast', 'biscoito_arroz']],
      ['Raízes e tubérculos', ['batata_inglesa', 'batata_doce', 'mandioca', 'inhame']]],
     [['Arroz, massa e grãos', ['arroz_branco', 'arroz_integral', 'macarrao', 'quinoa', 'milho_verde']],
      ['Flocos e farinhas', ['aveia', 'granola', 'cuscuz', 'tapioca', 'farinha_mandioca']]],
@@ -37,10 +37,10 @@ const PAGINAS = {
      ['Ovos e frios', ['ovo_cozido', 'clara_ovo', 'peito_peru']]],
   ],
   gorduras: [
-    [['Óleos e pastas', ['azeite', 'oleo_vegetal', 'margarina', 'pasta_amendoim']],
+    [['Óleos e pastas', ['azeite', 'oleo_vegetal', 'pasta_amendoim']],
      ['Sementes', ['chia', 'linhaca']]],
     [['Castanhas e amendoim', ['castanha_para', 'castanha_caju', 'amendoas', 'nozes', 'amendoim']],
-     ['Coco e abacate', ['coco_ralado', 'abacate']]],
+     ['Abacate', ['abacate']]],
   ],
   leguminosas: [
     [['Feijões', ['feijao_carioca', 'feijao_preto', 'feijao_branco', 'feijao_fradinho', 'fava']]],
@@ -62,7 +62,6 @@ const PAGINAS = {
 };
 const FRUTAS = [
   ['Frutas frescas', ['banana_prata', 'banana_nanica', 'abacaxi', 'ameixa_fresca', 'caqui', 'goiaba', 'kiwi', 'laranja', 'maca', 'mamao', 'manga', 'melancia', 'melao', 'morango', 'pera', 'tangerina', 'uva']],
-  ['Frutas secas', ['ameixa_seca', 'uva_passa']],
 ];
 
 const fmt = (n, casas = 0) => n.toLocaleString('pt-BR', { maximumFractionDigits: casas });
@@ -77,12 +76,18 @@ function equivalente(grupo, alimento) {
   return Math.max(5, Math.round((kcalBase * 100) / alimento.kcal / 5) * 5);
 }
 
-// Confere que cada alimento da calculadora aparece uma vez, e só uma.
+// Alimentos que estão na calculadora mas a Rafaela tirou da lista impressa.
+const FORA_DA_LISTA = ['cream_cracker', 'margarina', 'coco_ralado', 'ameixa_seca', 'uva_passa'];
+// Sem as frutas secas, a descrição do grupo na calculadora não vale aqui.
+const DESCRICOES = { frutas: 'Frutas frescas.' };
+
+// Confere que cada alimento da calculadora aparece uma vez, e só uma
+// (fora os que saíram de propósito).
 for (const grupo of GRUPOS) {
   const org = PAGINAS[grupo.id] === 'larga' ? [FRUTAS] : PAGINAS[grupo.id];
   if (!org) throw new Error('Grupo sem organização: ' + grupo.id);
   const usados = org.flat().flatMap(([, ids]) => ids);
-  const ids = grupo.alimentos.map((a) => a.id);
+  const ids = grupo.alimentos.map((a) => a.id).filter((id) => !FORA_DA_LISTA.includes(id));
   const faltam = ids.filter((id) => !usados.includes(id));
   const sobram = usados.filter((id) => !ids.includes(id));
   const repetidos = usados.filter((id, i) => usados.indexOf(id) !== i);
@@ -111,7 +116,7 @@ function paginaGrupo(grupo, i) {
   <section class="folha" id="${grupo.id}">
     <p class="rotulo"><span class="num">${String(i + 1).padStart(2, '0')}</span>Grupo ${i + 1} de ${GRUPOS.length}</p>
     <h2>${grupo.nome}</h2>
-    <p class="desc">${grupo.descricao}</p>
+    <p class="desc">${DESCRICOES[grupo.id] || grupo.descricao}</p>
     <div class="referencia">
       <p>Cada quantidade desta página equivale a <strong>${fmt(base.g, 1)} ${unidade(base)} de ${base.nome.toLowerCase()}</strong>
       <span class="kcal">(≈ ${fmt(kcal)} kcal)</span>. Troque um alimento por outro na quantidade indicada.</p>
